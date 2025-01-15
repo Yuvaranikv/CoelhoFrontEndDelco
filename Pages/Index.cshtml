@@ -1,0 +1,86 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "TURN";
+}
+
+<div class="container" >
+    @* Light blue background for the entire container *@
+    <div class="row">
+        <div class="col-12">
+            <div class="jumbotron" style="background-color: #ffffff;">
+                @* White background for the jumbotron *@
+                <h1 class="display-7">Welcome to CARES</h1>
+                <p class="lead">For an immediate CARES problem, call support at 484-889-1846.You can also receive assistance by sending an email to support@coelhoconsulting.com</p>
+                <hr class="my-4">
+                <p>More details about the project can go here. .</p>
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="#" role="button">More >></a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h2>Dashboard Report</h2>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card bg-primary text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Monthly Visits</h5>
+                            <p class="card-text">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-success text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Enrolled But Not Housed</h5>
+                            <p class="card-text">1</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-warning text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Active Clients</h5>
+                            <p class="card-text">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table" style="background-color: #ffffff;">
+                        @* White background for the table *@
+                        <thead>
+                            <tr>
+                                <th>Implementation Status</th>
+                                <th>Updated</th>
+                                <th>Yet to update / Missing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    
+                                    No of Clients
+                                </td>
+                                <td>Case Notes</td>
+                                <td>Housing Placement</td>
+                            </tr>
+                            <tr>
+                                <td>35</td>
+                                <td>228</td>
+                                <td>20</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TURN</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TURN.styles.css" asp-append-version="true" />
+
+    <!-- jqWidgets Styles -->
+    <link rel="stylesheet" href="~/jqwidgets/styles/jqx.base.css" />
+    <link rel="stylesheet" href="~/jqwidgets/styles/jqx.energyblue.css" />
+    <link rel="stylesheet" href="~/jqwidgets/styles/jqx.highcontrast.css" />
+    <!-- jqWidgets Scripts -->
+@*     <script src="~/jqwidgets/jqxcore.js"></script>
+    <script src="~/jqwidgets/jqxdata.js"></script>
+    <script src="~/jqwidgets/jqxbuttons.js"></script>
+    <script src="~/jqwidgets/jqxscrollbar.js"></script>
+    <script src="~/jqwidgets/jqxgrid.js"></script>
+    <script src="~/jqwidgets/jqxgrid.selection.js"></script>
+    <script src="~/jqwidgets/jqxgrid.pager.js"></script>
+    <script src="~/jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="~/jqwidgets/jqxcore.js"></script>
+
+    <link rel="stylesheet" href="~/jqwidgets/styles/jqx.base.css" />
+    <script src="~/jqwidgets/jquery.min.js"></script>
+    <script type="text/javascript" src="~/jqwidgets/jqx-all.js"></script> *@
+
+    @* Include necessary jQuery and jQWidgets scripts from CDN *@
+@*     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqwidgets/20.0/jqwidgets/jqxcore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqwidgets/20.0/jqwidgets/jqxdata.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqwidgets/20.0/jqwidgets/jqxbuttons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqwidgets/20.0/jqwidgets/jqxscrollbar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqwidgets/20.0/jqwidgets/jqxgrid.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqwidgets/20.0/jqwidgets/jqxgrid.selection.js"></script> *@
+
+
+</head>
+<body>
+    <header>
+        <div class="bg-info py-2" style="background-color: #e0f2f7 !important;">
+            @* Light blue background for top navbar - same as footer, !important for override bootstrap style *@
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <a class="navbar-brand" asp-area="" asp-page="/Index">
+                            <img src="~/images/turnlogo.png" alt="Project Logo" height="60" class="rounded"> @* Increased height, rounded corners *@
+                        </a>
+                    </div>
+                    <div class="col">
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2 w-100" type="search" placeholder="Search" aria-label="Search">
+                        </form>
+                    </div>
+                    <div class="col-auto">
+                        <a class="btn btn-primary shadow" asp-area="Identity" asp-page="/Account/Logout" style="color:white !important">Logout</a> @* Blue button with shadow, override the default color *@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #067FD0;">
+            <div class="container">
+                <a class="navbar-brand text-white" asp-area="" asp-page="/Index">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                       
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="clientManagementDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Client Management
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="clientManagementDropdown" >
+                                @* Light blue submenu *@
+                                <a class="dropdown-item" asp-area="" asp-page="/ClientManagement/ClientMaster">Manage Clients</a>
+                                <a class="dropdown-item" asp-area="" asp-page="/ClientManagement/ViewClientMaster">View Client</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="clientRecordDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Client Record
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="clientRecordDropdown" >
+                                @* Light blue submenu *@
+                                <a class="dropdown-item" asp-area="" asp-page="/ClientRecord/SubPage1">View Records</a>
+                                <a class="dropdown-item" asp-area="" asp-page="/ClientRecord/SubPage2">Edit Records</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="housingAdminDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Housing Admin
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="housingAdminDropdown" >
+                                @* Light blue submenu *@
+                                <a class="dropdown-item" asp-area="" asp-page="/HousingAdmin/SubPage1">Manage Housing</a>
+                                <a class="dropdown-item" asp-area="" asp-page="/HousingAdmin/SubPage2">Housing Reports</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="caseManagementDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Case Management
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="caseManagementDropdown" >
+                                @* Light blue submenu *@
+                                <a class="dropdown-item" asp-area="" asp-page="/CaseManagement/SubPage1">Manage Cases</a>
+                                <a class="dropdown-item" asp-area="" asp-page="/CaseManagement/SubPage2">Case Reports</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted" style="background-color: #e0f2f7; text-align: center; padding: 10px 0;">
+        <div class="container">
+            &copy; @DateTime.Now.Year Coelho Consulting Inc., all rights reserved - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <!-- Core Scripts -->
+@*     <script src="~/lib/jquery/dist/jquery.min.js"></script> *@
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+
+ 
+
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

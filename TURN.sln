@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TURN", "TURN.csproj", "{DFB9426D-4654-418A-894A-B1CE69AB907F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFB9426D-4654-418A-894A-B1CE69AB907F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFB9426D-4654-418A-894A-B1CE69AB907F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFB9426D-4654-418A-894A-B1CE69AB907F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFB9426D-4654-418A-894A-B1CE69AB907F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F84B4045-7973-4471-9918-A895C30D5B63}
+	EndGlobalSection
+EndGlobal

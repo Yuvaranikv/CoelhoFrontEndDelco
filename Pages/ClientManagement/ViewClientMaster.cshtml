@@ -1,0 +1,134 @@
+﻿@page
+@model TURN.Pages.ClientManagement.ViewClientMasterModel
+@{
+    ViewData["Title"] = "Client Management Grid";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script> <!-- Load jQuery First -->
+<!-- jqWidgets Core -->
+<script src="~/jqwidgets/jqxcore.js"></script>
+<script src="~/jqwidgets/jqxdata.js"></script>
+
+<!-- jqWidgets Components -->
+<script src="~/jqwidgets/jqxmenu.js"></script> <!-- Required for context menus -->
+<script src="~/jqwidgets/jqxlistbox.js"></script> <!-- Required by jqxdropdownlist -->
+<script src="~/jqwidgets/jqxdropdownlist.js"></script> <!-- Required for dropdown menus -->
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxgrid.js"></script>
+<script src="~/jqwidgets/jqxgrid.selection.js"></script>
+<script src="~/jqwidgets/jqxgrid.pager.js"></script>
+<script src="~/jqwidgets/jqxgrid.sort.js"></script>
+<script src="~/jqwidgets/jqxgrid.filter.js"></script>
+
+<!-- Add Styling -->
+<style>
+    #clientGrid .jqx-widget-header {
+        background-color: #067FD0 !important; /* Blue Header */
+        color: white !important; /* White text */
+    }
+
+    .load-button {
+        margin-bottom: 10px;
+        background-color: #067FD0;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .load-button:hover {
+            background-color: #0056a3;
+        }
+</style>
+
+<!-- Grid container -->
+<div id="clientGrid" style="height: 400px; width: 100%;"></div>
+
+<script>
+    $(document).ready(function () {
+        var clients = @Html.Raw(Json.Serialize(Model.Clients));
+
+        console.log("Clients Data:", clients);
+
+        // Define jqxGrid source
+        var source = {
+            datatype: "json",
+            datafields: [
+                { name: 'ClientID', type: 'int' },
+                { name: 'FirstName', type: 'string' },
+                { name: 'MiddleName', type: 'string' },
+                { name: 'LastName', type: 'string' },
+                { name: 'Suffix', type: 'string' },
+                { name: 'DateOfBirth', type: 'date' },
+                { name: 'Gender', type: 'string' },
+                { name: 'ContactNumber', type: 'string' },
+                { name: 'Email', type: 'string' }
+            ],
+            localdata: clients
+        };
+
+        var dataAdapter = new $.jqx.dataAdapter(source);
+
+        // Initialize jqxGrid
+        $("#clientGrid").jqxGrid({
+            width: '100%',
+            height: 400, // Fixed height
+            source: dataAdapter,
+            sortable: true,
+            pageable: true,
+            filterable: true, /* Enable Filtering */
+            showfilterrow: true, /* Display Filter Row */
+            columns: [
+                {
+                    text: 'Action',
+                    datafield: 'LoadButton',
+                    width: '6%',
+                    cellsrenderer: function (row, column, value) {
+                        return '<button class="load-button" data-row="' + row + '">Load</button>';
+                    }
+                },
+                { text: 'Client ID', datafield: 'ClientID', width: '0%', hidden: true }, // Hidden ClientID
+                { text: 'Suffix', datafield: 'Suffix', width: '5%' },
+                { text: 'First Name', datafield: 'FirstName', width: '15%' },
+                { text: 'Middle Name', datafield: 'MiddleName', width: '15%' },
+                { text: 'Last Name', datafield: 'LastName', width: '10%' },
+               
+                { text: 'Date of Birth', datafield: 'DateOfBirth', width: '10%', cellsformat: 'd' },
+                { text: 'Gender', datafield: 'Gender', width: '6%' },
+                { text: 'Contact Number', datafield: 'ContactNumber', width: '15%' },
+                { text: 'Email', datafield: 'Email', width: '20%' }
+            ]
+        });
+
+        // Handle Load button click
+        $("#clientGrid").on("click", ".load-button", function () {
+            var rowIndex = $(this).data("row");
+            var rowData = $("#clientGrid").jqxGrid('getrowdata', rowIndex);
+
+            console.log("Selected Row Data:", rowData);
+            var formattedDateOfBirth = '';
+            if (rowData.DateOfBirth) {
+                var dob = new Date(rowData.DateOfBirth);
+                var year = dob.getFullYear();
+                var month = String(dob.getMonth() + 1).padStart(2, '0'); // Month is 0-based
+                var day = String(dob.getDate()).padStart(2, '0');
+                formattedDateOfBirth = `${year}-${month}-${day}`;
+            }
+            // Redirect to ClientMaster page with row data
+            var url = "/ClientManagement/ClientMaster?" +
+                "ClientID=" + encodeURIComponent(rowData.ClientID) +
+                "&FirstName=" + encodeURIComponent(rowData.FirstName) +
+                "&MiddleName=" + encodeURIComponent(rowData.MiddleName) +
+                "&LastName=" + encodeURIComponent(rowData.LastName) +
+                "&Suffix=" + encodeURIComponent(rowData.Suffix) +
+                "&DateOfBirth=" + encodeURIComponent(formattedDateOfBirth) +
+                "&Gender=" + encodeURIComponent(rowData.Gender) +
+                "&ContactNumber=" + encodeURIComponent(rowData.ContactNumber) +
+                "&Email=" + encodeURIComponent(rowData.Email);
+
+            window.location.href = url;
+        });
+    });
+</script>

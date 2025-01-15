@@ -1,0 +1,82 @@
+﻿@page
+@model TURN.Pages.Account.LoginModel
+@{
+    Layout = null; // Disable layout for this page
+    ViewData["Title"] = "Login";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #e0f7fa; /* Light blue background for the page */
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-box {
+            background-color: #0277bd; /* Blue background for the box */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow for the box */
+            color: white; /* White text inside the box */
+            width: 100%;
+            max-width: 400px; /* Limit the width of the box */
+        }
+
+            .login-box h1 {
+                margin-bottom: 20px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .login-box .form-label {
+                color: white; /* White labels for input fields */
+            }
+
+        .btn-primary {
+            background-color: #01579b;
+            border-color: #01579b;
+        }
+
+            .btn-primary:hover {
+                background-color: #014374;
+                border-color: #014374;
+            }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h1>Login</h1>
+        @* Display validation errors *@
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <form method="post">
+            <div class="form-group mb-3">
+                <label asp-for="Username" class="form-label">Username</label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+</body>
+</html>

@@ -1,0 +1,133 @@
+﻿@page
+@model TURN.Pages.ClientManagement.ClientMasterModel
+@{
+    ViewData["Title"] = "Client Master";
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script> <!-- Load jQuery First -->
+<!-- jqWidgets Core -->
+<script src="~/jqwidgets/jqxcore.js"></script>
+<script src="~/jqwidgets/jqxdata.js"></script>
+
+<!-- jqWidgets Components -->
+<script src="~/jqwidgets/jqxmenu.js"></script> <!-- Required for context menus -->
+<script src="~/jqwidgets/jqxlistbox.js"></script> <!-- Required by jqxdropdownlist -->
+<script src="~/jqwidgets/jqxdropdownlist.js"></script> <!-- Required for dropdown menus -->
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxgrid.js"></script>
+<script src="~/jqwidgets/jqxgrid.selection.js"></script>
+<script src="~/jqwidgets/jqxgrid.pager.js"></script>
+<script src="~/jqwidgets/jqxgrid.sort.js"></script>
+<script src="~/jqwidgets/jqxgrid.filter.js"></script>
+<div class="container">
+    <h1>Client Master</h1>
+    <hr />
+
+    <!-- Error summary for validation -->
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <form id="clientForm" method="post">
+        <!-- Hidden field for ClientID -->
+        <input type="hidden" asp-for="ClientID" />
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row mb-3">
+                    <label asp-for="FirstName" class="col-md-4 col-form-label">First Name</label>
+                    <div class="col-md-8">
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row mb-3">
+                    <label asp-for="MiddleName" class="col-md-4 col-form-label">Middle Name</label>
+                    <div class="col-md-8">
+                        <input asp-for="MiddleName" class="form-control" />
+                        <span asp-validation-for="MiddleName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row mb-3">
+                    <label asp-for="LastName" class="col-md-4 col-form-label">Last Name</label>
+                    <div class="col-md-8">
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row mb-3">
+                    <label asp-for="Suffix" class="col-md-4 col-form-label">Suffix</label>
+                    <div class="col-md-8">
+                        <input asp-for="Suffix" class="form-control" />
+                        <span asp-validation-for="Suffix" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row mb-3">
+                    <label asp-for="DateOfBirth" class="col-md-4 col-form-label">Date of Birth</label>
+                    <div class="col-md-8">
+                        <input asp-for="DateOfBirth" type="date" class="form-control" />
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row mb-3">
+                    <label asp-for="Gender" class="col-md-4 col-form-label">Gender</label>
+                    <div class="col-md-8">
+                        <select asp-for="Gender" class="form-control">
+                            <option value="">Select Gender</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row mb-3">
+                    <label asp-for="ContactNumber" class="col-md-4 col-form-label">Contact Number</label>
+                    <div class="col-md-8">
+                        <input asp-for="ContactNumber" class="form-control" />
+                        <span asp-validation-for="ContactNumber" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row mb-3">
+                    <label asp-for="Email" class="col-md-4 col-form-label">Email</label>
+                    <div class="col-md-8">
+                        <input asp-for="Email" type="email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <button type="button" id="saveButton" class="btn btn-primary mx-2">Save Client</button>
+            <button type="button" id="updateButton" class="btn btn-warning mx-2 d-none">Update Client</button>
+            <button type="button" id="deleteButton" class="btn btn-danger mx-2 d-none">Delete Client</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/js/clientmaster.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+}
