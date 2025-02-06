@@ -36,17 +36,119 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqwidgets/20.0/jqwidgets/jqxgrid.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqwidgets/20.0/jqwidgets/jqxgrid.selection.js"></script> *@
 
+    <!-- Font Awesome CSS (CDN) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- SB Admin CSS -->
+   <link href="~/templates/sb-admin/css/styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="~/templates/sb-admin/js/scripts.js"></script>
+ <style>
+        #searchInput {
+            width: 400px; /* Adjust the width as needed */
+            /* padding-right: 40px; */
+           padding-left:100px;/* Ensure the padding remains */
+        }
 
+       
+
+        .input-group-text i {
+            font-size: 24px; /* Adjust icon size */
+            color: #007bff;
+           
+        }
+
+        .input-group-text {
+            background-color: transparent; /* Make background transparent */
+            border-left: none; /* Remove border between input and icon */
+        }
+
+        /* Add custom styles for print and logout buttons */
+        .btn-shadow {
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .me-3 {
+            margin-right: 1rem !important; /* Add spacing between Print and Logout */
+        }
+
+        .text-blue {
+            color: #007bff !important;
+        }
+
+ </style>
 </head>
 <body>
     <header>
-        <div class="bg-info py-2" style="background-color: #e0f2f7 !important;">
-            @* Light blue background for top navbar - same as footer, !important for override bootstrap style *@
+        <div class="navbar py-3" style="background: linear-gradient(90deg, pink, lightblue);">
+            <div class="container">
+                <div class="row align-items-center w-100">
+
+                    <!-- Logo Section -->
+                    <div class="col-auto">
+                        <a class="navbar-brand" asp-area="" asp-page="/Index">
+                            <img src="~/images/turnlogo2.png" alt="Project Logo" height="80" class="rounded-circle">
+                        </a>
+                    </div>
+
+                    <!-- Search Bar Section -->
+                   
+                    <div class="col">
+                        <div class="input-group">
+                            <!-- Input Field -->
+                           
+                           
+                            <!-- Search Icon inside the Input -->
+                            <input type="text" id="searchInput" placeholder="Enter Client name, SSN or Case Number" aria-label="Search" />
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-search"></i> <!-- Search Icon -->
+                                </span>
+                            </div>
+                               <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa-solid fa-users"></i>
+                                </span>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                  
+                                    <i class=" fa-solid fa-x"></i>
+                                </span>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa-solid fa-plus fa-2x"></i>
+                                </span>
+                            </div>
+                        </div>
+                          </div>
+
+                    <div class="col-auto d-flex align-items-left ms-auto">
+                        <a class="btn btn-light btn-shadow me-3" href="#">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                        <a class="btn btn-light btn-shadow me-3" href="#" onclick="window.print();" action="Print">
+                            <i class="fa-solid fa-print"></i> Print
+                        </a>
+                        <!-- Logout Button -->
+                        <a class="btn btn-light btn-shadow text-blue " asp-area="Identity" asp-page="/Account/Logout">
+                            <i class="fa-solid fa-sign-out text-blue" aria-hidden="true"></i> Logout
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+      @*   <div class="bg-info py-2" style="background-color: #e0f2f7 !important;">
+            Light blue background for top navbar - same as footer, !important for override bootstrap style
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <a class="navbar-brand" asp-area="" asp-page="/Index">
-                            <img src="~/images/turnlogo.png" alt="Project Logo" height="60" class="rounded"> @* Increased height, rounded corners *@
+                            <img src="~/images/turnlogo.png" alt="Project Logo" height="60" class="rounded"> Increased height, rounded corners
                         </a>
                     </div>
                     <div class="col">
@@ -55,11 +157,11 @@
                         </form>
                     </div>
                     <div class="col-auto">
-                        <a class="btn btn-primary shadow" asp-area="Identity" asp-page="/Account/Logout" style="color:white !important">Logout</a> @* Blue button with shadow, override the default color *@
+                        <a class="btn btn-primary shadow" asp-area="Identity" asp-page="/Account/Logout" style="color:white !important">Logout</a> Blue button with shadow, override the default color
                     </div>
                 </div>
             </div>
-        </div>
+        </div> *@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #067FD0;">
             <div class="container">
                 <a class="navbar-brand text-white" asp-area="" asp-page="/Index">Home</a>

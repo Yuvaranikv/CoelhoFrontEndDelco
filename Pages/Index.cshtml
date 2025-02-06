@@ -6,81 +6,287 @@
 
 <div class="container" >
     @* Light blue background for the entire container *@
-    <div class="row">
-        <div class="col-12">
-            <div class="jumbotron" style="background-color: #ffffff;">
-                @* White background for the jumbotron *@
-                <h1 class="display-7">Welcome to CARES</h1>
-                <p class="lead">For an immediate CARES problem, call support at 484-889-1846.You can also receive assistance by sending an email to support@coelhoconsulting.com</p>
-                <hr class="my-4">
-                <p>More details about the project can go here. .</p>
-                <p class="lead">
-                    <a class="btn btn-primary btn-lg" href="#" role="button">More >></a>
-                </p>
-            </div>
+    <!-- Masthead-->
+    <header class="masthead" id="slideshow-header">
+        <div class="container">
+            <div class="masthead-subheading">Welcome To Cares!</div>
+            <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
         </div>
-    </div>
+    </header>
 
-    <div class="row">
-        <div class="col-12">
-            <h2>Dashboard Report</h2>
-            <hr />
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card bg-primary text-white mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Monthly Visits</h5>
-                            <p class="card-text">0</p>
-                        </div>
-                    </div>
+    <!-- Announcement Section -->
+   @*  <div class="containertick">
+        <section class="page-section bg-light" id="announce">
+            <div class="container">
+                <div class="text-center d-flex align-items-center justify-content-center">
+                    <img src="/Images/pentagon.png" alt="Pentagon Icon" style="width:50px;height:30px; margin-bottom:1rem; margin-right: 1rem;" />
+                    <h2 class="section-heading text-uppercase">Menu</h2>
                 </div>
-                <div class="col-md-4">
-                    <div class="card bg-success text-white mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Enrolled But Not Housed</h5>
-                            <p class="card-text">1</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card bg-warning text-white mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Active Clients</h5>
-                            <p class="card-text">0</p>
-                        </div>
+                <div class="announcement bg-light text-black">
+                    <div class="announcement-wrapper">
+                        <ul class="announcement-list">
+                            <li class="announcement-item">Support:- For any immediate HMIS problem, call Jinumon Gopidasan at 484-889-1846. If you cannot reach us, you can leave a voice message. You can also receive assistance by sending an email to hmissupport@coelhoconsulting.com.</li>
+                            <li class="announcement-item">Update: Our site is undergoing maintenance on Friday.</li>
+                            <li class="announcement-item">Reminder: Don't forget to check out our offers!</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <table class="table" style="background-color: #ffffff;">
-                        @* White background for the table *@
-                        <thead>
-                            <tr>
-                                <th>Implementation Status</th>
-                                <th>Updated</th>
-                                <th>Yet to update / Missing</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    
-                                    No of Clients
-                                </td>
-                                <td>Case Notes</td>
-                                <td>Housing Placement</td>
-                            </tr>
-                            <tr>
-                                <td>35</td>
-                                <td>228</td>
-                                <td>20</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        </section>
+    </div> *@
 
-        </div>
-    </div>
+    <!-- Menu Grid Section -->
+	<div class="menu">
+		<section class="page-section bg-light menu" id="menu">
+			<div class="container">
+				<div class="text-center d-flex align-items-center justify-content-center">
+					<img src="/Images/pentagon.png" alt="Pentagon Icon" style="width:50px;height:30px; margin-bottom:1rem; margin-right: 1rem;" />
+					<h2 class="section-heading text-uppercase">Menu</h2>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item 1-->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#intakeModal">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+								@*  <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." /> *@
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<!-- Intake Button -->
+									<a href="#intakeSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+									   data-bs-toggle="collapse" aria-expanded="false" aria-controls="intakeSubmenu">
+										<span class="button-text">Intake</span>
+										<span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-down"></i> <!-- Down Arrow Icon -->
+										</span>
+									</a>
+
+									<!-- Submenu (Collapsible) -->
+									<div class="collapse mt-2" id="intakeSubmenu">
+										<ul class="list-group">
+											<li class="list-group-item sb-admin-item">
+												<a href="#clientMaster" class="text-decoration-none">Client Master</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="/IntakeForm/IntakeForm" class="text-decoration-none">Intake</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#clientDashboard" class="text-decoration-none">Client Dashboard</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#coordinatedEntry" class="text-decoration-none">Coordinated Entry</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#runAwayYouth" class="text-decoration-none">Runaway Youth</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#staffActivity" class="text-decoration-none">Staff Activity</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item 2-->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+								@*  <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." /> *@
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<a href="#clientManagementForm" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between" data-bs-toggle="modal" data-bs-target="#clientManagementModal">
+										<span class="button-text">
+											Client Management
+										</span>
+										<span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-right"></i>
+										</span>
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item 3-->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+								@*   <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." /> *@
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<a href="#clientRecordForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#clientRecordModal">
+										Client Record <span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-right"></i>
+										</span>
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item 1-->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+								@*  <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." /> *@
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<a href="#housingAdminForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#housingAdminModal">
+										Housing Admin  <span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-right"></i>
+										</span>
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item 2-->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+								@*  <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." /> *@
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<a href="#clientservicesForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#clientservicesModal">
+										Client Services  <span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-right"></i>
+										</span>
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item 3-->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+								@*   <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." /> *@
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<a href="#mastersForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#mastersModal">
+										Masters  <span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-right"></i>
+										</span>
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item 1-->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+								@*  <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." /> *@
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<a href="#reportsForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#reportsModal">
+										Reports  <span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-right"></i>
+										</span>
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item 2-->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+								@*  <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." /> *@
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<a href="#specialReportsForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#specialReportsModal">
+										Special Reports  <span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-right"></i>
+										</span>
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item 3-->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+								@*   <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." /> *@
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<a href="#phcForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#phcModal">
+										PHC  <span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-right"></i>
+										</span>
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item 3-->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+								@*   <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." /> *@
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<a href="#programAdminForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#programAdminModal">
+										Program Administration  <span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-right"></i>
+										</span>
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</section>
+	</div>
 </div>

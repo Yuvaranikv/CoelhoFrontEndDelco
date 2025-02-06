@@ -1,0 +1,1498 @@
+﻿@page
+@model IntakeFormModel;
+@{
+    Layout = "_LayoutLatest";
+}
+
+    @Html.Partial("_Navbar")  
+    <style>
+    /* Styling for the background and content */
+    .form-container {
+        background-color: #e3f2fd; /* Light blue background */
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+        .form-container label {
+            font-size: 1.2rem;
+            font-weight: normal; /* Ensure label is not bold */
+            padding-left: 0.5rem;
+            margin-left: 15px; /* Adds space before labels */
+        }
+
+            /* Adding red color to mandatory fields */
+            .form-container label.required::after {
+                content: " *";
+                color: red;
+            }
+
+        .form-container .form-control {
+            font-size: 1rem;
+        }
+
+    h2.highlight-header {
+        background-color: royalblue;
+        color: white;
+        padding: 5px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 40px;
+    }
+
+    /* Add space above form fields */
+    .form-container .row {
+        display: flex;
+        align-items: center;
+        margin-top: 15px; /* Space above each form field */
+    }
+
+    /* Add margin below the form */
+    .container.mt-8 {
+        margin-bottom: 100px;
+    }
+
+    /* Ensure the label and input stay on the same line */
+    .form-container .col-sm-6.d-flex.align-items-center {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Reduce the input width */
+    .form-container input[type="number"] {
+        width: auto;
+    }
+
+      
+</style>
+<div style="margin-bottom: 140px;"></div> <!-- Adjust margin as needed -->
+
+<div class="container mt-8 form-container">
+    <h2 class="highlight-header mt-4">Intake Form</h2>
+    <form action="/api/Intake/SubmitForm" method="post" id="intakeForm">
+        <div class="mb-3 row">
+            <label for="IntakeDate" class="col-sm-4 col-form-label required">Intake Date </label>
+            <div class="col-sm-6">
+                <input type="date" name="IntakeDate" class="form-control" id="IntakeDate" required>
+            </div>
+        </div>
+
+       @*  <div class="mb-3 row">
+            <label for="CreatedBy" class="col-sm-4 col-form-label">Created By</label>
+            <div class="col-sm-6">
+                <input type="text" name="CreatedBy" class="form-control" id="CreatedBy" value="Administrator System" readonly>
+            </div>
+        </div> *@
+
+        <div class="mb-3 row">
+            <label for="familyType" class="col-sm-4 col-form-label required">Family Type</label>
+            <div class="col-sm-6">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="familyType" id="single" value="Single" required onclick="toggleFamilySize(false)">
+                    <label class="form-check-label" for="single">Single</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="familyType" id="family" value="Family" required onclick="toggleFamilySize(true)">
+                    <label class="form-check-label" for="family">Family</label>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 row" id="familySizeRow" style="display: none;">
+            <label for="FamilySize" class="col-sm-4 col-form-label">Family Size </label>
+            <div class="col-sm-6 d-flex align-items-center">
+                <input type="number" name="FamilySize" class="form-control" id="FamilySize" value="0" required style="width: auto;">
+            </div>
+        </div>
+     
+
+
+
+
+       @*  <div class="mb-3 row">
+            <label for="CaseNumber" class="col-sm-4 col-form-label">Case Number </label>
+            <div class="col-sm-6">
+                <input type="text" name="CaseNumber" class="form-control" id="CaseNumber" required>
+            </div>
+        </div> *@
+   
+       @*  <div class="mb-3 row">
+            <label for="HousingCrisis" class="col-sm-4 col-form-label required">Present housing crisis</label>
+            <div class="col-sm-6">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="housingCrisisDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Select Housing Crisis
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="housingCrisisDropdown" style="list-style-type: none; max-height: 300px; overflow-y: auto;">
+                        <li><input type="checkbox" value="Arrears" id="Arrears" class="ps-3"> <label for="Arrears">Arrears</label></li>
+                        <li><input type="checkbox" value="Condemned Housing" id="CondemnedHousing" class="ps-3"> <label for="CondemnedHousing">Condemned Housing</label></li>
+                        <li><input type="checkbox" value="Disaster" id="Disaster" class="ps-3"> <label for="Disaster">Disaster (Fire, Flood, etc.)</label></li>
+                        <li><input type="checkbox" value="Exiting Institution" id="ExitingInstitution" class="ps-3"> <label for="ExitingInstitution">Exiting an institution or system of care (e.g., hospital, jail etc.)</label></li>
+                        <li><input type="checkbox" value="Court Eviction" id="CourtEviction" class="ps-3"> <label for="CourtEviction">Court-ordered eviction notice to vacate rental unit</label></li>
+                        <li><input type="checkbox" value="Formal Notice" id="FormalNotice" class="ps-3"> <label for="FormalNotice">Formal written notice from landlord to vacate rental unit (e.g., 30 day Notice to Quit)</label></li>
+                        <li><input type="checkbox" value="Notice from Family/Friend" id="NoticeFamilyFriend" class="ps-3"> <label for="NoticeFamilyFriend">Written or verbal notice from family, friend to leave doubled-up housing</label></li>
+                        <li><input type="checkbox" value="Insufficient Resources for Hotel" id="InsufficientHotel" class="ps-3"> <label for="InsufficientHotel">Insufficient resources to continue to pay for hotel or motel</label></li>
+                        <li><input type="checkbox" value="Foreclosure" id="Foreclosure" class="ps-3"> <label for="Foreclosure">Foreclosure</label></li>
+                        <li><input type="checkbox" value="Household Break Up" id="HouseholdBreakUp" class="ps-3"> <label for="HouseholdBreakUp">Household Break Up</label></li>
+                        <li><input type="checkbox" value="Non Renewal of Lease" id="NonRenewalLease" class="ps-3"> <label for="NonRenewalLease">Non Renewal of Lease</label></li>
+                        <li><input type="checkbox" value="Overcrowded" id="Overcrowded" class="ps-3"> <label for="Overcrowded">Overcrowded, other problems</label></li>
+                        <li><input type="checkbox" value="Personal Safety" id="PersonalSafety" class="ps-3"> <label for="PersonalSafety">Personal Safety</label></li>
+                        <li><input type="checkbox" value="Unit Being Sold" id="UnitBeingSold" class="ps-3"> <label for="UnitBeingSold">Unit Being Sold by Owner</label></li>
+                        <li><input type="checkbox" value="Utility Shutdown" id="UtilityShutdown" class="ps-3"> <label for="UtilityShutdown">Utility Shutdown</label></li>
+                        <li><input type="checkbox" value="Moving from Safe Haven" id="MovingSafeHaven" class="ps-3"> <label for="MovingSafeHaven">Moving from Safe/Haven or non-shelter</label></li>
+                        <li><input type="checkbox" value="Fire" id="Fire" class="ps-3"> <label for="Fire">Fire</label></li>
+                        <li><input type="checkbox" value="Flooding" id="Flooding" class="ps-3"> <label for="Flooding">Flooding</label></li>
+                        <li><input type="checkbox" value="Natural Disaster" id="NaturalDisaster" class="ps-3"> <label for="NaturalDisaster">Natural Disaster</label></li>
+                        <li><input type="checkbox" value="Poverty" id="Poverty" class="ps-3"> <label for="Poverty">Poverty</label></li>
+                        <li><input type="checkbox" value="Unemployment" id="Unemployment" class="ps-3"> <label for="Unemployment">Unemployment</label></li>
+                        <li><input type="checkbox" value="Lack of Affordable Housing" id="LackAffordableHousing" class="ps-3"> <label for="LackAffordableHousing">Lack of affordable housing</label></li>
+                        <li><input type="checkbox" value="Poor Health" id="PoorHealth" class="ps-3"> <label for="PoorHealth">Poor physical or mental health</label></li>
+                        <li><input type="checkbox" value="Drug and Alcohol Abuse" id="DrugAlcoholAbuse" class="ps-3"> <label for="DrugAlcoholAbuse">Drug and alcohol abuse</label></li>
+                        <li><input type="checkbox" value="Gambling" id="Gambling" class="ps-3"> <label for="Gambling">Gambling</label></li>
+                        <li><input type="checkbox" value="Family Breakdown" id="FamilyBreakdown" class="ps-3"> <label for="FamilyBreakdown">Family and relationship breakdown</label></li>
+                        <li><input type="checkbox" value="Domestic Violence" id="DomesticViolence" class="ps-3"> <label for="DomesticViolence">Domestic violence</label></li>
+                        <li><input type="checkbox" value="Abuse" id="Abuse" class="ps-3"> <label for="Abuse">Physical and/or sexual abuse</label></li>
+                        <li><input type="checkbox" value="None" id="None" class="ps-3"> <label for="None">None</label></li>
+                        <li><input type="checkbox" value="Other" id="Other" class="ps-3" onclick="toggleOtherTextbox()"> <label for="Other">Other</label></li>
+                    </ul>
+                    <!-- Textbox for 'Other' option moved outside dropdown -->
+                    <div id="otherTextbox" style="display:none; padding-top: 10px;">
+                        <label for="OtherExplanation" class="form-label">If Other, Explain:</label>
+                        <textarea class="form-control" id="OtherExplanation" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div> *@
+
+        @* <script>
+            // Show the textbox when 'Other' checkbox is selected
+            function toggleOtherTextbox() {
+                const otherCheckbox = document.getElementById("Other");
+                const textbox = document.getElementById("otherTextbox");
+
+                // Check if 'Other' checkbox is checked
+                if (otherCheckbox.checked) {
+                    textbox.style.display = "block";  // Show textbox
+                } else {
+                    textbox.style.display = "none";  // Hide textbox
+                }
+            }
+        </script>
+ *@
+
+
+
+
+
+        @* <div class="mb-3 row">
+            <label for="ReceivedCYSService" class="col-sm-4 col-form-label required">Have you ever received CYS Service in the past </label>
+            <div class="col-sm-6">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ReceivedCYSService" id="ReceivedCYSServiceYes" value="Yes" required>
+                    <label class="form-check-label" for="ReceivedCYSServiceYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ReceivedCYSService" id="ReceivedCYSServiceNo" value="No" required>
+                    <label class="form-check-label" for="ReceivedCYSServiceNo">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="SpentFosterCare" class="col-sm-4 col-form-label required">Have you spent at least one day in foster care on or after your 16th Birthday? </label>
+            <div class="col-sm-6">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="SpentFosterCare" id="SpentFosterCareYes" value="Yes" required>
+                    <label class="form-check-label" for="SpentFosterCareYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="SpentFosterCare" id="SpentFosterCareNo" value="No" required>
+                    <label class="form-check-label" for="SpentFosterCareNo">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="CurrentlyReceivingService" class="col-sm-4 col-form-label required">Are you currently receiving service from CYS? </label>
+            <div class="col-sm-6">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="CurrentlyReceivingService" id="CurrentlyReceivingServiceYes" value="Yes" required>
+                    <label class="form-check-label" for="CurrentlyReceivingServiceYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="CurrentlyReceivingService" id="CurrentlyReceivingServiceNo" value="No" required>
+                    <label class="form-check-label" for="CurrentlyReceivingServiceNo">No</label>
+                </div>
+            </div>
+        </div>
+ *@
+       @*  <div class="mb-3 row">
+            <label for="SeekingShelterDueToCOVID" class="col-sm-4 col-form-label required">Are you seeking shelter/assistance due to the COVID-19 Pandemic? </label>
+            <div class="col-sm-6">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="SeekingShelterDueToCOVID" id="SeekingShelterDueToCOVIDYes" value="Yes" required>
+                    <label class="form-check-label" for="SeekingShelterDueToCOVIDYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="SeekingShelterDueToCOVID" id="SeekingShelterDueToCOVIDNo" value="No" required>
+                    <label class="form-check-label" for="SeekingShelterDueToCOVIDNo">No</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="SeekingShelterDueToCOVID" id="SeekingShelterDueToCOVIDNotApplicable" value="Not Applicable" required>
+                    <label class="form-check-label" for="SeekingShelterDueToCOVIDNotApplicable">Not Applicable</label>
+                </div>
+            </div>
+        </div> *@
+
+        <!-- Buttons section with alignment -->
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-secondary" type="button">
+                <i class="fa-solid fa-arrow-left"></i> Go Back
+            </button>
+            <button type="submit" class="btn btn-primary" id="nextButton">
+                <i class="fa-solid fa-arrow-right"></i> Next
+            </button>
+        </div>
+    </form>
+</div> 
+@* <div id="familyMemberSection" style="display: none;">
+    <!-- Family member form will be dynamically inserted here -->
+    <div class="container mt-8 form-container">
+        <h2 class="highlight-header mt-4">Intake Family Member </h2>
+
+        <h2>Family Member Information <button class="btn btn-primary float-end" id="addMemberBtn">+</button></h2>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Client Name</th>
+                    <th>Relationship to HOH</th>
+                    <th>Social Security Number</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Veteran Status</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button class="btn btn-sm btn-warning">Edit</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="addMemberForm" style="display: none;">
+
+        <h4 class="mb-4">Intake Information</h4>
+        <form action="/api/IntakeFamilyMember/SubmitForm" method="post">
+            <div class="mb-3 row">
+                <label for="IntakeDate" class="col-sm-4 col-form-label required">Intake Date</label>
+                <div class="col-sm-6">
+                    <input type="text" name="IntakeDate" class="form-control" id="IntakeDate" value="01/29/2025" readonly>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="CreatedBy" class="col-sm-4 col-form-label">Created By</label>
+                <div class="col-sm-6">
+                    <input type="text" name="CreatedBy" class="form-control" id="CreatedBy" value="Administrator System" readonly>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="FamilySize" class="col-sm-4 col-form-label">Family Size</label>
+                <div class="col-sm-6">
+                    <input type="number" name="FamilySize" class="form-control" id="FamilySize">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="CaseNumber" class="col-sm-4 col-form-label">Case Number</label>
+                <div class="col-sm-6">
+                    <input type="text" name="CaseNumber" class="form-control" id="CaseNumber" placeholder="Displayed when an episode is created">
+                </div>
+            </div>
+
+            <h4 class="mb-4 mt-5">Demographics Information</h4>
+            <div class="mb-3 row">
+                <label for="SSN" class="col-sm-4 col-form-label required">Social Security Number</label>
+                <div class="col-sm-6">
+                    <input type="text" name="SSN" class="form-control" id="SSN" placeholder="___-__-____">
+                </div>
+            </div>
+                <div class="mb-3 row align-items-center">
+                    <label for="SSNDataQualityDropdown" class="col-sm-4 col-form-label required">SSN Data Quality</label>
+                    <div class="col-sm-6 position-relative">
+                        <!-- Dropdown Button -->
+                        <div class="dropdown w-100">
+                            <button class="btn btn-white w-100 dropdown-toggle" type="button" id="SSNDataQualityDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                Select SSN Data Quality
+                            </button>
+
+                            <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Full SSN reported
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Approximate or partial SSN reported
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Don't know
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Client prefers not to answer
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> If Other, (please explain)
+                                    </label>
+                                    <input type="text" class="form-control mt-2">
+                                </li>
+                                <li>
+                                    <button class="btn btn-primary mt-2 w-100" id="OKButton">OK</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+              <div class="mb-3 row">
+                <label for="FirstName" class="col-sm-4 col-form-label required">First Name</label>
+                <div class="col-sm-6">
+                    <input type="text" name="FirstName" class="form-control" id="FirstName">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="MiddleName" class="col-sm-4 col-form-label">Middle Name</label>
+                <div class="col-sm-6">
+                    <input type="text" name="MiddleName" class="form-control" id="MiddleName">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="LastName" class="col-sm-4 col-form-label required">Last Name</label>
+                <div class="col-sm-6">
+                    <input type="text" name="LastName" class="form-control" id="LastName">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                    <label for="NameDataQuality" class="col-sm-4 col-form-label">Name Data Quality</label>
+                    <div class="col-sm-6">
+                        <div class="dropdown w-100">
+                            <button class="btn btn-white w-100 dropdown-toggle" type="button" id="NameDataQualityDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                Select Name Data Quality
+                            </button>
+
+                            <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Full name reported
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Partial, Street, anonymous or code name reported
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Don't Know
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Client prefers not to answer
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Data not collected
+                                    </label>
+                                </li>
+                               
+                                <li>
+                                    <button class="btn btn-primary mt-2 w-100" id="OKButtonNameDataQuality">OK</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            <div class="mb-3 row">
+                <label for="PreferredNamePronoun" class="col-sm-4 col-form-label">Preferred Name / Pronoun</label>
+                <div class="col-sm-6">
+                        <input type="text" name="PreferredNamePronoun" class="form-control" id="PreferredNamePronoun" placeholder="Preferred Name / Pronoun">
+                </div>
+            </div>
+
+            <div class="mb-3 row align-items-center">
+                    <label for="HOHRelationshipDropdown" class="col-sm-4 col-form-label required">HOH or Relationship to HOH</label>
+                    <div class="col-sm-6 position-relative">
+                        <!-- Dropdown Button -->
+                        <div class="dropdown w-100">
+                            <button class="btn btn-white w-100 dropdown-toggle" type="button" id="HOHRelationshipDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                Select HOH or Relationship to HOH
+                            </button>
+
+                            <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Self (head of household)
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Head of household's child
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Head of household's spouse or partner
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Head of household's other relation member
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Other: non-relation member
+                                    </label>
+                                   
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> If Other, (please explain)
+                                    </label>
+                                    <input type="text" class="form-control mt-2">
+                                </li>
+                                <li>
+                                    <button class="btn btn-primary mt-2 w-100" id="OKButtonHOHRelationship">OK</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            <div class="mb-3 row">
+                <label for="DateOfBirth" class="col-sm-4 col-form-label required">Date of Birth</label>
+                <div class="col-sm-6">
+                    <input type="date" name="DateOfBirth" class="form-control" id="DateOfBirth">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="Age" class="col-sm-4 col-form-label">Age</label>
+                <div class="col-sm-6">
+                    <input type="number" name="Age" class="form-control" id="Age">
+                </div>
+            </div>
+
+           <div class="mb-3 row align-items-center">
+                    <label for="DateOfBirthTypeDropdown" class="col-sm-4 col-form-label required">Date of Birth Type</label>
+                    <div class="col-sm-6 position-relative">
+                        <!-- Dropdown Button -->
+                        <div class="dropdown w-100">
+                            <button class="btn btn-white w-100 dropdown-toggle" type="button" id="DateOfBirthTypeDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                Select Date of Birth Type
+                            </button>
+
+                            <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Full DOB Reported
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Approximate or Partial DOB Reported
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Don't know
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Client prefers not to answer
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Data not collected
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> If Other, (please explain)
+                                    </label>
+                                    <input type="text" class="form-control mt-2">
+                                </li>
+                                <li>
+                                    <button class="btn btn-primary mt-2 w-100" id="OKButtonDOBType">OK</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+           <div class="mb-3 row align-items-center">
+                    <label for="LGBTQOptions" class="col-sm-4 col-form-label required">Do you Identify as LGBTQ+</label>
+                    <div class="col-sm-6 position-relative">
+                        <div class="d-flex gap-3">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="LGBTQ"> No
+                            </label>
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="LGBTQ"> Yes
+                            </label>
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="LGBTQ"> Client prefers not to answer
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+           <div class="mb-3 row align-items-center">
+                    <label for="RaceEthnicityDropdown" class="col-sm-4 col-form-label required">Race and Ethnicity</label>
+                    <div class="col-sm-6 position-relative">
+                        <!-- Dropdown Button -->
+                        <div class="dropdown w-100">
+                            <button class="btn btn-white w-100 dropdown-toggle" type="button" id="RaceEthnicityDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                Select Race and Ethnicity
+                            </button>
+
+                            <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050; font-size: 10px;">
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> American Indian, Alaska Native, or Indigenous
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Asian or Asian American
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Black, African American, or African
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Hispanic/Latina/e/o
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Middle Eastern or North African
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Native Hawaiian or Pacific Islander
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> White
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Don't know
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Client prefers not to answer
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Data not collected
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Additional Race and Ethnicity Detail
+                                    </label>
+                                   
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> If Other, (please explain)
+                                    </label>
+                                    <input type="text" class="form-control mt-2">
+                                </li>
+                                <li>
+                                    <button class="btn btn-primary mt-2 w-30" id="OKButtonRaceEthnicity">OK</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="mb-3 row">
+                    <label for="Gender" class="col-sm-4 col-form-label required">Gender</label>
+                    <div class="col-sm-6 position-relative">
+                        <!-- Dropdown Button -->
+                        <div class="dropdown w-100">
+                            <button class="btn btn-white w-100 dropdown-toggle" type="button" id="GenderDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                Select Gender
+                            </button>
+
+                            <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050; font-size: 14px;">
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Woman (Girl if child)</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Man (Boy if child)</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Culturally Specific Identity (e.g., Two-Spirit)</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Non-Binary</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Transgender</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Questioning</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Don't know</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Client prefers not to answer</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Data not collected</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Different Identity</label></li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> If Other, (please explain)
+                                    </label>
+                                    <input type="text" class="form-control mt-2" id="OtherGenderExplanation">
+                                </li>
+                                <li>
+                                    <button class="btn btn-primary mt-2 w-50" id="OKButtonGender">OK</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="mb-3 row">
+                    <label for="Language" class="col-sm-4 col-form-label">Language</label>
+                    <div class="col-sm-6 position-relative">
+                        <!-- Dropdown Button -->
+                        <div class="dropdown w-100">
+                            <button class="btn btn-white w-100 dropdown-toggle" type="button" id="LanguageDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                Select Language
+                            </button>
+
+                            <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050; font-size: 14px;">
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> English</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Spanish</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Arabic</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Chinese</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> French</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> German</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Italian</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Korean</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Polish</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Russian</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Vietnamese</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> American Sign Language</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Other</label></li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> If Other, (please explain)
+                                    </label>
+                                    <input type="text" class="form-control mt-2" id="OtherLanguageExplanation">
+                                </li>
+                                <li>
+                                    <button class="btn btn-primary mt-2 w-50" id="OKButtonLanguage">OK</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="mb-3 row">
+                    <label for="ContactPhone" class="col-sm-4 col-form-label required">Contact Phone</label>
+                    <div class="col-sm-6">
+                        <input type="tel" name="ContactPhone" class="form-control" id="ContactPhone" placeholder="(___)-___-____">
+                    </div>
+            </div>
+
+                <div class="mb-3 row align-items-center">
+                    <label for="ReceiveSMS" class="col-sm-4 col-form-label required">Do you wish to Receive SMS on this number?</label>
+                    <div class="col-sm-6 position-relative">
+                        <div class="d-flex gap-3">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="ReceiveSMS" value="No"> No
+                            </label>
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="ReceiveSMS" value="Yes"> Yes
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+            <div class="mb-3 row">
+                <label for="ClientEmail" class="col-sm-4 col-form-label">Client E-mail</label>
+                <div class="col-sm-6">
+                    <input type="email" name="ClientEmail" class="form-control" id="ClientEmail">
+                </div>
+            </div>
+
+            <h4 class="mb-4 mt-5">Translation Assistance Needed</h4>
+            <div class="mb-3 row align-items-center">
+                    <label for="TranslationAssistance" class="col-sm-4 col-form-label required">Translation Assistance</label>
+                    <div class="col-sm-6">
+                        <div class="dropdown">
+                            <button class="btn btn-white w-100 dropdown-toggle" type="button" id="TranslationAssistanceDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;color: #6c757d;">
+                                Select Translation Assistance
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="TranslationAssistanceDropdown">
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> No
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Yes
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Client does not know
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Client prefers not to answer
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Data not collected
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            <h4 class="mb-4 mt-5">Identification</h4>
+                <div class="mb-3 row align-items-center">
+                    <label for="birthCertificate" class="col-sm-4 col-form-label required">Birth Certificate</label>
+                    <div class="col-sm-6">
+                        <div class="d-flex gap-3">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="birthCertificate" value="Yes"> Yes
+                            </label>
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="birthCertificate" value="No"> No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+            <h4 class="mb-4 mt-5">Living Situation</h4>
+                <div class="mb-3 row">
+                    <label for="housingStatus" class="col-sm-4 col-form-label required">Housing Status</label>
+                    <div class="col-sm-6 position-relative">
+                        <div class="dropdown">
+                            <button class="btn btn-white w-100 dropdown-toggle" type="button" id="housingStatusDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;color: #6c757d; ">
+                                Select Housing Status
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="housingStatusDropdown" id="housingStatusList">
+                                <li>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="Homeless"> Homeless
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="Imminent Risk of losing housing"> Imminent Risk of losing housing
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="Homeless only under other federal statutes"> Homeless only under other federal statutes
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="Fleeing Domestic Violence"> Fleeing Domestic Violence
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="At-risk of homelessness"> At-risk of homelessness
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="Stably housed"> Stably housed
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="Don't know"> Don't know
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="Client prefers not to answer"> Client prefers not to answer
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="livingSituation" class="col-sm-4 col-form-label required">Living Situation</label>
+                    <div class="col-sm-6 position-relative">
+                        <!-- Dropdown Button -->
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="livingSituationDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left; color: #6c757d;">
+                            Select Living Situation
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="livingSituationDropdown">
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input" name="livingSituation" value="Homeless Situation"> Homeless Situation
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input" name="livingSituation" value="Institutional Situations"> Institutional Situations
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input" name="livingSituation" value="Temporary Housing Situations"> Temporary Housing Situations
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input" name="livingSituation" value="Permanent Housing Situations"> Permanent Housing Situations
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input" name="livingSituation" value="Doesn't know"> Doesn't know
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input" name="livingSituation" value="Client prefers not to answer"> Client prefers not to answer
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input" name="livingSituation" value="Data not collected"> Data not collected
+                                </label>
+                            </li>
+                            <li>
+                                <!-- "Other" option with the checkbox and text box always visible -->
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input" id="otherLivingSituationCheckbox"> If Other, (please explain)
+                                </label>
+                                <input type="text" class="form-control mt-2" id="otherLivingSituationTextBox" placeholder="Please specify">
+                            </li>
+                            <li>
+                                <button class="btn btn-primary mt-2 w-50" id="OKButtonLivingSituation">OK</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="residenceType" class="col-sm-4 col-form-label required">Type of Residence</label>
+                    <div class="col-sm-6 position-relative">
+                        <!-- Dropdown Button -->
+                        <button class="btn btn-white dropdown-toggle w-100" type="button" id="residenceTypeDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left; color: #6c757d;">
+                            Select Type of Residence
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="residenceTypeDropdown">
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Place not meant for habitation"> Place not meant for habitation
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Emergency shelter, including hotel or motel paid for with ES voucher"> Emergency shelter, including hotel or motel paid for with ES voucher
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Safe Haven"> Safe Haven
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Foster care home or foster care group home"> Foster care home or foster care group home
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Hospital or other residential non-psychiatric medical facility"> Hospital or other residential non-psychiatric medical facility
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Jail, prison or juvenile detention facility"> Jail, prison or juvenile detention facility
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Long-Term care facility or nursing home"> Long-Term care facility or nursing home
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Host Home (non-crisis)"> Host Home (non-crisis)
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Psychiatric hospital or other psychiatric facility"> Psychiatric hospital or other psychiatric facility
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Substance abuse treatment facility or detox center"> Substance abuse treatment facility or detox center
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Hotel or motel paid for without emergency shelter voucher"> Hotel or motel paid for without emergency shelter voucher
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Owned by client, no ongoing housing subsidy"> Owned by client, no ongoing housing subsidy
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Owned by client, with ongoing housing subsidy"> Owned by client, with ongoing housing subsidy
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Permanent housing (other than RRH) for formerly homeless persons"> Permanent housing (other than RRH) for formerly homeless persons
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Rental by client, no ongoing housing subsidy"> Rental by client, no ongoing housing subsidy
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Rental by client, with VASH housing subsidy"> Rental by client, with VASH housing subsidy
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Rental by client, with GPD TIP housing subsidy"> Rental by client, with GPD TIP housing subsidy
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Rental by client, with other ongoing housing subsidy"> Rental by client, with other ongoing housing subsidy
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Residential Project or halfway house with no homeless criteria"> Residential Project or halfway house with no homeless criteria
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Staying or living in a family member's room, apartment or house"> Staying or living in a family member's room, apartment or house
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Staying or living in a friend's room, apartment or house"> Staying or living in a friend's room, apartment or house
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Rental by client, with RRH or equivalent subsidy"> Rental by client, with RRH or equivalent subsidy
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Transitional housing for homeless persons (including homeless youth)"> Transitional housing for homeless persons (including homeless youth)
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Client does not know"> Client does not know
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Client prefers not to answer"> Client prefers not to answer
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Rental by client, with HCV voucher (tenant or project based)"> Rental by client, with HCV voucher (tenant or project based)
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Rental by client in a public housing unit"> Rental by client in a public housing unit
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Data not collected"> Data not collected
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="lengthOfStay" class="col-sm-4 col-form-label required">Length of Stay in Prior Living Situation</label>
+                    <div class="col-sm-6 position-relative">
+                        <!-- Dropdown Button -->
+                        <button class="btn btn-white dropdown-toggle w-100" type="button" id="lengthOfStayDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left; color: #6c757d;">
+                            Select Length of Stay
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="lengthOfStayDropdown">
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="One night or less"> One night or less
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Two to six nights"> Two to six nights
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="One week or more, but less than one month"> One week or more, but less than one month
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="One month or more, but less than 90 days"> One month or more, but less than 90 days
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="90 days or more, but less than one year"> 90 days or more, but less than one year
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="One year or longer"> One year or longer
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Don't know"> Don't know
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Client prefers not to answer"> Client prefers not to answer
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Data Not Collected"> Data Not Collected
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+      
+
+            <h4 class="mb-4 mt-5">Address at the Time of Intake</h4>
+
+            <div class="mb-3 row">
+                <label for="clientLocation" class="col-sm-4 col-form-label required">Client Location</label>
+                <div class="col-sm-6">
+                    <input type="text" name="clientLocation" class="form-control" id="clientLocation">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="municipality" class="col-sm-4 col-form-label">Municipality</label>
+                <div class="col-sm-6">
+                    <input type="text" name="municipality" class="form-control" id="municipality">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="address1" class="col-sm-4 col-form-label">Address 1</label>
+                <div class="col-sm-6">
+                    <input type="text" name="address1" class="form-control" id="address1" placeholder="Enter Address 1">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="address2" class="col-sm-4 col-form-label">Address 2</label>
+                <div class="col-sm-6">
+                    <input type="text" name="address2" class="form-control" id="address2" placeholder="Enter Address 2">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="city" class="col-sm-4 col-form-label required">City</label>
+                <div class="col-sm-6">
+                        <input type="text" name="city" class="form-control" id="city" placeholder="Enter City ">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="state" class="col-sm-4 col-form-label">State</label>
+                <div class="col-sm-6">
+                        <input type="text" name="state" class="form-control" id="state" placeholder="Enter State ">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="zipCode" class="col-sm-4 col-form-label required">Zip Code</label>
+                <div class="col-sm-6">
+                    <input type="text" name="zipCode" class="form-control" id="zipCode" >
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="moveInDate" class="col-sm-4 col-form-label">Move In Date</label>
+                <div class="col-sm-6">
+                    <input type="date" name="moveInDate" class="form-control" id="moveInDate" >
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                    <label for="lengthOfStayAtAddress" class="col-sm-4 col-form-label">Length of Stay at Above Address</label>
+                    <div class="col-sm-6 position-relative">
+                        <!-- Dropdown Button -->
+                        <button class="btn btn-white dropdown-toggle w-100" type="button" id="lengthOfStayAtAddressDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left; color: #6c757d;">
+                            Select Length of Stay at Above Address
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="lengthOfStayAtAddressDropdown">
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="One night or less"> One night or less
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Two to six nights"> Two to six nights
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="One week or more, but less than one month"> One week or more, but less than one month
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="One month or more, but less than 90 days"> One month or more, but less than 90 days
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="90 days or more, but less than one year"> 90 days or more, but less than one year
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="One year or longer"> One year or longer
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Don't know"> Don't know
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Client prefers not to answer"> Client prefers not to answer
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="Data Not Collected"> Data Not Collected
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4 class="mb-4 mt-5">Emergency Contact Information</h4>
+
+                <div class="mb-3 row">
+                    <label for="emergencyContactFirstName" class="col-sm-4 col-form-label required">Emergency Contact First Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="emergencyContactFirstName" class="form-control" id="emergencyContactFirstName" placeholder="Enter Emergency Contact First Name" required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="emergencyContactLastName" class="col-sm-4 col-form-label required">Emergency Contact Last Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="emergencyContactLastName" class="form-control" id="emergencyContactLastName" placeholder="Enter Emergency Contact Last Name" required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="relationship" class="col-sm-4 col-form-label required">Relationship</label>
+                    <div class="col-sm-6">
+                        <select name="relationship" class="form-control" id="relationship" required>
+                            <option>Select Relationship</option>
+                            <option>Spouse</option>
+                            <option>Parent</option>
+                            <option>Sibling</option>
+                            <option>Friend</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="address1" class="col-sm-4 col-form-label">Address 1</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="address1" class="form-control" id="address1" placeholder="Enter Address 1">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="address2" class="col-sm-4 col-form-label">Address 2</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="address2" class="form-control" id="address2" placeholder="Enter Address 2">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="city" class="col-sm-4 col-form-label">City</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="city" class="form-control" id="city" placeholder="Enter City">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="state" class="col-sm-4 col-form-label">State</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="state" class="form-control" id="state" placeholder="Enter State">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="zipCode" class="col-sm-4 col-form-label">Zip Code</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="zipCode" class="form-control" id="zipCode" placeholder="Enter Zip Code">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="phone" class="col-sm-4 col-form-label required">Phone</label>
+                    <div class="col-sm-6">
+                        <input type="tel" name="phone" class="form-control" id="phone" placeholder="(___)-___-____" required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="email" class="col-sm-4 col-form-label">E-mail</label>
+                    <div class="col-sm-6">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Enter E-mail">
+                    </div>
+                </div>
+
+            <h4 class="mb-4 mt-5">Disability Assessment</h4>
+            <div class="mb-3 row">
+                <label for="disablingCondition" class="col-sm-4 col-form-label required">Disabling Condition</label>
+                <div class="col-sm-6">
+                    <select name="disablingCondition" class="form-control" id="disablingCondition">
+                        <option>Yes</option>
+                        <option>No</option>
+                        <option>Client doesn't know</option>
+                        <option>Client prefers not to answer</option>
+                    </select>
+                </div>
+            </div>
+    
+
+            <div class="button-container">
+                <button class="btn btn-secondary" type="button" onclick="window.history.back();">
+                    <i class="fa-solid fa-arrow-left"></i> Go Back
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-save"></i> Save
+                </button>
+            </div>
+        </form>
+        </<div>
+    </div>
+</div>
+</div></div> *@
+<script>
+    // Ensure the document is fully loaded before running this script
+    document.addEventListener("DOMContentLoaded", function () {
+        const nextButton = document.getElementById('nextButton'); // Get the Next button
+        const familyMemberSection = document.getElementById('familyMemberSection'); // Get the next section
+        const intakeForm = document.getElementById('intakeForm'); // Get the current form
+
+        if (nextButton) {
+            nextButton.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent form submission for now
+
+                // Hide the current form
+                intakeForm.style.display = 'none';
+
+                // Show the family member section
+                if (familyMemberSection) {
+                    familyMemberSection.style.display = 'block';
+                } else {
+                    console.log('Family Member section not found.');
+                }
+            });
+        }
+    });
+</script>
+<script>
+    // Toggle form visibility when "+" button is clicked
+    document.getElementById("addMemberBtn").addEventListener("click", function() {
+        var form = document.getElementById("addMemberForm");
+        form.style.display = form.style.display === "none" ? "block" : "none";
+    });
+</script>
+<script>
+    document.getElementById("OKButton").addEventListener("click", function(event) {
+      // Prevent the form from being submitted
+      event.preventDefault();
+
+      // Close the dropdown here (if applicable)
+      // Example: $('#dropdownMenu').dropdown('hide'); // If using Bootstrap's dropdown
+
+      // Optionally, you can hide the dropdown manually:
+      document.getElementById("dropdownMenu").classList.remove("show");
+
+      // You can also perform any other actions as needed
+    });
+</script>  
+<script>
+document.getElementById("OKButtonNameDataQuality").addEventListener("click", function(event) {
+    // Prevent the form from being submitted
+    event.preventDefault();
+
+    // Close the dropdown menu
+    const dropdownMenu = document.getElementById("NameDataQualityDropdown");
+    const dropdown = new bootstrap.Dropdown(dropdownMenu);
+    dropdown.hide();
+
+    // Optionally, you can perform any other actions as needed
+});
+</script>
+<script>
+    document.getElementById("OKButtonHOHRelationship").addEventListener("click", function(event) {
+        // Prevent the form from being submitted
+        event.preventDefault();
+
+        // Close the dropdown menu
+        const dropdownMenu = document.getElementById("HOHRelationshipDropdown");
+        const dropdown = new bootstrap.Dropdown(dropdownMenu);
+        dropdown.hide();
+
+        // Optionally, you can perform any other actions as needed
+    });
+</script>
+<script>
+    document.getElementById("OKButtonDOBType").addEventListener("click", function(event) {
+        // Prevent the form from being submitted
+        event.preventDefault();
+
+        // Close the dropdown menu
+        const dropdownMenu = document.getElementById("DateOfBirthTypeDropdown");
+        const dropdown = new bootstrap.Dropdown(dropdownMenu);
+        dropdown.hide();
+
+        // Optionally, you can perform any other actions as needed
+    });
+</script>
+<script>
+    document.getElementById("OKButtonGender").addEventListener("click", function(event) {
+        // Prevent the form from being submitted
+        event.preventDefault();
+
+        // Close the dropdown menu
+        const dropdownMenu = document.getElementById("GenderDropdown");
+        const dropdown = new bootstrap.Dropdown(dropdownMenu);
+        dropdown.hide();
+
+        // Optionally, you can perform any other actions as needed
+    });
+</script>
+<script>
+    document.getElementById("OKButtonLanguage").addEventListener("click", function(event) {
+        // Prevent the form from being submitted
+        event.preventDefault();
+
+        // Close the dropdown menu
+        const dropdownMenu = document.getElementById("LanguageDropdown");
+        const dropdown = new bootstrap.Dropdown(dropdownMenu);
+        dropdown.hide();
+
+        // Optionally, you can perform any other actions as needed
+    });
+</script>
+<script>
+    document.getElementById('ContactPhone').addEventListener('input', function (e) {
+        let value = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
+        let formattedValue = '';
+
+        if (value.length <= 3) {
+            formattedValue = '(' + value;
+        } else if (value.length <= 6) {
+            formattedValue = '(' + value.slice(0, 3) + ') ' + value.slice(3);
+        } else {
+            formattedValue = '(' + value.slice(0, 3) + ') ' + value.slice(3, 6) + '-' + value.slice(6, 10);
+        }
+
+        // Set the value to the formatted phone number
+        e.target.value = formattedValue;
+    });
+</script>
+<script>
+    // Function to toggle the visibility of Family Size input
+    function toggleFamilySize(isFamilySelected) {
+        var familySizeRow = document.getElementById('familySizeRow');
+        if (isFamilySelected) {
+            familySizeRow.style.display = 'block';  // Show Family Size input
+        } else {
+            familySizeRow.style.display = 'none';   // Hide Family Size input
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+

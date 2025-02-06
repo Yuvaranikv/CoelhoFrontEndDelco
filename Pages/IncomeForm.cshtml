@@ -1,0 +1,347 @@
+﻿@page
+@model TURN.Pages.IncomeFormModel
+@{
+    Layout = "_LayoutLatest";
+}
+
+@Html.Partial("_Navbar")
+
+<style>
+    /* Styling for the background and content */
+    .form-container {
+        background-color: #e3f2fd; /* Light blue background */
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+        .form-container label {
+            font-size: 1.2rem;
+            font-weight: normal;
+            padding-left: 0.5rem;
+            margin-left: 15px;
+        }
+
+            .form-container label.required::after {
+                content: " *";
+                color: red;
+            }
+
+    h2.highlight-header {
+        background-color: royalblue ;
+        color: white ;
+        padding: 5px ;
+        border-radius: 8px ;
+        text-align: center ;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1) ;
+        margin-bottom: 40px ;
+    }
+
+    .form-container .row {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    .container.mt-8 {
+        margin-bottom: 30px;
+    }
+
+    .form-container input[type="number"] {
+        width: auto;
+    }
+
+    .modal-header {
+        background-color: royalblue;
+      color:white;
+    }
+    .form-container label{
+        margin-left:0px !important;
+    }
+   
+</style>
+<div style="margin-bottom: 120px;"></div>
+
+@await Html.PartialAsync("Shared/_IntakeGeneralDetails")
+<div class="container mt-8 form-container">
+    <h2 class="highlight-header mt-4">Income Information</h2>
+
+    <h2>
+        Income Details <button class="btn btn-primary float-end" id="addIncomeBtn">+</button>
+    </h2>
+
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Income Source</th>
+                <th>Monthly Amount</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Job</td>
+                <td>$3000</td>
+                <td>01-Jan-2022</td>
+                <td>31-Dec-2023</td>
+            </tr>
+            <tr>
+                <td>Freelance</td>
+                <td>$1500</td>
+                <td>01-Feb-2023</td>
+                <td>31-Jul-2023</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="mb-3">
+        <label for="incomeSourceRadio" class="me-3">Do you receive any additional income source?</label>
+        <div class="d-inline-block me-3">
+            <input type="radio" id="incomeYes" name="incomeSource" value="yes"> Yes
+        </div>
+        <div class="d-inline-block">
+            <input type="radio" id="incomeNo" name="incomeSource" value="no"> No
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="incomeDetailsModal" tabindex="-1" aria-labelledby="incomeDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header with Close Button -->
+            <div class="modal-header">
+                <h5 class="modal-title highlight-header" id="incomeDetailsModalLabel">Income Information</h5>
+                <!-- Close Icon Button -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Form to show if "Yes" is selected -->
+                <form id="incomeForm" style="display:none;">
+                  
+                    <!-- Form fields (same as the original) -->
+                    <div class="mb-3 row">
+                        <label for="familyMember" class="col-sm-4 col-form-label">Family Member <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="familyMember" required>
+                                <option value="">Select Family Member</option>
+                                <option value="John">John</option>
+                                <option value="Jane">Jane</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="incomeSource" class="col-sm-4 col-form-label">Income Source <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                            <!-- Dropdown with checkboxes -->
+                            <div class="dropdown w-100">
+                                <button class="btn btn-white w-100 dropdown-toggle" type="button" id="incomeSourceDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                    Select Income Source
+                                    <i class="fa-solid fa-search ms-2 position-absolute" style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                </button>
+
+                                <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                                    <!-- Income source options with checkboxes -->
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="Earned Income (i.e Employment Income)"> Earned Income (i.e Employment Income)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="Unemployment Insurance"> Unemployment Insurance
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="Supplemental Security Income (SSI)"> Supplemental Security Income (SSI)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="Social Security Disability Income (SSDI)"> Social Security Disability Income (SSDI)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="VA Service-Connected Disability Compensation"> VA Service-Connected Disability Compensation
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="VA Non-Service-Connected Disability Pension"> VA Non-Service-Connected Disability Pension
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="Private Disability Insurance"> Private Disability Insurance
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="Workers Compensation"> Workers Compensation
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="Temporary Assistance for Needy Families (TANF)"> Temporary Assistance for Needy Families (TANF)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="General Assistance (GA)"> General Assistance (GA)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="Retirement income from Social Security"> Retirement income from Social Security
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="Pension or retirement income from a former job"> Pension or retirement income from a former job
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="Child Support"> Child Support
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="Alimony or other spousal support"> Alimony or other spousal support
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="Other Source"> Other Source
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" value="Other Source: SSI"> Other Source: SSI
+                                        </label>
+                                    </li>
+                                    <!-- Explanation field for "Other" income source -->
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input" id="otherExplainCheckbox"> If Other, please explain
+                                        </label>
+                                        <input type="text" class="form-control mt-2" id="otherExplainText" placeholder="Please explain the other source">
+                                    </li>
+                                    <li>
+                                        <button class="btn btn-primary mt-2 w-100" id="OKButton">OK</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="effectiveDate" class="col-sm-4 col-form-label">Effective Date <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="date" class="form-control" id="effectiveDate" value="2025-02-06" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="endDate" class="col-sm-4 col-form-label">End Date</label>
+                        <div class="col-sm-8">
+                            <input type="date" class="form-control" id="endDate">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="paymentFrequency" class="col-sm-4 col-form-label">Payment Frequency</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="paymentFrequency">
+                                <option value="monthly">Monthly</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="bi-weekly">Bi-weekly</option>
+                                <option value="annually">Annually</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="paymentAmount" class="col-sm-4 col-form-label">Payment Amount <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="paymentAmount" placeholder="$0.00" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="grossMonthlyAmount" class="col-sm-4 col-form-label">Gross Monthly Amount <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="grossMonthlyAmount" placeholder="$0.00" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="netMonthlyAmount" class="col-sm-4 col-form-label">Net Monthly Amount <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="netMonthlyAmount" placeholder="$0.00" required>
+                        </div>
+                    </div>
+
+                    <!-- Income Verification -->
+                    <div class="mb-3">
+                        <h5>Income Verification</h5>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="incomeVerification" class="col-sm-4 col-form-label">Income Verified <span class="text-danger">*</span></label>
+                        <div class="col-sm-8 d-flex justify-content-start">
+                            <input type="radio" id="incomeVerifiedYes" name="incomeVerification" value="yes" class="me-3"> Yes
+                            <input type="radio" id="incomeVerifiedNo" name="incomeVerification" value="no"> No
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="comments" class="col-sm-4 col-form-label">Comments</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" id="comments" rows="3" placeholder="Additional comments"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal Footer with Buttons (hidden initially) -->
+            <div class="modal-footer" id="modalFooter" style="display:none;">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger" id="deleteButton">Delete</button>
+                <button type="button" class="btn btn-secondary" id="printButton">Print</button>
+                <button type="button" class="btn btn-light" id="exitButton" data-bs-dismiss="modal">Exit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // When the "+" button is clicked, show the modal
+    document.getElementById('addIncomeBtn').addEventListener('click', function() {
+        var myModal = new bootstrap.Modal(document.getElementById('incomeDetailsModal'));
+        myModal.show(); // This opens the modal
+        // Ensure the form is displayed when the modal is shown
+        document.getElementById('incomeForm').style.display = 'block'; // Show the form
+        document.getElementById('modalFooter').style.display = 'flex'; // Show the footer buttons
+    });
+
+    // Hide the form initially when the modal is opened without selecting "Income Yes"
+    document.getElementById('incomeDetailsModal').addEventListener('show.bs.modal', function () {
+        document.getElementById('incomeForm').style.display = 'none'; // Hide the form initially
+        document.getElementById('modalFooter').style.display = 'none'; // Hide the footer buttons initially
+    });
+
+    // Show the form and footer buttons when "Income Yes" is selected
+    document.getElementById('incomeYes').addEventListener('change', function() {
+        document.getElementById('incomeForm').style.display = 'block'; // Show the form
+        document.getElementById('modalFooter').style.display = 'flex'; // Show the footer buttons
+    });
+
+    // Hide the form and footer buttons when "Income No" is selected
+    document.getElementById('incomeNo').addEventListener('change', function() {
+        document.getElementById('incomeForm').style.display = 'none'; // Hide the form
+        document.getElementById('modalFooter').style.display = 'none'; // Hide the footer buttons
+    });
+</script>
+
+<script>
+    document.getElementById('incomeYes').addEventListener('click', function() {
+        var myModal = new bootstrap.Modal(document.getElementById('incomeDetailsModal'));
+        myModal.show();
+    });
+</script>

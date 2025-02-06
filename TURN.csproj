@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\NewFolder\**" />
-    <Content Remove="wwwroot\NewFolder\**" />
-    <EmbeddedResource Remove="wwwroot\NewFolder\**" />
-    <None Remove="wwwroot\NewFolder\**" />
+    <Compile Remove="Pages\IntakeForm - Copy\**" />
+    <Content Remove="Pages\IntakeForm - Copy\**" />
+    <EmbeddedResource Remove="Pages\IntakeForm - Copy\**" />
+    <None Remove="Pages\IntakeForm - Copy\**" />
   </ItemGroup>
 
   <ItemGroup>

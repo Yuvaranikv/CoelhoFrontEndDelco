@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container mt-8 form-container">
+	<h2 class="highlight-header mt-4">Intake Form</h2>
+<div class="mb-3 row">
+	<label for="IntakeDate" class="col-sm-4 col-form-label required">Intake Date </label>
+	<div class="col-sm-6">
+		<input type="date" name="IntakeDate" class="form-control" id="IntakeDate" required>
+	</div>
+</div>
+
+<div class="mb-3 row">
+	<label for="CreatedBy" class="col-sm-4 col-form-label">Created By</label>
+	<div class="col-sm-6">
+		<input type="text" name="CreatedBy" class="form-control" id="CreatedBy" value="Administrator System" readonly>
+	</div>
+</div>
+
+<!-- Family Type Section -->
+<div class="mb-3 row">
+	<label for="familyType" class="col-sm-4 col-form-label required">Family Type</label>
+	<div class="col-sm-6">
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio" name="familyType" id="single" value="Single" required onclick="toggleFamilySize(false)">
+			<label class="form-check-label" for="single">Single</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio" name="familyType" id="family" value="Family" required onclick="toggleFamilySize(true)">
+			<label class="form-check-label" for="family">Family</label>
+		</div>
+	</div>
+
+</div>
+<div class="mb-3 row" id="familySizeRow" style="visibility: hidden;">
+	<label for="FamilySize" class="col-sm-4 col-form-label">Family Size </label>
+	<div class="col-sm-6">
+		<input type="number" name="FamilySize" class="form-control" id="FamilySize" value="0" required style="width: auto;">
+	</div>
+</div>
+<!-- Family Size Section -->
+</div>
+<script>
+	// Function to toggle the visibility of Family Size input
+		function toggleFamilySize(isFamilySelected) {
+		var familySizeRow = document.getElementById('familySizeRow');
+		if (isFamilySelected) {
+			familySizeRow.style.visibility = 'visible';  // Show Family Size input
+		} else {
+			familySizeRow.style.visibility = 'hidden';   // Hide Family Size input but maintain layout
+		}
+	}
+</script>

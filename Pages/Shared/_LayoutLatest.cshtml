@@ -1,0 +1,755 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - TURN</title>
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+	<!-- Font Awesome icons (free version)-->
+	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+	<!-- Google fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+
+	<!-- Agency Theme Styles -->
+	<link href="~/templates/agency/css/styles.css" rel="stylesheet" asp-append-version="true" />
+	@* <link href="~/templates/sb-admin2/css/sb-admin-2.min.css" rel="stylesheet" asp-append-version="true" /> *@
+	
+
+	<style>
+		.nav-link {
+			color: black !important;
+			background-color:cornflowerblue;
+		}
+		.btn-primary {
+			background-color: #4e73df !important; /* SB Admin Pro primary blue color */
+			color: #fff !important; /* White text color */
+			border-color: #4e73df !important; /* Ensure the border matches the background */
+		}
+
+			.btn-primary:hover {
+				background-color: #2e59d9 !important; /* Slightly darker blue on hover */
+				border-color: #2e59d9 !important;
+			}
+		.containertick {
+			display: flex; /* Use flexbox for layout */
+		}
+
+		.masthead {
+			height: 100vh; /* Full viewport height */
+			background-size: cover;
+			background-position: center;
+			transition: background-image 1s ease-in-out; /* Smooth transition */
+		}
+
+		.nav-item .dropdown-item {
+			text-transform: none; /* Ensures dropdown items keep their natural casing */
+			font-size: 12px;
+		}
+
+		.equal-btn {
+			display: flex; /* Make the button a flex container */
+			align-items: center; /* Vertically align text and icon */
+			justify-content: space-between; /* Push text to the left and icon to the right */
+			padding: 10px 20px; /* Adjust padding for consistent size */
+			min-width: 160px; /* Set a minimum width for uniform size */
+		}
+
+		.icon-spacing {
+			margin-left: 8px; /* Add spacing between the text and icon */
+			display: flex;
+			align-items: center;
+		}
+
+		.equal-btn:hover {
+			background-color: lightgray; /* Optional: hover effect */
+		}
+
+		.announcement {
+			/* Announcement Section */
+			width: 35%; /* Adjust width as needed */
+			background-color: #f0f0f0; /* Light gray background */
+			padding: 5px;
+			overflow: hidden; /* Hide overflow content */
+			height: auto; /* Allow height to adjust dynamically */
+			min-height: 5px; /* Minimum height for the section */
+			margin: 0 auto; /* Center the announcement container */
+		}
+
+		.announcement-wrapper {
+			position: relative;
+			height: 100%; /* Full height of the container */
+		}
+
+		.announcement-list {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			width: 100%; /* Full width */
+		}
+
+			.announcement-list li {
+				white-space: normal; /* Allow text to wrap */
+				text-align: left;
+				padding: 0.5rem 20px; /* Add some padding for better readability */
+				margin-bottom: 1rem; /* Add space between items */
+				background-color: #fff; /* White background for each item */
+				border-radius: 5px; /* Rounded corners for the list items */
+				border: 1px solid #ddd; /* Light border around the items */
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for a lifted effect */
+				transition: background-color 0.3s ease; /* Smooth background transition on hover */
+			}
+
+				/* Hover effect for each announcement item */
+				.announcement-list li:hover {
+					background-color: #e9ecef; /* Light gray background on hover */
+				}
+
+		
+
+		.menu {
+			/* Menu Section */
+			flex-grow: 1; /* Allow menu to take up remaining space */
+			padding: 20px;
+		}
+
+		/* Breadcrumb Section */
+		.breadcrumb {
+			background-color: transparent;
+			padding: 0;
+			margin-bottom: 15px;
+			text-align: left; /* Left-align the breadcrumb */
+		}
+
+		.breadcrumb-item a {
+			text-decoration: none;
+		}
+
+		.breadcrumb-item.active {
+			font-weight: bold;
+		}
+
+		/* Ensure the input field and icons are aligned correctly */
+		.input-group .form-control,
+		.input-group .input-group-text {
+			height: calc(2.25rem + 2px);
+			line-height: 1.5;
+		}
+
+		/* Optional: Add some space between input field and icons */
+		.input-group-text {
+			padding: 0.375rem 0.75rem;
+		}
+
+		/* Add space after input field */
+		.input-group .form-control {
+			margin-right: 0.5rem; /* Adds space between the input field and icons */
+		}
+
+		/* Adjust spacing between icons */
+		.input-group .input-group-text:first-child {
+			margin-right: 0.25rem; /* Adds space between question mark and PDF icon */
+		}
+		/* Form Section */
+		.modal-body {
+			text-align: left; /* Left-align all text inside the modal */
+		}
+
+		/* Form Inputs */
+		.mb-3 {
+			text-align: left; /* Ensure the form groups are left-aligned */
+		}
+
+		/* Buttons Section */
+		.d-flex.justify-content-between {
+			justify-content: flex-start; /* Left-align the buttons */
+		}
+
+		/* Modal content */
+		.modal-dialog {
+			text-align: left; /* Left-align modal content */
+		}
+		/* Close Icon */
+		.close-modal {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			cursor: pointer;
+			text-align: left; /* Left-align close icon */
+		}
+
+		/* Set the width of the modal to 100% */
+		.container {
+			width: 100%;
+		}
+		/* General styling for the tooltip */
+		.tooltip-inner {
+			background-color: white !important; /* Set the background color to white */
+			color: black !important; /* Set text color for readability */
+			border: 1px solid lightgrey; /* Add a subtle border */
+			max-width: 700px; /* Adjust the maximum width of the tooltip */
+			white-space: normal; /* Allow text wrapping */
+			padding: 10px; /* Add padding for readability */
+		}
+
+			/* Bullet points alignment and wrapping */
+			.tooltip-inner ul {
+				padding-left: 20px; /* Add consistent indentation for bullets */
+				margin: 0; /* Remove margin */
+				list-style-type: disc; /* Ensure bullets appear as discs */
+			}
+
+			.tooltip-inner li {
+				margin-bottom: 5px; /* Add spacing between bullet items */
+				text-align: left; /* Ensure text aligns to the left */
+			}
+
+				/* Wrapping behavior */
+				.tooltip-inner li span {
+					display: inline; /* Keep text on the same line unless it wraps */
+					margin-left: 0; /* Remove any space before wrapped text */
+					white-space: normal; /* Allow text to wrap naturally */
+					word-wrap: break-word; /* Break words if they are too long */
+				}
+
+		/* Optional: Tooltip arrow */
+		.tooltip.bs-tooltip-top .tooltip-arrow {
+			left: 50%;
+			transform: translateX(-50%);
+			border-top-color: white !important; /* Keep arrow consistent with tooltip background */
+		}
+		/* Styling for paragraphs inside the tooltip */
+		.tooltip-inner p {
+			margin: 0; /* Remove any default margins */
+			padding: 0; /* Remove any padding */
+			text-align: left; /* Align the text to the left */
+			white-space: normal; /* Allow text wrapping */
+			word-wrap: break-word; /* Break long words if necessary */
+			line-height: 1.5; /* Adjust line spacing for better readability */
+		}
+
+		.sb-admin-item {
+			background-color: #f8f9fc; /* Default background color similar to SB Admin */
+			color: #5a5c69; /* Dark gray text color */
+		}
+
+			.sb-admin-item a {
+				color: #5a5c69; /* Dark gray text */
+				font-weight: 500;
+			}
+
+				.sb-admin-item a:hover {
+					color: #4e73df; /* SB Admin primary blue */
+					text-decoration: none;
+				}
+
+			.sb-admin-item:hover {
+				background-color: #e9ecef; /* Light gray background on hover */
+			}
+	</style>
+
+</head>
+
+<body id="page-top">
+	<!-- Navigation-->
+	@Html.Partial("_Navbar")
+
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<!-- Contact-->
+	<section class="page-section" id="contact">
+		<div class="container">
+			<div class="text-center">
+				<h2 class="section-heading text-uppercase">Contact Us</h2>
+				<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+			</div>
+			<form id="contactForm" data-sb-form-api-token="API_TOKEN">
+				<div class="row align-items-stretch mb-5">
+					<div class="col-md-6">
+						<div class="form-group">
+							<input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
+							<div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+						</div>
+						<div class="form-group">
+							<input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
+							<div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+							<div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+						</div>
+						<div class="form-group mb-md-0">
+							<input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
+							<div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group form-group-textarea mb-md-0">
+							<textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
+							<div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+						</div>
+					</div>
+				</div>
+				<div class="d-none" id="submitSuccessMessage">
+					<div class="text-center text-white mb-3">
+						<div class="fw-bolder">Form submission successful!</div>
+						To activate this form, sign up at
+						<br />
+						<a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+					</div>
+				</div>
+				<div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+				<div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send Message</button></div>
+			</form>
+		</div>
+	</section>
+
+	<!-- Footer-->
+	<footer class="footer py-4">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2023</div>
+				<div class="col-lg-4 my-3 my-lg-0">
+					<a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+					<a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+					<a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+				</div>
+				<div class="col-lg-4 text-lg-end">
+					<a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+					<a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Menu Modals-->
+	<!-- Menu item 1 modal popup-->
+	<!-- Intake Modal -->
+	<div class="portfolio-modal modal fade" id="intakeModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- Close Icon -->
+				<div class="close-modal" data-bs-dismiss="modal" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
+				<i class="fa fa-window-close" style="font-size: 20px; color: #333;" aria-hidden="true"></i>
+				</div>
+ 
+				<!-- Modal Header -->
+				<div class="modal-header d-block pb-0" style="border-bottom: none; padding: 80px;">
+					<nav aria-label="breadcrumb" style="padding-left: 197px; margin-bottom: 10px;">
+						<ol class="breadcrumb mb-0">
+							<li class="breadcrumb-item"><a href="#" id="homeBreadcrumb" onclick="closeModalAndNavigateHome()">Home</a></li>
+							<li class="breadcrumb-item">
+								<a href="#" id="menuBreadcrumb" data-bs-dismiss="modal" onclick="closeModalAndNavigate()">Menu</a>
+							</li>
+							<li class="breadcrumb-item active" aria-current="page">Intake</li>
+						</ol>
+					</nav>
+				</div>
+
+				<!-- Modal Body -->
+				<div class="container border border-warning rounded p-4">
+					<div class="row justify-content-center">
+						<div class="col-lg-8">
+							<div class="modal-body">
+								<h4 class="text-center mb-4">Intake Form</h4>
+								<form id="intakeForm">
+									<!-- Social Security Number Field -->
+									<div class="mb-3 input-group">
+										<input type="text" class="form-control" id="ssn" placeholder="Social Security Number*" required>
+										<div class="input-group-append d-flex align-items-center">
+											<!-- Tooltip for SSN Help Text -->
+											<span class="input-group-text"
+												  data-bs-toggle="tooltip"
+												  data-bs-html="true"
+												  data-bs-placement="top"
+												  title="<p>
+          Enter the nine-digit SSN and appropriate SSN Data Quality indicator.
+          If a partial social security number is obtained, an 'x' may be entered as a placeholder
+          for any missing digit. When enrolling a client who already has a record in the HMIS,
+          verify that the SSN in the system is accurate and correct it if it is not.
+      </p>
+      <ul>
+          <li><span>Select 'Full SSN reported' for SSN Data Quality when a complete and valid SSN is provided.</span></li>
+          <li><span>Select 'Approximate or partial SSN reported' when any SSN other than a complete and valid 9-digit SSN, regardless of the reason, is provided.</span></li>
+          <li><span>Select 'Client doesn't know' when a client does not know or does not have a SSN.</span></li>
+          <li><span>Select 'Client refused' when a client refuses to provide any part of their SSN.</span></li>
+      </ul>
+      <p>
+          Note: The federal statute at 5 U.S.C. Section 552a prohibits a government agency from
+          denying shelter or services to clients who refuse to provide their SSN, unless the requirement
+          was in effect before 1975 or SSN is a statutory requirement for receiving services from the project.
+      </p>">
+	<i class="fa-solid fa-question-circle"></i>
+</span>
+
+											<span class="input-group-text ms-1" data-bs-toggle="tooltip" data-bs-placement="top">
+												<i class="fa-solid fa-file-pdf"></i>
+											</span>
+										</div>
+										<div class="invalid-feedback">Social Security Number is required.</div>
+									</div>
+
+									<!-- First Name Field -->
+									<div class="mb-3">
+										<input type="text" class="form-control" id="firstName" placeholder="First Name*" required>
+										<div class="invalid-feedback">First Name is required.</div>
+									</div>
+
+									<!-- Last Name Field -->
+									<div class="mb-3">
+										<input type="text" class="form-control" id="lastName" placeholder="Last Name*" required>
+										<div class="invalid-feedback">Last Name is required.</div>
+									</div>
+
+									<!-- Date of Birth Field -->
+									<div class="mb-3 input-group">
+										<input type="date"
+											   class="form-control"
+											   id="dob"
+											   placeholder="Date of Birth*"
+											   required
+											   data-bs-placement="bottom">
+										<div class="input-group-append d-flex align-items-center">
+											<span class="input-group-text"
+												  data-bs-toggle="tooltip"
+												  data-bs-html="true"
+												  data-bs-placement="top"
+												  title="
+            <p>Collect the month, day, and year of birth for every person served. When enrolling a client who already has a record in the HMIS, verify that the date of birth on the record is accurate and correct it if it is not.</p>
+            <ul>
+                <li><span>'Full DOB reported' must be selected for Date of Birth Type when the complete date of birth is provided by the client.</span></li>
+                <li><span>'Approximate or partial DOB reported' must be selected if a client cannot remember their full or exact date of birth. If the client cannot remember the month or day of birth, record an approximate date of '01' for both.</span></li>
+                <li><span>Select 'Client doesn't know' if the client is unable to recall their age within one year.</span></li>
+                <li><span>Select 'Client refused' when a client refuses to provide their DOB.</span></li>
+            </ul>
+			">
+			<i class="fa-solid fa-question-circle"></i>
+		</span>
+										</div>
+										<div class="invalid-feedback">Date of Birth is required.</div>
+									</div>
+
+									<!-- Buttons -->
+									<div class="d-flex justify-content-between">
+										<button class="btn btn-secondary" data-bs-dismiss="modal" type="button">
+											<i class="fa-solid fa-arrow-left"></i> Go Back
+										</button>
+										<button type="submit" class="btn btn-primary">Submit</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<!-- Client Management Modal -->
+	<div class="portfolio-modal modal fade" id="clientManagementModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-8">
+							<div class="modal-body">
+								<h2 class="text-uppercase">Client Management</h2>
+								<form>
+									<!-- Form content -->
+								</form>
+								<button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Client Record Modal -->
+	<div class="portfolio-modal modal fade" id="clientRecordModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-8">
+							<div class="modal-body">
+								<h2 class="text-uppercase">Client Record</h2>
+								<form>
+									<!-- Form content -->
+								</form>
+								<button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Housing Admin Modal -->
+	<div class="portfolio-modal modal fade" id="housingAdminModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-8">
+							<div class="modal-body">
+								<h2 class="text-uppercase">Housing Admin</h2>
+								<form>
+									<!-- Form content -->
+								</form>
+								<button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Masters Modal -->
+	<div class="portfolio-modal modal fade" id="mastersModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-8">
+							<div class="modal-body">
+								<h2 class="text-uppercase">Masters</h2>
+								<form>
+									<!-- Form content -->
+								</form>
+								<button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Reports Modal -->
+	<div class="portfolio-modal modal fade" id="reportsModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-8">
+							<div class="modal-body">
+								<h2 class="text-uppercase">Reports</h2>
+								<form>
+									<!-- Form content -->
+								</form>
+								<button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Special Reports Modal -->
+	<div class="portfolio-modal modal fade" id="specialReportsModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-8">
+							<div class="modal-body">
+								<h2 class="text-uppercase">Special Reports</h2>
+								<form>
+									<!-- Form content -->
+								</form>
+								<button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- PHC Modal -->
+	<div class="portfolio-modal modal fade" id="phcModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-8">
+							<div class="modal-body">
+								<h2 class="text-uppercase">PHC</h2>
+								<form>
+									<!-- Form content -->
+								</form>
+								<button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Program Administration Modal -->
+	<div class="portfolio-modal modal fade" id="programAdminModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-8">
+							<div class="modal-body">
+								<h2 class="text-uppercase">Program Administration</h2>
+								<form>
+									<!-- Form content -->
+								</form>
+								<button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		// Array of image URLs
+		const images = [
+			'/templates/agency/assets/img/header-banner.jpg',
+			'/templates/agency/assets/img/header-banner4.jpg',
+			'/templates/agency/assets/img/header-banner3.jpg'
+		  ];
+
+		let currentIndex = 0; // Start with the first image
+		const header = document.getElementById('slideshow-header');
+
+		// Function to change the background image
+		function changeBackground() {
+			header.style.backgroundImage = `url('${images[currentIndex]}')`;
+			currentIndex = (currentIndex + 1) % images.length; // Loop back to the first image
+		}
+
+		// Change image every 5 seconds
+		setInterval(changeBackground, 5000);
+
+		// Initialize the first image
+		changeBackground();
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const announcementList = document.querySelector(".announcement-list");
+			const announcements = document.querySelectorAll(".announcement-list li");
+
+			// Duplicate the announcements to create an infinite loop
+			announcements.forEach((item) => {
+				const clone = item.cloneNode(true);
+				announcementList.appendChild(clone);
+			});
+
+			let offset = 0;
+			const scrollSpeed = 2; // Adjust speed of scrolling
+
+			function scrollAnnouncements() {
+				offset -= scrollSpeed;
+				const firstItemHeight = announcements[0].offsetHeight;
+
+				if (Math.abs(offset) >= firstItemHeight) {
+					offset = 0; // Reset offset when one full item scrolls past
+					announcementList.appendChild(announcementList.firstElementChild);
+				}
+
+				announcementList.style.transform = `translateY(${offset}px)`;
+				requestAnimationFrame(scrollAnnouncements);
+			}
+
+			scrollAnnouncements();
+		});
+	</script>
+
+	<script>
+		// JavaScript for Form Validation
+		(function () {
+			const form = document.getElementById('intakeForm');
+			form.addEventListener('submit', function (event) {
+				if (!form.checkValidity()) {
+					event.preventDefault();
+					event.stopPropagation();
+				}
+				form.classList.add('was-validated');
+			}, false);
+		})();
+	</script>
+
+
+	<!-- Bootstrap JS -->
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+
+	<script>
+			  document.addEventListener('DOMContentLoaded', function () {
+			var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+			var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+				return new bootstrap.Tooltip(tooltipTriggerEl);
+			});
+		});
+
+	</script>
+
+	<script>
+		function closeModalAndNavigate() {
+			// Close the modal
+			var modal = new bootstrap.Modal(document.getElementById('intakeModal'));
+			modal.hide();
+
+			// Scroll to the home section
+			document.querySelector('#menu').scrollIntoView({ behavior: 'smooth' });
+		}
+				function closeModalAndNavigateHome() {
+			// Close the modal using Bootstrap modal instance
+			var modal = bootstrap.Modal.getInstance(document.getElementById('intakeModal'));
+			modal.hide();
+
+			// After modal closes, scroll to the nav section
+			setTimeout(function () {
+				document.querySelector('#mainNav').scrollIntoView({ behavior: 'smooth' });
+			}, 300); // Adjust the delay if needed to ensure smooth behavior
+		}
+
+	</script>
+	<!-- Agency Theme Scripts -->
+	<script src="~/templates/agency/js/scripts.js" asp-append-version="true"></script>
+</body>
+
+</html>

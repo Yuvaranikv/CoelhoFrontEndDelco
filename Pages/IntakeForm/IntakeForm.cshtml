@@ -1,0 +1,462 @@
+﻿@page
+@model IntakeFormModel;
+@{
+	Layout = "_LayoutLatest";
+}
+
+@Html.Partial("_Navbar")
+
+<style>
+	/* Styling for the background and content */
+	.form-container {
+		background-color: #e3f2fd; /* Light blue background */
+		padding: 10px;
+		border-radius: 10px;
+		padding-bottom: 40px;
+	}
+
+		.form-container label {
+			font-size: 1.2rem;
+			font-weight: normal; /* Ensure label is not bold */
+			padding-left: 0.5rem;
+			margin-left: 15px; /* Adds space before labels */
+		}
+
+			/* Adding red color to mandatory fields */
+			.form-container label.required::after {
+				content: " *";
+				color: red;
+			}
+
+		.form-container .form-control {
+			font-size: 1rem;
+		}
+
+	h2.highlight-header {
+		background-color: royalblue;
+		color: white;
+		padding: 5px;
+		border-radius: 8px;
+		text-align: center;
+		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+		margin-bottom: 40px;
+	}
+
+	/* Add space above form fields */
+	.form-container .row {
+		display: flex;
+		align-items: center;
+		margin-top: 15px; /* Space above each form field */
+	}
+
+	/* Add margin below the form */
+	.container.mt-8 {
+		margin-bottom: 30px;
+	}
+
+	/* Ensure the label and input stay on the same line */
+	.form-container .col-sm-6.d-flex.align-items-center {
+		display: flex;
+		align-items: center;
+	}
+
+	/* Reduce the input width */
+	.form-container input[type="number"] {
+		width: auto;
+	}
+
+	/* Styling the headings */
+	.heading-section {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%; /* Full width */
+		margin-top: 20px;
+	}
+
+		.heading-section h6 {
+			margin: 0; /* Remove default margin */
+			font-size: 1.2rem;
+			font-weight: bold;
+		}
+
+		.heading-section button {
+			background-color: #007bff; /* Blue color */
+			color: white;
+		}
+
+			.heading-section button:hover {
+				background-color: #0056b3;
+			}
+
+	/* Centered Heading for Complete Your Forms */
+	.complete-forms-heading {
+		text-align: center;
+		margin-top: 40px;
+		font-size: 1.5rem;
+		font-weight: bold;
+	}
+
+	/* Flex container for Forms and Status */
+	.forms-status-container {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 30px;
+	}
+
+	.form-section {
+		width: 48%;
+		text-align: left; /* Align text to the left */
+	}
+
+	.status-section {
+		width: 48%; /* Taking up the other half of the space */
+		text-align: right; /* Align text to the right */
+	}
+
+	/* Styling the horizontal line */
+	hr {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+	/* Ensure buttons are aligned correctly */
+	.heading-section .col-sm-6.text-right {
+		display: flex;
+		justify-content: flex-end; /* Align buttons to the right */
+	}
+
+	/* Increase the width of the "Fill the Details" buttons */
+	.btn-fill-details {
+		width: 100%; /* Full width */
+		text-align: right; /* Align text to the right */
+	}
+
+		/* Ensure the arrow icon stays to the right of the button text */
+		.btn-fill-details i {
+			margin-left: 10px; /* Space between the text and icon */
+		}
+
+	
+	.btn-primary {
+		background-color: #fc6a68 !important;
+		border-color: #fc6a68 !important;
+		color: black !important;
+	}
+
+	.btn-primary.completed {
+		background-color: green!important;
+		border-color: green!important;
+	}
+
+	#nextButton {
+		background-color: #4e73df !important;
+		border-color: #4e73df !important;
+		color: white !important;
+	}
+
+		#nextButton:hover {
+			background-color: #375a9e !important; /* Optional hover effect */
+			border-color: #375a9e !important;
+		}
+</style>
+
+<div class="container mt-8 form-container">
+	<h2 class="highlight-header mt-4">Intake Form</h2>
+
+	<!-- Form Fields Section -->
+	<form action="/api/Intake/SubmitForm" method="post" id="intakeForm">
+		@await Html.PartialAsync("Shared/_IntakeGeneralDetails")
+
+		<!-- Central Heading "Complete Your Forms" -->
+		<div class="complete-forms-heading">
+			<h3>Complete Your Forms</h3>
+		</div>
+		<div class="forms-status-container">
+			<div class="form-section">
+				<h6>Forms</h6>
+			</div>
+			<div class="status-section">
+				<h6>Status</h6>
+			</div>
+		</div>
+
+		<hr />
+		
+		<!-- Forms and Status Section -->
+		<div class="forms-status-container">
+			<div class="form-section">
+				<h6>Family Member Information</h6>
+			</div>
+			<div class="status-section">
+				<button type="button" class="btn btn-primary btn-block family-member-btn" onclick="navigateToFamilyScreen();">
+					Fill the Details <i class="fa-solid fa-arrow-right"></i>
+				</button>
+
+				<!-- Simulated submit button on the IntakeFamilyMember page -->
+				@* <button type="button" class="btn btn-primary"
+						onclick="markAsCompleted(this);">
+					Submit Details
+				</button> *@
+			</div>
+		</div>
+
+		<div class="forms-status-container">
+			<div class="form-section">
+				<h6>Income Information</h6>
+			</div>
+			<div class="status-section">
+				<!-- Navigate to the income form page -->
+				<a href="/IncomeForm" class="btn btn-primary btn-block">
+					Fill the Details <i class="fa-solid fa-arrow-right ms-2"></i>
+				</a>
+			</div>
+		</div>
+
+		<!-- Household Benefits Section -->
+		<div class="forms-status-container">
+			<div class="form-section">
+				<h6>Household Benefits</h6>
+			</div>
+			<div class="status-section">
+				<button type="button" class="btn btn-primary btn-block">
+					Fill the Details <i class="fa-solid fa-arrow-right"></i>
+				</button>
+			</div>
+		</div>
+
+		<!-- Intake Insurance Section -->
+		<div class="forms-status-container">
+			<div class="form-section">
+				<h6>Intake Insurance</h6>
+			</div>
+			<div class="status-section">
+				<button type="button" class="btn btn-primary btn-block">
+					Fill the Details <i class="fa-solid fa-arrow-right"></i>
+				</button>
+			</div>
+		</div>
+
+		<!-- Household Disability Section -->
+		<div class="forms-status-container">
+			<div class="form-section">
+				<h6>Household Disability</h6>
+			</div>
+			<div class="status-section">
+				<button type="button" class="btn btn-primary btn-block">
+					Fill the Details <i class="fa-solid fa-arrow-right"></i>
+				</button>
+			</div>
+		</div>
+
+		<!-- Immediate Health Issues Section -->
+		<div class="forms-status-container">
+			<div class="form-section">
+				<h6>Immediate Health Issues</h6>
+			</div>
+			<div class="status-section">
+				<button type="button" class="btn btn-primary btn-block">
+					Fill the Details <i class="fa-solid fa-arrow-right"></i>
+				</button>
+			</div>
+		</div>
+
+		<!-- Current Legal Issues Section -->
+		<div class="forms-status-container">
+			<div class="form-section">
+				<h6>Current Legal Issues</h6>
+			</div>
+			<div class="status-section">
+				<button type="button" class="btn btn-primary btn-block">
+					Fill the Details <i class="fa-solid fa-arrow-right"></i>
+				</button>
+			</div>
+		</div>
+
+		<!-- Intake Summary Section -->
+		<div class="forms-status-container">
+			<div class="form-section">
+				<h6>Intake Summary</h6>
+			</div>
+			<div class="status-section">
+				<button type="button" class="btn btn-primary btn-block">
+					Fill the Details <i class="fa-solid fa-arrow-right"></i>
+				</button>
+			</div>
+		</div>
+
+		<!-- Intake Outcome Section -->
+		<div class="forms-status-container">
+			<div class="form-section">
+				<h6>Intake Outcome</h6>
+			</div>
+			<div class="status-section">
+				<button type="button" class="btn btn-primary btn-block">
+					Fill the Details <i class="fa-solid fa-arrow-right"></i>
+				</button>
+			</div>
+		</div>
+
+<!-- Horizontal Line -->
+<hr>
+
+<!-- Buttons section with alignment -->
+		<div class="d-flex justify-content-between mt-3">
+			<button class="btn btn-secondary" type="button">
+				<i class="fa-solid fa-arrow-left"></i> Go Back
+			</button>
+			<button type="button" class="btn btn-primary" id="nextButton" data-bs-toggle="modal" data-bs-target="#summaryModal">
+				<i class="fa-solid fa-arrow-right"></i> Save
+			</button>
+		</div>
+
+	</form>
+</div>
+
+
+
+
+
+<!-- Modal for Summary -->
+<div class="modal fade" id="summaryModal" tabindex="-1" aria-labelledby="summaryModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl">
+		<!-- Increased modal size -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="d-flex justify-content-between w-100">
+					<h5 class="modal-title" id="summaryModalLabel" style="color: cornflowerblue;">
+						Summary
+					</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+			</div>
+
+			<div class="modal-body">
+				<!-- Client Demographics Table -->
+				<div class="d-flex justify-content-between align-items-center">
+					<h6 style="color: cornflowerblue; font-weight: bold;">Client Demographics</h6>
+					<input class="form-check-input" type="checkbox" id="futureOption" title="Click here to include in the print">
+				</div>
+				<table class="table table-bordered table-striped align-middle mt-3">
+					<thead class="table-primary">
+						<tr>
+							<th>Client Name</th>
+							<th>Date of Birth</th>
+							<th>Personal Id</th>
+							<th>Social Security Number</th>
+							<th>Gender</th>
+							<th>Race and Ethnicity</th>
+							<th>Veteran Status</th>
+							<th style="width: 50px; text-align: center;">
+								<i class="fa-solid fa-pen-to-square" style="cursor: pointer;" title="Edit"></i>
+							</th>
+						</tr>
+					</thead>
+					<tbody id="detailsTable">
+						<tr>
+							<td>John, Samuel</td>
+							<td>01/03/2006 (Age: 19 Year(s) 1 Month(s))</td>
+							<td>247440</td>
+							<td>XXX-XX-1000</td>
+							<td>Man (Boy if child)</td>
+							<td>American Indian, Alaska Native, or Indigenous</td>
+							<td>Intake</td>
+							<td class="text-center">
+								<i class="fa-solid fa-pen-to-square" style="cursor: pointer;" title="Edit"></i>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<!-- Intake Table -->
+				<div class="d-flex justify-content-between align-items-center mt-4">
+					<h6 style="color: cornflowerblue; font-weight: bold;">Intake Details</h6>
+					<input class="form-check-input" type="checkbox" id="intakeOption" title="Click here to include in the print">
+				</div>
+				<table class="table table-bordered table-striped align-middle mt-3">
+					<thead class="table-primary">
+						<tr>
+							<th>Created On</th>
+							<th>Created By</th>
+							<th>Household Size</th>
+							<th>Housing Status</th>
+							<th>Monthly Family Income</th>
+							<th>Fed Poverty Level</th>
+							<th>Annual Median Income</th>
+							<th>Current Family Income</th>
+							<th>Non Cash Benefits</th>
+							<th>Disabling Condition</th>
+							<th style="width: 50px; text-align: center;">
+								<i class="fa-solid fa-pen-to-square" style="cursor: pointer;" title="Edit"></i>
+							</th>
+						</tr>
+					</thead>
+					<tbody id="intakeDetailsTable">
+						<tr>
+							<td>01/16/2025</td>
+							<td>kamaraj, Yuvarani</td>
+							<td>1</td>
+							<td>Last Night Stay</td>
+							<td>$0.00</td>
+							<td>0.00%</td>
+							<td>0.00 (0 to 30%)</td>
+							<td>$0.00</td>
+							<td>Health Insurance</td>
+							<td>Domestic Violence</td>
+							<td class="text-center">
+								<i class="fa-solid fa-pen-to-square" style="cursor: pointer;" title="Edit"></i>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+<!-- Bootstrap & FontAwesome -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+
+
+<script>
+	function navigateToFamilyScreen() {
+		 window.location.href = '/IntakeFamilyMember/IntakeFamilyMember'; 
+	// Adjust based on your routing
+	}
+		// Mock function to simulate form completion
+	function markAsCompleted(buttonElement) {
+		buttonElement.classList.add('completed');
+		alert('Details submitted successfully!');
+	}
+</script>
+<!-- IntakeForm.cshtml -->
+<script>
+	window.onload = function () {
+		// Check if Family Member details are filled
+		if (localStorage.getItem('familyMemberFilled') === 'true') {
+			const familyMemberButton = document.querySelector('.family-member-btn');
+			if (familyMemberButton) {
+				familyMemberButton.classList.remove('btn-primary');
+				familyMemberButton.classList.add('btn-success');
+			}
+		}
+
+		// Clear localStorage for familyMemberFilled after page load
+		localStorage.removeItem('familyMemberFilled');
+	};
+</script>
+
