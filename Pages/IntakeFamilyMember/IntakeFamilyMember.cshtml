@@ -73,6 +73,43 @@
     .small-font {
         font-size: 12px;
     }
+
+    /* Custom style for the ellipsis icon button */
+    .ellipsis-icon-btn {
+        position: absolute;
+        right: 11px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 37px;
+        height: 37px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+        .ellipsis-icon-btn i {
+            font-size: 1.2rem;
+            color: #000; /* Adjust color of the icon as needed */
+        }
+
+        /* Placeholder text hidden by default */
+        .ellipsis-icon-btn .placeholder-text {
+            display: none; /* Initially hidden */
+            position: absolute;
+            font-size: 12px;
+            color: black; /* Light gray color */
+            left: 50%;
+          
+        }
+
+        /* Show placeholder text when hovering over the icon */
+        .ellipsis-icon-btn:hover .placeholder-text {
+            display: block; /* Show on hover */
+        }
 </style>
 
 <div style="margin-bottom: 120px;"></div>
@@ -146,16 +183,20 @@
                         <!-- Input Box -->
                         <input type="text" name="SSN" class="form-control" id="SSN" placeholder="___-__-____">
 
-                        <!-- Ellipsis Icon with Dropdown placed tightly near the text box -->
-                        <div class="dropdown position-absolute" style="right: 10px;">
-                            <button class="btn btn-light p-0" type="button" id="optionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
+                        <div class="dropdown position-relative" style="height: 40px; padding-right: 10px;">
+                           
+                            <button class="ellipsis-icon-btn" type="button" id="optionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v" ></i>
+                                <span class="placeholder-text">Social Security Number</span>
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="optionsDropdown">
+
+                          
+                            <ul class="dropdown-menu" aria-labelledby="optionsDropdown" style="width: 120px;">
                                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#SSNModal">Help</a></li>
                                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#pdfModal">Download PDF</a></li>
                             </ul>
                         </div>
+
                     </div>
                 </div>
 
@@ -210,15 +251,17 @@
 
                 <div class="mb-3 row">
                     <label for="FirstName" class="col-sm-4 col-form-label required">First Name</label>
-                    <div class="col-sm-6 d-flex align-items-center">
+                    <div class="col-sm-6 d-flex align-items-center position-relative">
                         <!-- Input Box -->
                         <input type="text" name="FirstName" class="form-control" id="FirstName">
 
-                        <!-- Question Mark Icon -->
-                        <i class="fa fa-question-circle ms-2" data-bs-toggle="modal" data-bs-target="#FirstNameModal" style="cursor: pointer;"></i>
+                        <!-- Custom Ellipsis Icon Button -->
+                        <button class="ellipsis-icon-btn" type="button" data-bs-toggle="modal" data-bs-target="#FirstNameModal">
+                            <i class="fas fa-ellipsis-v"></i>
+                            <span class="placeholder-text">First Name</span>
+                        </button>
                     </div>
                 </div>
-
 
                 <div class="mb-3 row">
                     <label for="MiddleName" class="col-sm-4 col-form-label">Middle Name</label>
@@ -332,18 +375,39 @@
                             </ul>
                         </div>
 
-                        <!-- Question Mark Icon -->
-                        <i class="fa fa-question-circle ms-2" data-bs-toggle="modal" data-bs-target="#HOHRelationshipModal" style="cursor: pointer;"></i>
+                        <!-- Ellipsis Icon -->
+                        <button class="ellipsis-icon-btn" type="button" data-bs-toggle="modal" data-bs-target="#HOHRelationshipModal">
+                            <i class="fas fa-ellipsis-v"></i>
+                            <span class="placeholder-text">HOH or Relationship to HOH</span>
+                        </button>
                     </div>
                 </div>
+
 
 
                 <div class="mb-3 row">
                     <label for="DateOfBirth" class="col-sm-4 col-form-label required">Date of Birth</label>
-                    <div class="col-sm-6">
-                        <input type="date" name="DateOfBirth" class="form-control" id="DateOfBirth">
+                    <div class="col-sm-6 d-flex align-items-center position-relative">
+                        <!-- Input Box -->
+                        <input type="date" name="DateOfBirth" class="form-control" id="DateOfBirth" style="padding-right: 35px;">
+
+                        <!-- Dropdown for Ellipsis Icon -->
+                        <div class="dropdown position-absolute" style="top: 50%; right: 0px; transform: translateY(-50%);">
+                            <button class="ellipsis-icon-btn" type="button" id="optionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                                <span class="placeholder-text">...</span>
+                            </button>
+
+                            <!-- Dropdown Menu -->
+                            <ul class="dropdown-menu" aria-labelledby="optionsDropdown" style="width: 120px;">
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#DateOfBirthModal">Help</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#pdfModal">Download PDF</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+
+
 
                 <div class="mb-3 row">
                     <label for="Age" class="col-sm-4 col-form-label">Age</label>
@@ -495,10 +559,13 @@
                             </ul>
                         </div>
 
-                        <!-- Question Mark Icon -->
-                        <i class="fa fa-question-circle ms-2" data-bs-toggle="modal" data-bs-target="#RaceEthnicityModal" style="cursor: pointer;"></i>
+                        <button class="ellipsis-icon-btn ms-2" type="button" data-bs-toggle="modal" data-bs-target="#RaceEthnicityModal">
+                            <i class="fas fa-ellipsis-v"></i>
+                            <span class="placeholder-text">Race and Ethnicity</span>
+                        </button>
                     </div>
                 </div>
+
 
 
                 <div class="mb-3 row">
@@ -629,10 +696,14 @@
                             <label class="form-check-label" for="MilitaryServiceDataNotCollected">Data not collected</label>
                         </div>
 
-                        <!-- Question Mark Icon -->
-                        <i class="fa fa-question-circle ms-2" data-bs-toggle="modal" data-bs-target="#MilitaryServiceModal" style="cursor: pointer;"></i>
+                        <!-- Ellipsis Icon -->
+                        <button class="ellipsis-icon-btn" type="button" data-bs-toggle="modal" data-bs-target="#MilitaryServiceModal" style="right:-10px;">
+                            <i class="fas fa-ellipsis-v"></i>
+                            <span class="placeholder-text">...</span>
+                        </button>
                     </div>
                 </div>
+
 
 
                 <div class="mb-3 row">
@@ -722,85 +793,81 @@
 
                 <h4 class="mb-4 mt-5">Living Situation</h4>
 
-                <div class="mb-3 row">
-                    <label for="housingStatus" class="col-sm-4 col-form-label required">Housing Status</label>
-                    <div class="col-sm-6 d-flex align-items-center position-relative">
-                        <div class="dropdown me-2">
-                            <button class="btn btn-white w-100 dropdown-toggle" type="button" id="housingStatusDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;color: #6c757d;">
+                <div class="mb-3 row align-items-center">
+                    <label for="HousingStatusDropdown" class="col-sm-4 col-form-label required">Housing Status</label>
+                    <div class="col-sm-6 position-relative d-flex align-items-center">
+                        <!-- Dropdown Button -->
+                        <div class="dropdown w-100">
+                            <button class="btn btn-white w-100 dropdown-toggle" type="button" id="HousingStatusDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
                                 Select Housing Status
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="housingStatusDropdown" id="housingStatusList">
-                                <li><label class="form-check-label"><input type="checkbox" class="form-check-input" value="Homeless"> Homeless</label></li>
-                                <li><label class="form-check-label"><input type="checkbox" class="form-check-input" value="Imminent Risk of losing housing"> Imminent Risk of losing housing</label></li>
-                                <li><label class="form-check-label"><input type="checkbox" class="form-check-input" value="Homeless only under other federal statutes"> Homeless only under other federal statutes</label></li>
-                                <li><label class="form-check-label"><input type="checkbox" class="form-check-input" value="Fleeing Domestic Violence"> Fleeing Domestic Violence</label></li>
-                                <li><label class="form-check-label"><input type="checkbox" class="form-check-input" value="At-risk of homelessness"> At-risk of homelessness</label></li>
-                                <li><label class="form-check-label"><input type="checkbox" class="form-check-input" value="Stably housed"> Stably housed</label></li>
-                                <li><label class="form-check-label"><input type="checkbox" class="form-check-input" value="Don't know"> Don't know</label></li>
-                                <li><label class="form-check-label"><input type="checkbox" class="form-check-input" value="Client prefers not to answer"> Client prefers not to answer</label></li>
+
+                            <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050; font-size: 14px;">
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Homeless</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Living with family/friends</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Rent/Lease</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Own</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Temporary Housing</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Don't know</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Client prefers not to answer</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Data not collected</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Additional Housing Status Detail</label></li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> If Other, (please explain)
+                                    </label>
+                                    <input type="text" class="form-control mt-2" id="OtherHousingStatusExplanation">
+                                </li>
+                                <li>
+                                    <button class="btn btn-primary mt-2 w-50" id="OKButtonHousingStatus">OK</button>
+                                </li>
                             </ul>
                         </div>
-                        <i class="fa fa-question-circle ms-2" data-bs-toggle="modal" data-bs-target="#housingStatusModal" style="cursor: pointer;"></i>
+
+                        <!-- Ellipsis Icon Button -->
+                        <button class="ellipsis-icon-btn" type="button" data-bs-toggle="modal" data-bs-target="#housingStatusModal">
+                            <i class="fas fa-ellipsis-v"></i>
+                            <span class="placeholder-text">Housing Status</span>
+                        </button>
                     </div>
                 </div>
 
 
-              
-               
-                <div class="mb-3 row">
+                <div class="mb-3 row align-items-center">
                     <label for="livingSituation" class="col-sm-4 col-form-label required">Living Situation</label>
-                    <div class="col-sm-6 position-relative">
+                    <div class="col-sm-6 position-relative d-flex align-items-center">
                         <!-- Dropdown Button -->
-                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="livingSituationDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left; color: #6c757d;">
-                            Select Living Situation
+                        <div class="dropdown w-100">
+                            <button class="btn btn-white w-100 dropdown-toggle" type="button" id="livingSituationDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                Select Living Situation
+                            </button>
+
+                            <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050; font-size: 14px;">
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Homeless Situation</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Institutional Situations</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Temporary Housing Situations</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Permanent Housing Situations</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Doesn't know</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Client prefers not to answer</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Data not collected</label></li>
+                                <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Additional Living Situation Detail</label></li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> If Other, (please explain)
+                                    </label>
+                                    <input type="text" class="form-control mt-2" id="otherLivingSituationTextBox" placeholder="Please specify">
+                                </li>
+                                <li>
+                                    <button class="btn btn-primary mt-2 w-50" id="OKButtonLivingSituation">OK</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Ellipsis Icon Button -->
+                        <button class="ellipsis-icon-btn" type="button" data-bs-toggle="modal" data-bs-target="#livingSituationModal" style="margin-left: 10px;">
+                            <i class="fas fa-ellipsis-v"></i>
+                            <span class="placeholder-text">Living Situation</span>
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="livingSituationDropdown">
-                            <li>
-                                <label class="form-check-label d-block">
-                                    <input type="checkbox" class="form-check-input" name="livingSituation" value="Homeless Situation"> Homeless Situation
-                                </label>
-                            </li>
-                            <li>
-                                <label class="form-check-label d-block">
-                                    <input type="checkbox" class="form-check-input" name="livingSituation" value="Institutional Situations"> Institutional Situations
-                                </label>
-                            </li>
-                            <li>
-                                <label class="form-check-label d-block">
-                                    <input type="checkbox" class="form-check-input" name="livingSituation" value="Temporary Housing Situations"> Temporary Housing Situations
-                                </label>
-                            </li>
-                            <li>
-                                <label class="form-check-label d-block">
-                                    <input type="checkbox" class="form-check-input" name="livingSituation" value="Permanent Housing Situations"> Permanent Housing Situations
-                                </label>
-                            </li>
-                            <li>
-                                <label class="form-check-label d-block">
-                                    <input type="checkbox" class="form-check-input" name="livingSituation" value="Doesn't know"> Doesn't know
-                                </label>
-                            </li>
-                            <li>
-                                <label class="form-check-label d-block">
-                                    <input type="checkbox" class="form-check-input" name="livingSituation" value="Client prefers not to answer"> Client prefers not to answer
-                                </label>
-                            </li>
-                            <li>
-                                <label class="form-check-label d-block">
-                                    <input type="checkbox" class="form-check-input" name="livingSituation" value="Data not collected"> Data not collected
-                                </label>
-                            </li>
-                            <li>
-                                <!-- "Other" option with the checkbox and text box always visible -->
-                                <label class="form-check-label d-block">
-                                    <input type="checkbox" class="form-check-input" id="otherLivingSituationCheckbox"> If Other, (please explain)
-                                </label>
-                                <input type="text" class="form-control mt-2" id="otherLivingSituationTextBox" placeholder="Please specify">
-                            </li>
-                            <li>
-                                <button class="btn btn-primary mt-2 w-50" id="OKButtonLivingSituation">OK</button>
-                            </li>
-                        </ul>
                     </div>
                 </div>
 
@@ -1018,8 +1085,15 @@
 
                 <div class="mb-3 row">
                     <label for="clientLocation" class="col-sm-4 col-form-label required">Client Location</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 position-relative d-flex align-items-center">
+                        <!-- Input Field -->
                         <input type="text" name="clientLocation" class="form-control" id="clientLocation">
+
+                        <!-- Ellipsis Icon Button -->
+                        <button class="ellipsis-icon-btn" type="button" data-bs-toggle="modal" data-bs-target="#clientLocationModal" style="margin-left: 10px;">
+                            <i class="fas fa-ellipsis-v"></i>
+                            <span class="placeholder-text">Client Location</span>
+                        </button>
                     </div>
                 </div>
 
@@ -1211,15 +1285,23 @@
                 <h4 class="mb-4 mt-5">Disability Assessment</h4>
                 <div class="mb-3 row">
                     <label for="disablingCondition" class="col-sm-4 col-form-label required">Disabling Condition</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 position-relative d-flex align-items-center">
+                        <!-- Dropdown for Disabling Condition -->
                         <select name="disablingCondition" class="form-control" id="disablingCondition">
                             <option>Yes</option>
                             <option>No</option>
                             <option>Client doesn't know</option>
                             <option>Client prefers not to answer</option>
                         </select>
+
+                        <!-- Ellipsis Icon Button -->
+                        <button class="ellipsis-icon-btn" type="button" data-bs-toggle="modal" data-bs-target="#disablingConditionModal" style="margin-left: 10px;">
+                            <i class="fas fa-ellipsis-v"></i>
+                            <span class="placeholder-text">Disabling Condition</span>
+                        </button>
                     </div>
                 </div>
+
 
 
                 <div class="button-container">
@@ -1440,6 +1522,91 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="DateOfBirthModal" tabindex="-1" aria-labelledby="DateOfBirthModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="DateOfBirthModalLabel">Date of Birth</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Collect the month, day, and year of birth for every person served. When enrolling a client who already has a record in the HMIS, verify that the date of birth on the record is accurate and correct it if it is not.</p>
+
+                <p><strong>"Full DOB reported"</strong> must be selected for Date of Birth Type when the complete date of birth is provided by the client.</p>
+                <p><strong>"Approximate or partial DOB reported"</strong> must be selected if a client cannot remember their full or exact date of birth. If the client cannot remember their birth year, it may be estimated by asking the person's age and calculating the approximate year of birth. If a client cannot remember the month or day of birth, record an approximate date of "01" for month and "01" for day. CoCs that already have a policy of entering another approximate date may continue their existing policy.</p>
+                <p>Select <strong>"Client doesn't know"</strong> if the client is unable to recall their age within one year. Use <strong>"Client doesn't know"</strong> vs. <strong>"Approximate or partial DOB reported"</strong> if you entered an approximate or partial date of birth because the client did not know their date of birth within one year.</p>
+                <p>Select <strong>"Client refused"</strong> when a client refuses to provide their DOB. Use <strong>"Client refused"</strong> vs. <strong>"Approximate or partial DOB reported"</strong> if you entered a partial or approximate date of birth in order to create a record in the system because the client refused to provide their date of birth or their age for you to approximate.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="livingSituationModal" tabindex="-1" aria-labelledby="livingSituationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="livingSituationModalLabel">Living Situation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>This element is used to identify the type of living situation and length of stay in that situation just prior to entry into a Street Outreach, Emergency Shelter (ES), or Safe Haven (SH) project for all adults and heads of households.</p>
+                <p>Intake staff should ask clients about their homeless history, including specific instances the client spent on the street, in an emergency shelter, or Safe Haven project. This may require explaining what each of these situations are, relative to the HUD definition for each.</p>
+                <ol>
+                    <li>Record the type of living arrangement of the head of household and each adult household member was residing in just prior to entry into the Street Outreach, ES, or SH project. The living situations have been divided into three different situations: Literally Homeless; Institutional; and Transitional and Permanent Housing. When one of the three situations is identified as the prior living situation of the client then only one of the living situation response elements under that category may selected. Note: Adult members of the same household may have different prior living situations.</li>
+                    <li>Record the length of time the client was residing in just their previous place of stay.</li>
+                    <li>Record the Approximate date this homeless situation began. Have the client look back to the date of the last time the client had a place to sleep that was not on the streets, ES, or SH and enter that date.</li>
+                    <li>Regardless of where the client stayed last night enter the number of times the client has been homeless on the streets, in ES, or SH in the past three years including today. (Note – if this is the first time the client has been homeless in the past three years then the response is One Time)</li>
+                    <li>Record the total number of months homeless the client has been on the streets, in ES or SH in the past three years. (The number of cumulative, but not necessarily consecutive months spent homeless.)</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="clientLocationModal" tabindex="-1" aria-labelledby="clientLocationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="clientLocationModalLabel">Client Location</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Select or enter the CoC code assigned to the geographic area where the head of household is staying at the time of project entry. If a client moves into a different CoC while enrolled, then an update must be made to indicate the date of the move as the Information Date and the CoC Code for the new location. An HMIS may automatically populate this field for projects that operate in only one CoC.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="disablingConditionModal" tabindex="-1" aria-labelledby="disablingConditionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="disablingConditionModalLabel">Disabling Condition</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Record whether the client has a disabling condition based on one or more of the following:</p>
+                <ul>
+                    <li>
+                        A physical, mental, or emotional impairment, including an impairment caused by alcohol or drug abuse, post-traumatic stress disorder, or brain injury that:
+                        <ul>
+                            <li>Is expected to be long-continuing or of indefinite duration;</li>
+                            <li>Substantially impedes the individual's ability to live independently;</li>
+                            <li>Could be improved by the provision of more suitable housing conditions.</li>
+                        </ul>
+                    </li>
+                    <li>A developmental disability, as defined in section 102 of the Developmental Disabilities Assistance and Bill of Rights Act of 2000 (42 U.S.C. 15002); or</li>
+                    <li>The disease of acquired immunodeficiency syndrome (AIDS) or any condition arising from the etiologic agency for acquired immunodeficiency syndrome (HIV).</li>
+                </ul>
+                <p>Additionally, for veterans note: if the client is a veteran who is disabled by an injury or illness that was incurred or aggravated during active military service and whose disability meets the disability definition defined in Section 223 of the Social Security Act, they should be identified as having a disabling condition.</p>
             </div>
         </div>
     </div>
