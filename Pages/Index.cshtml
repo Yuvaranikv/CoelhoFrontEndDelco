@@ -4,6 +4,13 @@
     ViewData["Title"] = "TURN";
 }
 
+<style>
+	/* Custom class for scrollable lists */
+	.scrollable-list {
+		max-height: 200px; /* Adjust this value as needed */
+		overflow-y: auto;
+	}
+</style>
 <div class="container" >
     @* Light blue background for the entire container *@
     <!-- Masthead-->
@@ -66,7 +73,7 @@
 
 									<!-- Submenu (Collapsible) -->
 									<div class="collapse mt-2" id="intakeSubmenu">
-										<ul class="list-group">
+										<ul class="list-group scrollable-list">
 											<li class="list-group-item sb-admin-item">
 												<a href="/IntakeClientMaster/IntakeClientMaster" class="text-decoration-none">Client Master</a>
 											</li>
@@ -91,6 +98,7 @@
 							</div>
 						</div>
 					</div>
+					
 					<div class="col-lg-4 col-sm-6 mb-4">
 						<!-- Portfolio item 2-->
 						<div class="portfolio-item">
@@ -98,191 +106,593 @@
 								<div class="portfolio-hover">
 									<div class="portfolio-hover-content"></div>
 								</div>
-								@*  <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." /> *@
 							</a>
 							<div class="portfolio-caption">
 								<div class="portfolio-caption-heading">
-									<a href="#clientManagementForm" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between" data-bs-toggle="modal" data-bs-target="#clientManagementModal">
+									<!-- Client Management Button -->
+									<a href="#clientManagementSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+									   data-bs-toggle="collapse" aria-expanded="false" aria-controls="clientManagementSubmenu">
 										<span class="button-text">
 											Client Management
 										</span>
+										<span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-down"></i> <!-- Down Arrow Icon -->
+										</span>
+									</a>
+								</div>
+
+								<!-- Client Management Submenu (Collapsible) -->
+								<div class="collapse mt-2" id="clientManagementSubmenu">
+									<ul class="list-group scrollable-list">
+										<li class="list-group-item sb-admin-item">
+											<a href="#erapLogReport" class="text-decoration-none">ERAP Log Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#hudWaiver" class="text-decoration-none">HUD Waiver</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#episode" class="text-decoration-none">Episode</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#closeEpisode" class="text-decoration-none">Close Episode</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item -->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<!-- Client Record Button -->
+									<a href="#clientRecordSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+									   data-bs-toggle="collapse" aria-expanded="false" aria-controls="clientRecordSubmenu">
+										<span class="button-text">
+											Client Record
+										</span>
+										<span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-down"></i>
+										</span>
+									</a>
+								</div>
+
+								<!-- Client Record Submenu (Collapsible) -->
+								<div class="collapse mt-2" id="clientRecordSubmenu">
+									<ul class="list-group scrollable-list">
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Disability</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Education</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Expense Info</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Health Insurance</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Hospitalization</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Housing Application</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Housing History</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Housing History New</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Income Info</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Legal Information</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Medical Info</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item 1-->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#housingAdminModal">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<!-- Housing Admin Button -->
+									<a href="#housingAdminSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+									   data-bs-toggle="collapse" aria-expanded="false" aria-controls="housingAdminSubmenu">
+										<span class="button-text">
+											Housing Admin
+										</span>
+										<span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-down"></i>
+										</span>
+									</a>
+								</div>
+
+								<!-- Housing Admin Submenu (Collapsible) -->
+								<div class="collapse mt-2" id="housingAdminSubmenu">
+									<ul class="list-group scrollable-list">
+										<li class="list-group-item sb-admin-item">
+											<a href="#census" class="text-decoration-none">Census</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#incidentInfo" class="text-decoration-none">Incident Info</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#tes" class="text-decoration-none">TES</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#billing" class="text-decoration-none">Billing</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#housingPreference" class="text-decoration-none">Housing Preference</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#clientTrust" class="text-decoration-none">Client Trust</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#unitAssignment" class="text-decoration-none">Unit Assignment</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#rentCalculation" class="text-decoration-none">Rent Calculation</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#housingPlacement" class="text-decoration-none">Housing Placement</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item for Case Management-->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#caseManagementModal">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<!-- Case Management Button -->
+									<a href="#caseManagementSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+									   data-bs-toggle="collapse" aria-expanded="false" aria-controls="caseManagementSubmenu">
+										<span class="button-text">
+											Case Management
+										</span>
+										<span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-down"></i>
+										</span>
+									</a>
+								</div>
+
+								<!-- Case Management Submenu (Collapsible) -->
+								<div class="collapse mt-2" id="caseManagementSubmenu">
+									<ul class="list-group scrollable-list">
+										<li class="list-group-item sb-admin-item">
+											<a href="#groupActivity" class="text-decoration-none">Group Activity</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#recurringCharges" class="text-decoration-none">Recurring Charges</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item for Donations -->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#donationsModal">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<!-- Donations Button -->
+									<a href="#donationsSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+									   data-bs-toggle="collapse" aria-expanded="false" aria-controls="donationsSubmenu">
+										<span class="button-text">
+											Direct Services
+										</span>
+										<span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-down"></i>
+										</span>
+									</a>
+								</div>
+
+								<!-- Donations Submenu (Collapsible) -->
+								<div class="collapse mt-2" id="donationsSubmenu">
+									<ul class="list-group scrollable-list">
+										<li class="list-group-item sb-admin-item">
+											<a href="#whItem" class="text-decoration-none">Donations WH</a>
+										</li>
+										<!-- Add more items to the list if needed -->
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item for Masters-->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#mastersModal">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<!-- Masters Button -->
+									<a href="#mastersSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+									   data-bs-toggle="collapse" aria-expanded="false" aria-controls="mastersSubmenu">
+										<span class="button-text">Masters</span>
+										<span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-down"></i> <!-- Down Arrow Icon -->
+										</span>
+									</a>
+
+									<!-- Submenu (Collapsible) -->
+									<div class="collapse mt-2" id="mastersSubmenu">
+										<ul class="list-group scrollable-list">
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Setup Access Rights</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Unit Master Listing</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">User Listing</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Assessment Setup</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Increase in Income of all Active Clients</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Project Master Listing</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Forward Screen</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Funding Master</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Grant Master</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Activity Master</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Continum Master Listing</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Merge Case</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Merge Client</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">COC & HMIS Msgs</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Software Update Msgs</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Document Category Listing</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Budgeting Program Template Listing</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Agency Master Listing</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">AMI Listing</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Federal Poverty Level Listing</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Word merge Assignment</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Checklist Information</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Setup Job Role Listing</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">FMR Listing</a>
+											</li>
+											<li class="list-group-item sb-admin-item">
+												<a href="#" class="text-decoration-none">Utility Allowance Listing</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item for Reports-->
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-bs-toggle="modal" href="#reportsModal">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content"></div>
+								</div>
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<!-- Reports Button -->
+									<a href="#reportsSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+									   data-bs-toggle="collapse" aria-expanded="false" aria-controls="reportsSubmenu">
+										<span class="button-text">Reports</span>
+										<span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-down"></i> <!-- Down Arrow Icon -->
+										</span>
+									</a>
+								</div>
+
+								<!-- Submenu (Collapsible) -->
+								<div class="collapse mt-2" id="reportsSubmenu">
+									<ul class="list-group scrollable-list">
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">ESG Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">RRH Matching Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">HAP Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Adhoc Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Vaccination Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">ERAP Import</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Aging Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Budgeting Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">RR Clients with no episodes on Housing Locator</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Activity Transition Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Hud System Performance Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Graph Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">LSA HHID Export</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">SSVF CSV Export</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Family Application Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Client Inquiry Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">BED Utilization Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Overnight Attendance Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Budgeting Income Saving Analysis Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Attendance Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Census Calendar Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Census Utilization Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Census Vacancy Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">CIC Card</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Updated Family Application Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">CDBG Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Housing Locator Funding Report</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Special Report Button -->
+						<div class="portfolio-item">
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<a href="#specialReportSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+									   data-bs-toggle="collapse" aria-expanded="false" aria-controls="specialReportSubmenu">
+										<span class="button-text">
+											Special Report
+										</span>
+										<span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-down"></i>
+										</span>
+									</a>
+								</div>
+								<!-- Special Report Submenu (Collapsible) -->
+								<div class="collapse mt-2" id="specialReportSubmenu">
+									<ul class="list-group scrollable-list">
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">SSI and SSDI Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">SSI and SSDI with Housing History</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Shelter Demographics Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Financial Assistance Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Medicaid Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Home4 Grant Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">SPDAT Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">PHC Active Referral Report</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Document Reminder Report</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<!-- Portfolio item (PHC Button) -->
+						<div class="portfolio-item">
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">
+									<a href="#phcSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+									   data-bs-toggle="collapse" aria-expanded="false" aria-controls="phcSubmenu">
+										PHC
 										<span class="icon-spacing">
 											<i class="fa-solid fa-square-caret-right"></i>
 										</span>
 									</a>
 								</div>
-
+								<!-- PHC Submenu (Collapsible) -->
+								<div class="collapse mt-2" id="phcSubmenu">
+									<ul class="list-group scrollable-list">
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Permanent clearing house active client list</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Placement Tracker</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Program Eligibility</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Activity Listing</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Program Management Screen</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Activity Tracker</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Refer to Clearing House</a>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
+
+
+					
 					<div class="col-lg-4 col-sm-6 mb-4">
-						<!-- Portfolio item 3-->
+						<!-- Portfolio item -->
 						<div class="portfolio-item">
 							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
 								<div class="portfolio-hover">
 									<div class="portfolio-hover-content"></div>
 								</div>
-								@*   <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." /> *@
 							</a>
 							<div class="portfolio-caption">
 								<div class="portfolio-caption-heading">
-									<a href="#clientRecordForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#clientRecordModal">
-										Client Record <span class="icon-spacing">
-											<i class="fa-solid fa-square-caret-right"></i>
+									<!-- Program Administration Button -->
+									<a href="#programAdminSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+									   data-bs-toggle="collapse" aria-expanded="false" aria-controls="programAdminSubmenu">
+										<span class="button-text">
+											Program Administration
+										</span>
+										<span class="icon-spacing">
+											<i class="fa-solid fa-square-caret-down"></i>
 										</span>
 									</a>
 								</div>
 
+								<!-- Program Administration Submenu (Collapsible) -->
+								<div class="collapse mt-2" id="programAdminSubmenu">
+									<ul class="list-group">
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">Change Password</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">User Setup Request</a>
+										</li>
+										<li class="list-group-item sb-admin-item">
+											<a href="#" class="text-decoration-none">User Termination Request</a>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-sm-6 mb-4">
-						<!-- Portfolio item 1-->
-						<div class="portfolio-item">
-							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-								<div class="portfolio-hover">
-									<div class="portfolio-hover-content"></div>
-								</div>
-								@*  <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." /> *@
-							</a>
-							<div class="portfolio-caption">
-								<div class="portfolio-caption-heading">
-									<a href="#housingAdminForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#housingAdminModal">
-										Housing Admin  <span class="icon-spacing">
-											<i class="fa-solid fa-square-caret-right"></i>
-										</span>
-									</a>
-								</div>
 
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6 mb-4">
-						<!-- Portfolio item 2-->
-						<div class="portfolio-item">
-							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-								<div class="portfolio-hover">
-									<div class="portfolio-hover-content"></div>
-								</div>
-								@*  <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." /> *@
-							</a>
-							<div class="portfolio-caption">
-								<div class="portfolio-caption-heading">
-									<a href="#clientservicesForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#clientservicesModal">
-										Client Services  <span class="icon-spacing">
-											<i class="fa-solid fa-square-caret-right"></i>
-										</span>
-									</a>
-								</div>
-
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6 mb-4">
-						<!-- Portfolio item 3-->
-						<div class="portfolio-item">
-							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-								<div class="portfolio-hover">
-									<div class="portfolio-hover-content"></div>
-								</div>
-								@*   <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." /> *@
-							</a>
-							<div class="portfolio-caption">
-								<div class="portfolio-caption-heading">
-									<a href="#mastersForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#mastersModal">
-										Masters  <span class="icon-spacing">
-											<i class="fa-solid fa-square-caret-right"></i>
-										</span>
-									</a>
-								</div>
-
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6 mb-4">
-						<!-- Portfolio item 1-->
-						<div class="portfolio-item">
-							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-								<div class="portfolio-hover">
-									<div class="portfolio-hover-content"></div>
-								</div>
-								@*  <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." /> *@
-							</a>
-							<div class="portfolio-caption">
-								<div class="portfolio-caption-heading">
-									<a href="#reportsForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#reportsModal">
-										Reports  <span class="icon-spacing">
-											<i class="fa-solid fa-square-caret-right"></i>
-										</span>
-									</a>
-								</div>
-
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6 mb-4">
-						<!-- Portfolio item 2-->
-						<div class="portfolio-item">
-							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-								<div class="portfolio-hover">
-									<div class="portfolio-hover-content"></div>
-								</div>
-								@*  <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." /> *@
-							</a>
-							<div class="portfolio-caption">
-								<div class="portfolio-caption-heading">
-									<a href="#specialReportsForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#specialReportsModal">
-										Special Reports  <span class="icon-spacing">
-											<i class="fa-solid fa-square-caret-right"></i>
-										</span>
-									</a>
-								</div>
-
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6 mb-4">
-						<!-- Portfolio item 3-->
-						<div class="portfolio-item">
-							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-								<div class="portfolio-hover">
-									<div class="portfolio-hover-content"></div>
-								</div>
-								@*   <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." /> *@
-							</a>
-							<div class="portfolio-caption">
-								<div class="portfolio-caption-heading">
-									<a href="#phcForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#phcModal">
-										PHC  <span class="icon-spacing">
-											<i class="fa-solid fa-square-caret-right"></i>
-										</span>
-									</a>
-								</div>
-
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6 mb-4">
-						<!-- Portfolio item 3-->
-						<div class="portfolio-item">
-							<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-								<div class="portfolio-hover">
-									<div class="portfolio-hover-content"></div>
-								</div>
-								@*   <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." /> *@
-							</a>
-							<div class="portfolio-caption">
-								<div class="portfolio-caption-heading">
-									<a href="#programAdminForm" class="btn btn-primary equal-btn" data-bs-toggle="modal" data-bs-target="#programAdminModal">
-										Program Administration  <span class="icon-spacing">
-											<i class="fa-solid fa-square-caret-right"></i>
-										</span>
-									</a>
-								</div>
-
-							</div>
-						</div>
-					</div>
 
 				</div>
 			</div>
