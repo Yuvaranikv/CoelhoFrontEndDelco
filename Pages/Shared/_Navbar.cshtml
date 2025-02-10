@@ -38,19 +38,19 @@
     <div class="container">
         <a class="navbar-brand" href="#page-top">
             <img src="/Images/Delco_ImageNew.jpg" alt="..." />
-            @if (userName != null)
-            {
-                <span style="color: white; text-transform: none;">Welcome @userName & family</span>
-            }
         </a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars ms-1"></i>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto py-4 py-lg-0 align-items-center">
                 <li class="nav-item"><a class="nav-link" href="/" style="color: white;">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="/#menu" style="color: white;">Menu</a></li>
+
+                <!-- Search Form -->
                 <form class="d-flex ms-lg-3 me-lg-4 align-items-center" role="search">
                     <div class="input-group">
                         <input class="form-control" type="search" placeholder="Search" aria-label="Search" />
@@ -59,11 +59,13 @@
                         </span>
                     </div>
                 </form>
+
+                <!-- Dropdown Menu with Bars Icon -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="optionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
                         <i class="fa-solid fa-bars" style="width:30px; height:30px;"></i>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="optionsDropdown">
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="optionsDropdown">
                         <li><a class="dropdown-item" href="#userContactInfo">User Contact Info</a></li>
                         <li><a class="dropdown-item" href="#clientDashboard">Client Dashboard</a></li>
                         <li><a class="dropdown-item" href="#changeProject">Change Project</a></li>
@@ -78,14 +80,25 @@
                         <li><a class="dropdown-item" href="#exit">Exit</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="/#contact" style="color: white;">Contact us</a></li>
-               
+
+                <li class="nav-item"><a class="nav-link" href="/#ContactUs" style="color: white;">Contact Us</a></li>
+
+                <!-- Username Display and User Dropdown -->
+                @if (userName != null)
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hi, @userName - Delaware County
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="/Account/Settings">Account Settings</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="/Account/Logout">Logout</a></li>
+                        </ul>
+                    </li>
+                }
             </ul>
-        </div>
-        <div class="d-flex ms-auto me-5">
-            <a class="nav-link btn btn-light text-dark px-3" href="/Account/Logout">
-                <i class="fas fa-sign-out-alt"></i> Logout
-            </a>
         </div>
     </div>
 </nav>
+

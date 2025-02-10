@@ -7,15 +7,7 @@
 @Html.Partial("_Navbar")
 
 <style>
-    /* Form container */
-    .container {
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    }
+   
 
     h2 {
         text-align: center;
@@ -66,12 +58,68 @@
         border-radius: 5px;
     }
 
+    /* Styling for the background and content */
+    .form-container {
+        background-color: #e3f2fd; /* Light blue background */
+        border-radius: 10px;
+        padding-top:10px;
+    }
+
+        .form-container label {
+            font-size: 1.2rem;
+            font-weight: normal; /* Ensure label is not bold */
+            padding-left: 0.5rem;
+            margin-left: 15px; /* Adds space before labels */
+        }
+
+            /* Adding red color to mandatory fields */
+            .form-container label.required::after {
+                content: " *";
+                color: red;
+            }
+
+        .form-container .form-control {
+            font-size: 1rem;
+        }
+
+    h2.highlight-header {
+        background-color: royalblue;
+        color: white;
+        padding: 5px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 40px;
+    }
+
+    /* Add space above form fields */
+    .form-container .row {
+        display: flex;
+        align-items: center;
+        margin-top: 15px; /* Space above each form field */
+    }
+
+    /* Add margin below the form */
+    .container.mt-8 {
+        margin-top: 120px;
+    }
+
+    /* Ensure the label and input stay on the same line */
+    .form-container .col-sm-6.d-flex.align-items-center {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Reduce the input width */
+    .form-container input[type="number"] {
+        width: auto;
+    }
+
     
 </style>
 
-<div class="container">
-    <div class="form-section">
-        <h2>Client Master Form</h2>
+<div class="container mt-8 form-container">
+    <h2 class="highlight-header mt-4">Client Master</h2>
         <form method="post">
             <!-- Form fields -->
             <div class="form-row">
@@ -173,7 +221,7 @@
             </div>
         </form>
     </div>
-</div>
+
 
 
 <!-- Bootstrap & FontAwesome -->

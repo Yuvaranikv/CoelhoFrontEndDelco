@@ -193,16 +193,16 @@
 </style>
 
 <div class="container mt-8 form-container">
-	<h2 class="highlight-header mt-4">Intake Form</h2>
+	@* <h2 class="highlight-header mt-4">Intake Form</h2> *@
 
 	<!-- Form Fields Section -->
 	<form action="/api/Intake/SubmitForm" method="post" id="intakeForm">
 		@await Html.PartialAsync("Shared/_IntakeGeneralDetails")
 
 		<!-- Central Heading "Complete Your Forms" -->
-		<div class="complete-forms-heading">
+		@* <div class="complete-forms-heading">
 			<h2 class="highlight-header mt-4">Complete Your Forms</h2>
-		</div>
+		</div> *@
 		<div class="forms-status-container">
 			<div class="form-section">
 				<h3><strong>Forms</strong></h3>
@@ -443,7 +443,8 @@
 			</div>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" id="nextButton" data-bs-dismiss="modal"><i class="fa-solid fa-print"></i>Print</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i>Close</button>
 			</div>
 		</div>
 	</div>

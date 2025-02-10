@@ -5,11 +5,63 @@
 }
 
 <style>
-	/* Custom class for scrollable lists */
-	.scrollable-list {
-		max-height: 200px; /* Adjust this value as needed */
-		overflow-y: auto;
+	/* Container for announcement and user info sections */
+	.info-section {
+		display: flex;
+		gap: 20px;
+		margin: 20px 0;
 	}
+
+	/* Announcement Section */
+	.announcement {
+		flex: 1;
+		background-color: #f8f9fa;
+		padding: 15px;
+		border-radius: 10px;
+		height: 250px;
+		overflow: hidden;
+		position: relative;
+	}
+
+	/* Fixed heading, no scrolling over it */
+	.announcement-header {
+		font-size: 1.2rem;
+		font-weight: bold;
+		margin-bottom: 10px;
+		background-color: royalblue;
+		padding: 8px;
+		border-radius: 8px;
+		color:white;
+	}
+
+	/* Scrolling list styling */
+	.announcement-content {
+		height: 190px;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.announcement-list {
+		padding: 0;
+		margin: 0;
+		list-style-type: none;
+	}
+
+		.announcement-list li {
+			padding: 10px 0;
+			border-bottom: 1px solid #ddd;
+			background: #ffffff;
+		}
+
+	/* User Info Section */
+	.user-info {
+		width: 300px;
+		background-color: #f0f0f0;
+		padding: 15px;
+		border-radius: 10px;
+	}
+
+
 </style>
 <div class="container" >
     @* Light blue background for the entire container *@
@@ -21,26 +73,35 @@
         </div>
     </header>
 
-    <!-- Announcement Section -->
-   @*  <div class="containertick">
-        <section class="page-section bg-light" id="announce">
-            <div class="container">
-                <div class="text-center d-flex align-items-center justify-content-center">
-                    <img src="/Images/pentagon.png" alt="Pentagon Icon" style="width:50px;height:30px; margin-bottom:1rem; margin-right: 1rem;" />
-                    <h2 class="section-heading text-uppercase">Menu</h2>
-                </div>
-                <div class="announcement bg-light text-black">
-                    <div class="announcement-wrapper">
-                        <ul class="announcement-list">
-                            <li class="announcement-item">Support:- For any immediate HMIS problem, call Jinumon Gopidasan at 484-889-1846. If you cannot reach us, you can leave a voice message. You can also receive assistance by sending an email to hmissupport@coelhoconsulting.com.</li>
-                            <li class="announcement-item">Update: Our site is undergoing maintenance on Friday.</li>
-                            <li class="announcement-item">Reminder: Don't forget to check out our offers!</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div> *@
+	<div class="info-section">
+		<!-- Announcement Section -->
+		<div class="announcement">
+			<div class="announcement-header ">Announcements</div>
+			<div class="announcement-content">
+				<ul class="announcement-list" id="announcementList">
+					<li>01/02/2024 - Support: For any immediate HMIS problem, call Jinumon Gopidasan at 484-889-1846.</li>
+					<li>01/09/2024 - Activity Screen: Updates to the Activity screen let you add notes for family members.</li>
+					<li>12/03/2023 - Coordinated Entry Assessment: New forms for CE assessors.</li>
+					<li>10/03/2023 - HMIS Standards 2024: Guides and training videos available.</li>
+					<li>08/03/2023 - Case Management: Supportive Services renamed with added features.</li>
+					<li>04/17/2023 - Checklist Update: Enhanced system for organizing tasks.</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- User Info Section -->
+		<div class="user-info">
+			<h3 class="announcement-header">User Info</h3>
+			<ul>
+				<li>1615 new Inbox message(s)</li>
+				<li>0 Checklist task(s) pending</li>
+				<li>1 Active Client(s) (HOH Only)</li>
+				<li>4 OBH Client(s) (HOH Only)</li>
+				<li>0 Veteran Client(s)</li>
+			</ul>
+		</div>
+	</div>
+
 
     <!-- Menu Grid Section -->
 	<div class="menu">
@@ -75,7 +136,7 @@
 									<div class="collapse mt-2" id="intakeSubmenu">
 										<ul class="list-group scrollable-list">
 											<li class="list-group-item sb-admin-item">
-												<a href="/IntakeClientMaster/IntakeClientMaster" class="text-decoration-none">Client Master</a>
+												<a href="/IntakeClientMaster/IntakeClientMaster" class="text-decoration-none">Client Identification</a>
 											</li>
 											<li class="list-group-item sb-admin-item">
 												<a href="/IntakeForm/IntakeForm" class="text-decoration-none">Intake</a>
@@ -553,9 +614,6 @@
 						</div>
 					</div>
 
-
-
-
 					<div class="col-lg-4 col-sm-6 mb-4">
 						<!-- Special Report Button -->
 						<div class="portfolio-item">
@@ -700,3 +758,24 @@
 		</section>
 	</div>
 </div>
+
+<script>
+	const announcementList = document.getElementById("announcementList");
+
+	function startScrolling() {
+		const firstItem = announcementList.firstElementChild;
+
+		// Smooth scrolling effect with reduced speed
+		announcementList.style.transition = "transform 2s";
+		announcementList.style.transform = `translateY(-${firstItem.offsetHeight}px)`;
+
+		setTimeout(() => {
+			announcementList.appendChild(firstItem);
+			announcementList.style.transition = "none";
+			announcementList.style.transform = "translateY(0)";
+		}, 2000);
+	}
+
+	// Scroll every 4 seconds
+	setInterval(startScrolling, 1000);
+</script>
