@@ -1,0 +1,137 @@
+﻿@page
+@model TURN.Pages.HouseHoldBenefitsModel
+@{
+    Layout = "_LayoutLatest";
+}
+@Html.Partial("_Navbar")
+
+<div style="margin-bottom: 120px;"></div>
+@await Html.PartialAsync("Shared/_IntakeGeneralDetails")
+<div id="HouseHoldSection">
+    
+    <div class="container mt-8 form-container">
+        <h2 class="highlight-header mt-4">HouseHold Benefits </h2>
+
+        <h2>HouseHold Benefits  Information  <button class="btn btn-primary float-end" id="addMemberBtn">+</button></h2>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Family Member</th>
+                    <th>Noncash Benefits</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>Food Assistance</td>
+                    <td>Active</td>
+                    <td>
+                        <button class="btn btn-sm btn-warning">Edit
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </td>
+                    <td><button class="btn btn-sm btn-danger">Delete
+                        <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                <!-- Add more rows dynamically as needed -->
+            </tbody>
+        </table>
+
+        <div id="formSection" class="mt-4 p-4 border" style="display: none;">
+            <h3>Add New Household Benefit</h3>
+
+            <!-- Family Member Input -->
+            <div class="mb-3 row">
+                <label for="familyMember" class="col-sm-4 col-form-label">Family Member</label>
+                <div class="col-sm-8">
+                    <select id="familyMember" class="form-select">
+                        <option value="">Select Member</option>
+                        <option value="John">John Doe</option>
+                        <option value="Jane">Jane Smith</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Noncash Benefits Input -->
+            <div class="mb-3 row">
+                <label for="nonCashBenefits" class="col-sm-4 col-form-label">Noncash Benefits<span class="text-danger">*</span></label>
+                <div class="col-sm-8">
+                    <select id="nonCashBenefits" class="form-select">
+                        <option value="">Select Benefit</option>
+                        <option value="Supplemental Nutrition Assistance Program (SNAP)">Supplemental Nutrition Assistance Program (SNAP)</option>
+                        <option value="Special Supplemental Nutrition Program (WIC)">Special Supplemental Nutrition Program (WIC)</option>
+                        <option value="TANF Child Care services">TANF Child Care services</option>
+                        <option value="TANF Transportation services">TANF Transportation services</option>
+                        <option value="Other TANF - funded services">Other TANF - funded services</option>
+                        <option value="Section 8, public housing , or other ongoing rental assistance">
+                            Section 8, public housing, or other ongoing rental assistance
+                        </option>
+                        <option value="Temporary Rental Assistance">Temporary Rental Assistance</option>
+                        <option value="Other Source">Other Source</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <!-- Status Input -->
+            <div class="mb-3 row">
+                <label for="status" class="col-sm-4 col-form-label">Status</label>
+                <div class="col-sm-8">
+                    <select id="status" class="form-select">
+                        <option value="">Select Status</option>
+                        <option value="Currently Receiving">Currently Receiving</option>
+                        <option value="Applied and decision pending">Applied and decision pending</option>
+                        <option value="Applied and client not eligible">Applied and client not eligible</option>
+                        <option value="Client did not apply">Client did not apply</option>
+                        <option value="N/A for this client">N/A for this client</option>
+                        <option value="No">No</option>
+                        <option value="Don't Know">Don't Know</option>
+                        <option value="Client prefers not to answer">Client prefers not to answer</option>
+                        <option value="Data not collected">Data not collected</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Food Stamp Amount Input -->
+            <div class="mb-3 row">
+                <label for="foodStampAmount" class="col-sm-4 col-form-label">Food Stamp Amount</label>
+                <div class="col-sm-8">
+                    <input type="number" id="foodStampAmount" class="form-control" placeholder="Enter Amount">
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="button-container">
+                <button class="btn btn-secondary" type="button" onclick="window.history.back();">
+                    <i class="fa-solid fa-arrow-left"></i> Go Back
+                </button>
+                <button type="submit" class="btn btn-primary" onclick="handleSave(); return false;">
+                    <i class="fa-solid fa-save"></i> Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Show form when + button is clicked
+    document.getElementById('addMemberBtn').addEventListener('click', function () {
+        document.getElementById('formSection').style.display = 'block';
+    });
+
+    // Hide form when Cancel button is clicked
+    document.getElementById('cancelButton').addEventListener('click', function () {
+        document.getElementById('formSection').style.display = 'none';
+    });
+
+    // Handle form submission on OK button click
+    document.getElementById('okButton').addEventListener('click', function () {
+        alert('Household Benefit Added!');
+        document.getElementById('formSection').style.display = 'none';
+    });
+</script>

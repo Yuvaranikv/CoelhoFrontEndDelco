@@ -5,12 +5,15 @@
 }
 <div class="container mt-8 form-container">
 	<h2 class="highlight-header mt-4">Intake Form</h2>
-<div class="mb-3 row">
-	<label for="IntakeDate" class="col-sm-4 col-form-label required">Intake Date </label>
-	<div class="col-sm-6">
-		<input type="date" name="IntakeDate" class="form-control" id="IntakeDate" required>
+
+	<div class="mb-3 row">
+		<label for="IntakeDate" class="col-sm-4 col-form-label required">Intake Date </label>
+		<div class="col-sm-6">
+			<input type="text" name="IntakeDate" class="form-control" id="IntakeDate"
+				   placeholder="MM/DD/YYYY" required pattern="\d{2}/\d{2}/\d{4}">
+		</div>
 	</div>
-</div>
+
 
 <div class="mb-3 row">
 	<label for="CreatedBy" class="col-sm-4 col-form-label">Created By</label>
