@@ -28,7 +28,7 @@
 
     /* Sidebar Styles */
     #sidebar-wrapper {
-        min-width: 250px;
+        min-width: 290px;
         max-width: 250px;
         background-color: #4e73df; /* Primary color */
         color: white;
@@ -192,6 +192,7 @@
             </button>
         </div>
         <div class="list-group list-group-flush">
+
             <!-- Intake Section -->
             <div class="portfolio-caption">
                 <div class="portfolio-caption-heading">
@@ -199,6 +200,9 @@
                     <a href="#intakeSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
                        data-bs-toggle="collapse" aria-expanded="false" aria-controls="intakeSubmenu">
                         <span class="button-text">Intake</span>
+                        <span class="icon-spacing">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </span>
                     </a>
 
                     <!-- Submenu (Collapsible) -->
@@ -228,17 +232,481 @@
                             </div>
                         </div>
                     </div>
+                    </div>
+
+                    </div>
+
+            <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">
+                            <!-- Client Management Button -->
+                            <a href="#clientManagementSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+                               data-bs-toggle="collapse" aria-expanded="false" aria-controls="clientManagementSubmenu">
+                                <span class="button-text">Client Management</span>
+                                <span class="icon-spacing">
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </span>
+                            </a>
+                        </div>
+
+                        <!-- Client Management Submenu (Collapsible) -->
+                        <div class="collapse mt-2" id="clientManagementSubmenu">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                            <ul class="list-group scrollable-list">
+                                <li class="list-group-item sb-admin-item">
+                                    <a href="#erapLogReport" class="text-decoration-none">ERAP Log Report</a>
+                                </li>
+                                <li class="list-group-item sb-admin-item">
+                                    <a href="#hudWaiver" class="text-decoration-none">HUD Waiver</a>
+                                </li>
+                                <li class="list-group-item sb-admin-item">
+                                    <a href="#episode" class="text-decoration-none">Episode</a>
+                                </li>
+                                <li class="list-group-item sb-admin-item">
+                                    <a href="#closeEpisode" class="text-decoration-none">Close Episode</a>
+                                </li>
+                            </ul>
+                            </div>
+                            </div>
+                        </div>
+
+                    
+            </div>
+
+            <!-- Client Record Section -->
+            <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">
+                    <!-- Client Record Button -->
+                    <a href="#clientRecordSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+                       data-bs-toggle="collapse" aria-expanded="false" aria-controls="clientRecordSubmenu">
+                        <span class="button-text">Client Record</span>
+                        <span class="icon-spacing">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Client Record Submenu (Collapsible) -->
+                <div class="collapse mt-2" id="clientRecordSubmenu">
+                    <ul class="list-group scrollable-list">
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Disability</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Education</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Expense Info</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Health Insurance</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Hospitalization</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Housing Application</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Housing History</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Housing History New</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Income Info</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Legal Information</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Medical Info</a>
+                        </li>
+                    </ul>
+                </div>
+
+        </div>
+
+            <!-- Housing Admin Section -->
+            <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">
+                    <!-- Housing Admin Button -->
+                    <a href="#housingAdminSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+                       data-bs-toggle="collapse" aria-expanded="false" aria-controls="housingAdminSubmenu">
+                        <span class="button-text">
+                            Housing Admin
+                        </span>
+                        <span class="icon-spacing">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Housing Admin Submenu (Collapsible) -->
+                <div class="collapse mt-2" id="housingAdminSubmenu">
+                    <ul class="list-group scrollable-list">
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#census" class="text-decoration-none">Census</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#incidentInfo" class="text-decoration-none">Incident Info</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#tes" class="text-decoration-none">TES</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#billing" class="text-decoration-none">Billing</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#housingPreference" class="text-decoration-none">Housing Preference</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#clientTrust" class="text-decoration-none">Client Trust</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#unitAssignment" class="text-decoration-none">Unit Assignment</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#rentCalculation" class="text-decoration-none">Rent Calculation</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#housingPlacement" class="text-decoration-none">Housing Placement</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
+
+            <!-- Case Management Section -->
+            <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">
+                    <!-- Case Management Button -->
+                    <a href="#caseManagementSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+                       data-bs-toggle="collapse" aria-expanded="false" aria-controls="caseManagementSubmenu">
+                        <span class="button-text">
+                            Case Management
+                        </span>
+                        <span class="icon-spacing">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </span>
+                    </a>
+                </div>
+                <!-- Case Management Submenu (Collapsible) -->
+                <div class="collapse mt-2" id="caseManagementSubmenu">
+                    <ul class="list-group scrollable-list">
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#groupActivity" class="text-decoration-none">Group Activity</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#recurringCharges" class="text-decoration-none">Recurring Charges</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">
+                    <!-- Direct Services Button -->
+                    <a href="#donationsSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+                       data-bs-toggle="collapse" aria-expanded="false" aria-controls="donationsSubmenu">
+                        <span class="button-text">
+                            Direct Services
+                        </span>
+                        <span class="icon-spacing">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Direct Services Submenu (Collapsible) -->
+                <div class="collapse mt-2" id="donationsSubmenu">
+                    <ul class="list-group scrollable-list">
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#whItem" class="text-decoration-none">Donations WH</a>
+                        </li>
+                        <!-- Add more items to the list if needed -->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">
+                    <!-- Masters Button -->
+                    <a href="#mastersSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+                       data-bs-toggle="collapse" aria-expanded="false" aria-controls="mastersSubmenu">
+                        <span class="button-text">Masters</span>
+                        <span class="icon-spacing">
+                            <i class="fa-solid fa-angle-down"></i> <!-- Updated Down Arrow Icon -->
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Masters Submenu (Collapsible) -->
+                <div class="collapse mt-2" id="mastersSubmenu">
+                    <ul class="list-group scrollable-list">
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Setup Access Rights</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Unit Master Listing</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">User Listing</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Assessment Setup</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Increase in Income of all Active Clients</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Project Master Listing</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Forward Screen</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Funding Master</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Grant Master</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Activity Master</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Continum Master Listing</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Merge Case</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Merge Client</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">COC & HMIS Msgs</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Software Update Msgs</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Document Category Listing</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Budgeting Program Template Listing</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Agency Master Listing</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">AMI Listing</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Federal Poverty Level Listing</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Word merge Assignment</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Checklist Information</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Setup Job Role Listing</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">FMR Listing</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Utility Allowance Listing</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">
+                    <!-- Reports Button -->
+                    <a href="#reportsSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+                       data-bs-toggle="collapse" aria-expanded="false" aria-controls="reportsSubmenu">
+                        <span class="button-text">Reports</span>
+                        <span class="icon-spacing">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </span>
+                    </a>
+                </div>
+                <div class="collapse mt-2" id="reportsSubmenu">
+                    <ul class="list-group scrollable-list">
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">ESG Report</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">RRH Matching Report</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">HAP Report</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">
+                                Adhoc Report
+                            </a>
+                         </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Vaccination Report</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">ERAP Report</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Aging Report</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Budgeting Report</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">RR Clients with no episdes on Housing Locator
+                                </a>
+                                </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Activity Transition Report</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Hud System Performance</a>
+                        </li>
+                        <!-- Add more items to the list if needed -->
+                    </ul>
+                </div>
+             </div>
+
+            <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">
+                    <!-- Special Report Button -->
+                    <a href="#specialReportSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+                       data-bs-toggle="collapse" aria-expanded="false" aria-controls="specialReportSubmenu">
+                        <span class="button-text">
+                            Special Report
+                        </span>
+                        <span class="icon-spacing">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </span>
+                    </a>
+                </div>
+                <!-- Special Report Submenu (Collapsible) -->
+                <div class="collapse mt-2" id="specialReportSubmenu">
+                    <ul class="list-group scrollable-list">
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">SSI and SSDI Report</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">SSI and SSDI with Housing History</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Shelter Demographics Report</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Financial Assistance Report</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Medicaid Report</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Home4 Grant Report</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">SPDAT Report</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">PHC Active Referral Report</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Document Reminder Report</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">
+                    <a href="#phcSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+                       data-bs-toggle="collapse" aria-expanded="false" aria-controls="phcSubmenu">
+                        PHC
+                        <span class="icon-spacing">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </span>
+                    </a>
+                </div>
+                <!-- PHC Submenu (Collapsible) -->
+                <div class="collapse mt-2" id="phcSubmenu">
+                    <ul class="list-group scrollable-list">
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Permanent clearing house active client list</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Placement Tracker</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Program Eligibility</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Activity Listing</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Program Management Screen</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Activity Tracker</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Refer to Clearing House</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">
+                    <!-- Program Administration Button -->
+                    <a href="#programAdminSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+                       data-bs-toggle="collapse" aria-expanded="false" aria-controls="programAdminSubmenu">
+                        <span class="button-text">
+                            Program Administration
+                        </span>
+                        <span class="icon-spacing">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Program Administration Submenu (Collapsible) -->
+                <div class="collapse mt-2" id="programAdminSubmenu">
+                    <ul class="list-group">
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">Change Password</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">User Setup Request</a>
+                        </li>
+                        <li class="list-group-item sb-admin-item">
+                            <a href="#" class="text-decoration-none">User Termination Request</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- /#sidebar-wrapper -->
     <!-- Page Content -->
-    <div id="page-content-wrapper">
-        <!-- Your page content goes here -->
+            <div id="page-content-wrapper">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button class="btn btn-primary" id="menu-toggle">Toggle Sidebar</button>
+                </nav>
+
+                <div class="container-fluid">
+                    <h1 class="mt-4">Welcome to the Page</h1>
+                    <p>This is the main content area.</p>
+                </div>
+            </div>
+</div>
     </div>
 </div>
-
 <script>
              document.getElementById('menuLink').addEventListener('click', function(event) {
         event.preventDefault(); // Prevent the default action of the link (e.g., navigating to #menu)
@@ -258,4 +726,8 @@
     });
 
 </script>
-
+<script>
+        $("#menu-toggle").click(function() {
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
