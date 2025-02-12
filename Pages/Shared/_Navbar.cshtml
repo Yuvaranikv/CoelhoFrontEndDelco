@@ -2,6 +2,9 @@
     var userName = User.Identity.Name; // Get the logged-in user's name
 }
 <style>
+
+  
+
     /* Custom CSS for navbar links */
     .custom-navbar .nav-link {
         color: white !important;
@@ -23,17 +26,94 @@
             color: lightgray !important;
         }
 
-    /* Ensure the navbar image scales correctly on mobile */
-    .navbar-brand img {
-        width: 50px;
-        height: 50px;
+    /* Sidebar Styles */
+    #sidebar-wrapper {
+        min-width: 250px;
+        max-width: 250px;
+        background-color: #4e73df; /* Primary color */
+        color: white;
+        position: fixed;
+        height: 100vh; /* Set the height to fill the entire viewport */
+        overflow-y: auto; /* Add scroll if the content exceeds the height */
+        transition: transform 0.3s ease; /* Smooth transition for toggling */
+        padding-right: 20px;
     }
 
-   
+    .sidebar-heading {
+        padding: 20px;
+        font-size: 1.2rem;
+        background-color: #3c8dbc; /* Darker shade for heading */
+    }
 
-    
+    .list-group-item {
+        background-color: #ffffff; /* White background for items */
+        color: black; /* Primary color text */
+        padding: 10px;
+        border: none;
+    }
+
+        .list-group-item:hover {
+            background-color:  lightgray; /* Light hover effect */
+        }
+
+    .card {
+        border: none;
+        box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+        margin-bottom: 15px;
+        background-color: #ffffff; /* White card background */
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .sb-admin-item a {
+        
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+        .sb-admin-item a:hover {
+            color: #2c3e50; /* Darker text color on hover */
+        }
+
+    /* Equal height button */
+    .equal-btn {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Sidebar collapse button */
+    #sidebarToggle {
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    /* Additional spacing for submenus */
+    .scrollable-list {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    /* Adjusting the content to avoid overlap with the fixed navbar */
+    /* .container {
+        margin-top: 70px; /* Adjust based on the navbar height */
+
+    /* Ensure that the sidebar content doesn't overflow or affect other elements */
+    #page-content-wrapper {
+        margin-left: 250px; /* Make space for the sidebar */
+        padding: 20px;
+        transition: margin-left 0.3s ease; /* Smooth transition when toggling sidebar */
+    }
+
+    .bg-custom {
+        background-color: #4e73df; /* Custom dark blue */
+    }
+
 </style>
-
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar" id="mainNav" style="background-color: cornflowerblue; padding: 20px; border-radius: 15px;">
     <div class="container">
         <a class="navbar-brand" href="#page-top">
@@ -48,7 +128,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto py-4 py-lg-0 align-items-center">
                 <li class="nav-item"><a class="nav-link" href="/" style="color: white;">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/#menu" style="color: white;">Menu</a></li>
+                <li class="nav-item"><a class="nav-link" href="/#menu" style="color: white;" id="menuLink">Menu</a></li>
 
                 <!-- Search Form -->
                 <form class="d-flex ms-lg-3 me-lg-4 align-items-center" role="search">
@@ -88,7 +168,7 @@
                 {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Hi, @userName - Delaware County
+                            @userName - Delaware County
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="/Account/Settings">Account Settings</a></li>
@@ -101,4 +181,81 @@
         </div>
     </div>
 </nav>
+
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="bg-custom border-right d-none" id="sidebar-wrapper">
+        <div class="sidebar-heading d-flex justify-content-between text-white">
+            <span>Menu</span>
+            <button class="btn btn-sm text-white" id="sidebarToggle">
+                <i class="fa-solid fa-xmark"></i> <!-- Close Icon -->
+            </button>
+        </div>
+        <div class="list-group list-group-flush">
+            <!-- Intake Section -->
+            <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">
+                    <!-- Intake Button -->
+                    <a href="#intakeSubmenu" class="btn btn-primary equal-btn d-flex align-items-center justify-content-between"
+                       data-bs-toggle="collapse" aria-expanded="false" aria-controls="intakeSubmenu">
+                        <span class="button-text">Intake</span>
+                    </a>
+
+                    <!-- Submenu (Collapsible) -->
+                    <div class="collapse mt-2" id="intakeSubmenu">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item sb-admin-item">
+                                        <a href="/IntakeClientMaster/IntakeClientMaster" class="text-decoration-none">Client Identification</a>
+                                    </li>
+                                    <li class="list-group-item sb-admin-item">
+                                        <a href="/IntakeForm/IntakeForm" class="text-decoration-none">Intake</a>
+                                    </li>
+                                    <li class="list-group-item sb-admin-item">
+                                        <a href="#clientDashboard" class="text-decoration-none">Client Dashboard</a>
+                                    </li>
+                                    <li class="list-group-item sb-admin-item">
+                                        <a href="#coordinatedEntry" class="text-decoration-none">Coordinated Entry</a>
+                                    </li>
+                                    <li class="list-group-item sb-admin-item">
+                                        <a href="#runAwayYouth" class="text-decoration-none">Runaway Youth</a>
+                                    </li>
+                                    <li class="list-group-item sb-admin-item">
+                                        <a href="#staffActivity" class="text-decoration-none">Staff Activity</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <!-- Your page content goes here -->
+    </div>
+</div>
+
+<script>
+             document.getElementById('menuLink').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default action of the link (e.g., navigating to #menu)
+
+        const sidebar = document.getElementById('sidebar-wrapper');
+        const pageContentWrapper = document.getElementById('page-content-wrapper');
+
+        // Toggle sidebar visibility
+        sidebar.classList.toggle('d-none');
+
+        // Adjust the content margin when the sidebar is shown or hidden
+        if (sidebar.classList.contains('d-none')) {
+            pageContentWrapper.style.marginLeft = '0'; // No space when sidebar is hidden
+        } else {
+            pageContentWrapper.style.marginLeft = '250px'; // Space for the sidebar when visible
+        }
+    });
+
+</script>
 
