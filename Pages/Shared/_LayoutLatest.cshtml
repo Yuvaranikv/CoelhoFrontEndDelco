@@ -16,8 +16,8 @@
 	<!-- Agency Theme Styles -->
 	<link href="~/templates/agency/css/styles.css" rel="stylesheet" asp-append-version="true" />
 	@* <link href="~/templates/sb-admin2/css/sb-admin-2.min.css" rel="stylesheet" asp-append-version="true" /> *@
-	
-
+	<link rel="stylesheet" href="~/css/navbarstyles.css">
+	@RenderSection("Styles", false)
 	<style>
 		.nav-link {
 			color: black !important;
@@ -426,6 +426,13 @@
 	</div>
 	
 
+	
+	<!-- Bootstrap JS -->
+	
+	<!-- Agency Theme Scripts -->
+	<script src="~/templates/agency/js/scripts.js" asp-append-version="true"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+
 	<script>
 		// Array of image URLs
 		const images = [
@@ -526,10 +533,6 @@
 
 	</script>
 
-	<!-- Bootstrap JS -->
-	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
-	<!-- Agency Theme Scripts -->
-	<script src="~/templates/agency/js/scripts.js" asp-append-version="true"></script>
 </body>
 
 </html>
