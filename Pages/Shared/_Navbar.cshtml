@@ -2,7 +2,10 @@
     var userName = User.Identity.Name; // Get the logged-in user's name
 }
 <style>
-
+    .dropdown-menu {
+        z-index: 1050 !important;
+     
+    }
   
 
     /* Custom CSS for navbar links */
@@ -113,6 +116,17 @@
         background-color: #4e73df; /* Custom dark blue */
     }
 
+    .icon-circle {
+        display: inline-block; /* Make sure the icon behaves like a block */
+        padding: 10px; /* Adjust the padding around the icon */
+        border-radius: 50%; /* Create a circle shape */
+        background-color: royalblue; /* Dark blue background */
+        color: white; /* White icon color */
+        font-size: 24px; /* Adjust the icon size */
+        text-align: center; /* Ensure the icon is centered within the circle */
+        line-height: 1; /* Align the icon properly */
+    }
+    
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar" id="mainNav" style="background-color: cornflowerblue; padding: 20px; border-radius: 15px;">
     <div class="container">
@@ -127,23 +141,19 @@
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto py-4 py-lg-0 align-items-center">
-                <li class="nav-item"><a class="nav-link" href="/" style="color: white;">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/#menu" style="color: white;" id="menuLink">Menu</a></li>
+                <li class="nav-item"><a class="nav-link" href="/" style="color: white;" data-bs-toggle="tooltip" title="Home"><i class="fa-solid fa-house icon-circle" style="width:30px; height:30px;"></i></a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/#menu" id="menuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;" data-bs-toggle="tooltip" title="Menu">
+                        <i class="fa-solid fa-bars icon-circle" style="width:30px; height:30px;"></i>
+                        </a> 
+                </li>
 
-                <!-- Search Form -->
-                <form class="d-flex ms-lg-3 me-lg-4 align-items-center" role="search">
-                    <div class="input-group">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search" value="john Doe - Enrolled"/>
-                        <span class="input-group-text bg-light border-0">
-                            <i class="fas fa-search text-dark"></i>
-                        </span>
-                    </div>
-                </form>
+               
 
                 <!-- Dropdown Menu with Bars Icon -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="optionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
-                        <i class="fa-solid fa-bars" style="width:30px; height:30px;"></i>
+                    <a class="nav-link dropdown-toggle" href="#" id="optionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-toggle="tooltip" title="Options">
+                        <i class="fa-solid fa-ellipsis icon-circle"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="optionsDropdown">
                         <li><a class="dropdown-item" href="#userContactInfo">User Contact Info</a></li>
@@ -161,6 +171,16 @@
                     </ul>
                 </li>
 
+            
+                <!-- Search Form -->
+                <form class="d-flex ms-lg-3 me-lg-4 align-items-center" role="search">
+                    <div class="input-group">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search" value="john Doe - Enrolled" />
+                        <span class="input-group-text bg-light border-0">
+                            <i class="fas fa-search text-dark"></i>
+                        </span>
+                    </div>
+                </form>
                 <li class="nav-item"><a class="nav-link" href="/#ContactUs" style="color: white;">Contact Us</a></li>
 
                 <!-- Username Display and User Dropdown -->
@@ -695,18 +715,13 @@
             <!-- /#sidebar-wrapper -->
     <!-- Page Content -->
             <div id="page-content-wrapper">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <button class="btn btn-primary" id="menu-toggle">Toggle Sidebar</button>
-                </nav>
-
-                <div class="container-fluid">
-                    <h1 class="mt-4">Welcome to the Page</h1>
-                    <p>This is the main content area.</p>
-                </div>
+              
             </div>
 </div>
     </div>
 </div>
+
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
 <script>
              document.getElementById('menuLink').addEventListener('click', function(event) {
         event.preventDefault(); // Prevent the default action of the link (e.g., navigating to #menu)
@@ -726,8 +741,35 @@
     });
 
 </script>
-<script>
+@* <script>
         $("#menu-toggle").click(function() {
         $("#wrapper").toggleClass("toggled");
     });
+</script> *@
+
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+        var dropdownToggle = document.getElementById("optionsDropdown");
+        if (dropdownToggle) {
+            dropdownToggle.addEventListener("click", function (event) {
+                event.preventDefault(); // Prevents unwanted navigation
+                var dropdown = new bootstrap.Dropdown(dropdownToggle);
+                dropdown.toggle();
+            });
+        }
+    });
 </script>
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+</script>
+
+
+
+
+
+
