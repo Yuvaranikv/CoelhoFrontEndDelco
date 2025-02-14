@@ -242,7 +242,17 @@
 			color: lightgray !important;
 		}
 
+	.icon-royalblue {
+		color: royalblue !important;
+	}
 
+	.input-group-text {
+		padding: 0.5rem; /* Adjust padding to make the icons more aligned */
+	}
+
+	.input-group i {
+		font-size: 1.25rem; /* Adjust icon size */
+	}
 	
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar" id="mainNav" style="background-color: cornflowerblue; padding: 10px; ">
@@ -274,29 +284,30 @@
 						<i class="fa-solid fa-ellipsis icon-shape"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="optionsDropdown">
-						<li><a class="dropdown-item" href="#userContactInfo">User Contact Info</a></li>
-						<li><a class="dropdown-item" href="#clientDashboard">Client Dashboard</a></li>
-						<li><a class="dropdown-item" href="#changeProject">Change Project</a></li>
-						<li><a class="dropdown-item" href="#documentManagement">Document Management</a></li>
-						<li><a class="dropdown-item" href="#support">Support</a></li>
-						<li><a class="dropdown-item" href="#inbox">Inbox</a></li>
-						<li><a class="dropdown-item" href="#forwardMessage">Forward Message</a></li>
-						<li><a class="dropdown-item" href="#dashboard">Dashboard</a></li>
-						<li><a class="dropdown-item" href="#erap">ERAP</a></li>
-						<li><a class="dropdown-item" href="#financialAssistance">Financial Assistance</a></li>
-						<li><a class="dropdown-item" href="#waitingList">Waiting List</a></li>
-						<li><a class="dropdown-item" href="#exit">Exit</a></li>
+						<li><a class="dropdown-item" href="#userContactInfo"><i class="fa-solid fa-address-book fa-lg me-2 icon-royalblue"></i> User Contact Info</a></li>
+						<li><a class="dropdown-item" href="#clientDashboard"><i class="fa-solid fa-tachometer-alt fa-lg me-2 icon-royalblue"></i> Client Dashboard</a></li>
+						<li><a class="dropdown-item" href="#changeProject"><i class="fa-solid fa-sync-alt fa-lg me-2 icon-royalblue"></i> Change Project</a></li>
+						<li><a class="dropdown-item" href="#documentManagement"><i class="fa-solid fa-file-alt fa-lg me-2 icon-royalblue"></i> Document Management</a></li>
+						<li><a class="dropdown-item" href="#support"><i class="fa-solid fa-headset fa-lg me-2 icon-royalblue"></i> Support</a></li>
+						<li><a class="dropdown-item" href="#inbox"><i class="fa-solid fa-inbox fa-lg me-2 icon-royalblue"></i> Inbox</a></li>
+						<li><a class="dropdown-item" href="#forwardMessage"><i class="fa-solid fa-share fa-lg me-2 icon-royalblue"></i> Forward Message</a></li>
+						<li><a class="dropdown-item" href="#dashboard"><i class="fa-solid fa-th-large fa-lg me-2 icon-royalblue"></i> Dashboard</a></li>
+						<li><a class="dropdown-item" href="#erap"><i class="fa-solid fa-medkit fa-lg me-2 icon-royalblue"></i> ERAP</a></li>
+						<li><a class="dropdown-item" href="#financialAssistance"><i class="fa-solid fa-dollar-sign fa-lg me-2 icon-royalblue"></i> Financial Assistance</a></li>
+						<li><a class="dropdown-item" href="#waitingList"><i class="fa-solid fa-hourglass-half fa-lg me-2 icon-royalblue"></i> Waiting List</a></li>
+						<li><a class="dropdown-item" href="#exit"><i class="fa-solid fa-sign-out-alt fa-lg me-2 icon-royalblue"></i> Exit</a></li>
 					</ul>
 				</li>
-
-
 
 				<!-- Search Form -->
 				<form class="d-flex ms-lg-3 me-lg-4 align-items-center" role="search">
 					<div class="input-group">
 						<input class="form-control" type="search" placeholder="Search" aria-label="Search" value="john Doe - Enrolled" />
-						<span class="input-group-text bg-light border-0">
-							<i class="fas fa-search text-dark"></i>
+						<span class="input-group-text bg-light border-0" data-bs-toggle="tooltip" title="Search" >
+							<i class="fas fa-search text-dark icon-royalblue"></i>
+						</span>
+						<span class="input-group-text bg-light border-0" data-bs-toggle= "tooltip" title="Family Members" >
+							<i class="fa-solid fa-users text-dark icon-royalblue"></i>
 						</span>
 					</div>
 				</form>
