@@ -25,7 +25,6 @@
 <main>
     <div class="container py-5" id="ContactUs">
         <div class="row g-5">
-            <!-- For Support Section -->
             <div class="col-12">
                 <div class="card shadow-sm p-4 text-center">
                     <h2 class="pb-3">Support & Assistance</h2>
@@ -48,7 +47,6 @@
     <!-- Modal for Leave a Message & Screenshot/Document Upload -->
     <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-md">
-            <!-- Increased modal size -->
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="uploadModalLabel">Contact Support</h5>
@@ -123,9 +121,8 @@
                                 </div>
                             </div>
 
-                            <!-- Attach Screenshot or Document Section -->
                             <div class="col-12 mb-3">
-                                <div class="bg-light shadow-sm p-3 rounded border border-primary">
+                                <div class="bg-light shadow-sm p-3 rounded border border-primary" id="drag-drop-area" style="border: 2px dashed #007bff;">
                                     <div class="text-center">
                                         <i class="fa-solid fa-cloud-upload-alt fa-3x text-primary"></i>
                                         <p class="text-muted mt-3">Drag & drop files here or click to upload.</p>
@@ -134,7 +131,7 @@
                                         <input type="file" class="form-control d-none" id="fileInput">
                                         <label for="fileInput" class="btn btn-primary mt-3">Choose File</label>
                                     </div>
-                                    <p class="mt-3 text-muted text-center">Or press <b>Shift + PrintScreen</b> and paste (Ctrl + V) to upload a screenshot.</p>
+                                    <p class="mt-3 text-muted text-center">Or press <b>Alt + PrintScreen</b> and paste (Ctrl + V) to upload a screenshot.</p>
                                     <div class="text-center">
                                         <img id="preview" src="" class="mt-3 img-fluid d-none" style="max-height: 200px;">
                                     </div>
@@ -150,8 +147,6 @@
             </div>
         </div>
     </div>
-
-
 </main>
 
 <!-- Footer Block -->
@@ -226,19 +221,75 @@
 </script>
 
 <script>
-	document.addEventListener("paste", async function (event) {
-		const items = event.clipboardData.items;
-		for (let item of items) {
-			if (item.type.indexOf("image") !== -1) {
-				const file = item.getAsFile();
-				const reader = new FileReader();
-				reader.onload = function (e) {
-					const preview = document.getElementById("preview");
-					preview.src = e.target.result;
-					preview.classList.remove("d-none");
-				};
-				reader.readAsDataURL(file);
-			}
-		}
-	});
+    const dropArea = document.getElementById('drag-drop-area');
+    const fileInput = document.getElementById('fileInput');
+    const preview = document.getElementById('preview');
+
+    // Add event listeners to handle drag-and-drop
+    dropArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropArea.classList.add('bg-light');  // Add background on dragover
+    });
+
+    dropArea.addEventListener('dragleave', () => {
+        dropArea.classList.remove('bg-light');  // Remove background when drag leaves
+    });
+
+    dropArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropArea.classList.remove('bg-light');  // Remove background after drop
+        const files = e.dataTransfer.files;
+        handleFileUpload(files);
+    });
+
+    // Handle file input change when files are selected
+    fileInput.addEventListener('change', () => {
+        const files = fileInput.files;
+        handleFileUpload(files);
+    });
+
+    // Function to handle file upload and display preview
+    function handleFileUpload(files) {
+        if (files.length > 0) {
+            const file = files[0];
+
+            // Log for debugging
+            console.log('File uploaded:', file);
+
+            // Check if the file is an image
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.classList.remove('d-none');  // Show the image preview
+                };
+                reader.readAsDataURL(file);
+            } else {
+                // For non-image files, just log the file name
+                console.log('Non-image file uploaded:', file.name);
+                preview.classList.add('d-none');  // Hide the preview if it's not an image
+            }
+        }
+    }
 </script>
+
+<script>
+    // Handle pasting of images
+    document.addEventListener("paste", function (event) {
+        const items = event.clipboardData.items;
+        for (let item of items) {
+            if (item.type.indexOf("image") !== -1) {
+                const file = item.getAsFile();
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const preview = document.getElementById("preview");
+                    preview.src = e.target.result;
+                    preview.classList.remove("d-none");  // Show the image preview
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    });
+</script>
+
+
