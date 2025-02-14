@@ -57,24 +57,68 @@
 
 	/* Sidebar Styles */
 	#sidebar-wrapper {
-		min-width: 250px;
-		max-width: 280px;
+		/* min-width: 250px;
+		max-width: 280px; */
+		width:250px;
 		/* background-color: #4e73df; */ /* Primary color */
 		color: white;
 		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
 		height: 100vh; /* Set the height to fill the entire viewport */
 		overflow-y: auto; /* Add scroll if the content exceeds the height */
-		transition: transform 0.3s ease; /* Smooth transition for toggling */
+		transition: width 0.3s ease-in-out; /* Smooth transition for toggling */
 		padding-right: 20px;
 		margin-top: 110px;
 		background: linear-gradient(to bottom, #4e73df, #6a89cc); /* Matching navbar */
 		box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+		overflow-y: auto; /* Enable vertical scrolling */
+		z-index: 100;
+	}
+		/* Ensure the content inside the sidebar can scroll */
+		#sidebar-wrapper .list-group {
+			max-height: calc(100vh - 60px); /* Set maximum height for the sidebar list (adjust 60px for any header height) */
+			overflow-y: auto; /* Enable vertical scrolling */
+		}
+	.hr {
+		border-top: 2px solid #fff;
+		width: 100%; /* Ensure it spans the full width */
+		margin: 10px 0; /* Adjust margin for spacing */
+	}
+	/* For mobile, hide the sidebar */
+	.d-none {
+		display: none !important;
+	}
+	.sidebar-heading {
+		padding: 5px 20px;
+		display: flex; /* Use flexbox for alignment */
+		justify-content: space-between; /* Ensures equal spacing between the Menu text and the button */
+		align-items: center; /* Aligns items vertically in the center */
 	}
 
-	.sidebar-heading {
-		padding: 20px;
-		font-size: 1.2rem;
-		/* background-color: #3c8dbc; */ /* Darker shade for heading */
+	/* Styling for the sidebar divider */
+	.sidebar-divider {
+		border-top: 2px solid #fff; /* White line */
+		width: 80%; /* Adjust width to leave space on the sides */
+		margin-top: 10px; /* Add space between the Menu and the rule */
+		margin-left: 10px; /* Optional: Add some space before the line */
+		margin-right: 10px; /* Optional: Add some space after the line */
+		margin-bottom: 20px; /* Add some space below the rule */
+	}
+
+	#sidebar-wrapper.collapsed {
+		width: 60px;
+	}
+
+		#sidebar-wrapper.collapsed .button-text {
+			display: none;
+		}
+
+	#menuToggleMobile {
+		position: absolute;
+		top: 10px;
+		left: 10px;
 	}
 
 	.list-group-item {
@@ -140,7 +184,7 @@
 
 	/* Ensure that the sidebar content doesn't overflow or affect other elements */
 	#page-content-wrapper {
-		margin-left: 250px; /* Make space for the sidebar */
+		/* margin-left: 250px; */ /* Make space for the sidebar */
 		padding: 20px;
 		transition: margin-left 0.3s ease; /* Smooth transition when toggling sidebar */
 	}
@@ -201,7 +245,7 @@
 
 	
 </style>
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar" id="mainNav" style="background-color: cornflowerblue; padding: 10px; border-radius: 15px;">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar" id="mainNav" style="background-color: cornflowerblue; padding: 10px; ">
 	<div class="container">
 		<a class="navbar-brand" href="#page-top">
 			<img src="/Images/Delco_ImageNew.jpg" alt="..." style="width:80px; height:80px;" />
@@ -216,7 +260,7 @@
 			<ul class="navbar-nav ms-auto py-4 py-lg-0 align-items-center">
 				<li class="nav-item"><a class="nav-link" href="/" style="color: white;" data-bs-toggle="tooltip" title="Home"><i class="fa-solid fa-house icon-shape" style="width:20px; height:20px;"></i></a></li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="/#menu" id="menuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;" data-bs-toggle="tooltip" title="Menu">
+					<a class="nav-link dropdown-toggle" href="/#menu" id="menuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;"  title="Menu">
 						<i class="fa-solid fa-bars icon-shape" style="width:30px; height:30px;"></i>
 					</a>
 				</li>
@@ -256,13 +300,17 @@
 						</span>
 					</div>
 				</form>
-				<li class="nav-item"><a class="nav-link" href="/#ContactUs" style="color: white;">Contact Us</a></li>
-
+				
+				<li class="nav-item">
+					<a class="nav-link " href="/#ContactUs" style="color: white;" data-bs-toggle="tooltip" title="Contact us">
+						<i class="fa-solid fa-phone icon-shape" style="width:20px; height:20px;"></i> <!-- Example phone icon -->
+					</a>
+				</li>
 				<!-- Username Display and User Dropdown -->
 				@if (userName != null)
 				{
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<a class="nav-link  dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							@userName - Delaware County
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
@@ -280,12 +328,14 @@
 <div class="d-flex" id="wrapper">
 	<!-- Sidebar -->
 	<div class="bg-custom border-right d-none" id="sidebar-wrapper">
-		<div class="sidebar-heading d-flex justify-content-between text-white">
-			<span>Menu</span><hr />
+		<div class="sidebar-heading d-flex justify-content-between align-items-center text-white">
+			<span>Menu</span>
 			<button class="btn btn-sm text-white" id="sidebarToggle">
-				<i class="fa-solid fa-xmark"></i> <!-- Close Icon -->
+				<i class="fa-solid fa-xmark"></i>
 			</button>
+			
 		</div>
+		<hr class="sidebar-divider">
 		<div class="list-group list-group-flush">
 
 			<!-- Intake Section -->
@@ -791,56 +841,56 @@
 			<!-- /#sidebar-wrapper -->
 			<!-- Page Content -->
 			<div id="page-content-wrapper">
+				
 			</div>
 		</div>
 	</div>
 </div>
 @* 
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
- *@<script>
-	document.addEventListener("DOMContentLoaded", function () {
-		const sidebar = document.getElementById("sidebar-wrapper");
-		const pageContentWrapper = document.getElementById("page-content-wrapper");
-		const menuLink = document.getElementById("menuLink");
-		const closeButton = document.getElementById("sidebarToggle");
+ *@
 
-		// Function to toggle sidebar visibility
-		function toggleSidebar() {
-			sidebar.classList.toggle("d-none");
-
-			// Adjust the content margin when sidebar is shown or hidden
-			if (sidebar.classList.contains("d-none")) {
-				pageContentWrapper.style.marginLeft = "0"; // No space when sidebar is hidden
-			} else {
-				pageContentWrapper.style.marginLeft = "250px"; // Space for the sidebar when visible
-			}
-		}
-
-		// Toggle sidebar when clicking the menu link
-		if (menuLink) {
-			menuLink.addEventListener("click", function (event) {
-				event.preventDefault();
-				toggleSidebar();
-			});
-		}
-
-		// Hide sidebar when clicking the close button inside the sidebar
-		if (closeButton) {
-			closeButton.addEventListener("click", function () {
-				sidebar.classList.add("d-none"); // Hide sidebar
-				pageContentWrapper.style.marginLeft = "0"; // Reset content margin
-			});
-		}
-	});
-</script>
 
 <script>
-        $("#menu-toggle").click(function() {
-        $("#wrapper").toggleClass("toggled");
-    });
+		document.addEventListener("DOMContentLoaded", function () {
+			const sidebar = document.getElementById("sidebar-wrapper");
+			const pageContentWrapper = document.getElementById("page-content-wrapper");
+			const menuLink = document.getElementById("menuLink");
+			const closeButton = document.getElementById("sidebarToggle");
+			const masthead = document.querySelector('.masthead');
+
+			// Function to toggle sidebar visibility
+			function toggleSidebar() {
+				sidebar.classList.toggle("d-none");
+
+				// Adjust the content margin when sidebar is shown or hidden
+				if (sidebar.classList.contains("d-none")) {
+					pageContentWrapper.style.marginLeft = "0"; // No space when sidebar is hidden
+					masthead.style.marginLeft = "0"; // Reset masthead position
+				} else {
+				//	pageContentWrapper.style.marginLeft = "250px"; // Space for the sidebar when visible
+					//masthead.style.marginLeft = "250px"; // Shift masthead when sidebar is visible
+				}
+			}
+
+			// Toggle sidebar when clicking the menu link
+			if (menuLink) {
+				menuLink.addEventListener("click", function (event) {
+					event.preventDefault();
+					toggleSidebar();
+				});
+			}
+
+			// Hide sidebar when clicking the close button inside the sidebar
+			if (closeButton) {
+				closeButton.addEventListener("click", function () {
+					sidebar.classList.add("d-none"); // Hide sidebar
+					pageContentWrapper.style.marginLeft = "0"; // Reset content margin
+					masthead.style.marginLeft = "0"; // Reset masthead position
+				});
+			}
+		});
 </script>
-
-
 <script>
 		document.addEventListener("DOMContentLoaded", function () {
 		var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
@@ -849,6 +899,8 @@
 		});
 	});
 </script>
+
+
 
 
 

@@ -5,65 +5,82 @@
 }
 
 <style>
-	/* Container for announcement and user info sections */
-	.info-section {
-		display: flex;
-		gap: 20px;
-		margin: 20px 0;
-		margin-top: 6vh; /* Adding some margin to ensure it starts below the sticky header */
-	}
+    /* Container for announcement and user info sections */
+    .info-section {
+        display: flex;
+        justify-content: space-between; /* Keeps items aligned */
+        align-items: flex-start;
+        flex-wrap: wrap; /* Allows wrapping on smaller screens */
+        gap: 20px;
+    }
 
-	/* Announcement Section */
-	.announcement {
-		flex: 1;
-		background-color: #f8f9fa;
-		padding: 15px;
-		border-radius: 10px;
-		height: 250px;
-		overflow: hidden;
-		position: relative;
-	}
+    /* Announcement Section */
+    .announcement {
+        flex: 1;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 10px;
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+        width: 35%; /* Adjust width as needed */
+        min-height: 5px; /* Minimum height */
+        margin: 0 auto; /* Centering */
+    }
 
-	/* Fixed heading, no scrolling over it */
-	.announcement-header {
-		font-size: 1.2rem;
-		font-weight: bold;
-		margin-bottom: 10px;
-		background-color: royalblue;
-		padding: 8px;
-		border-radius: 8px;
-		color:white;
-	}
+    /* Announcement Header */
+    .announcement-header {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        background-color: royalblue;
+        padding: 8px;
+        border-radius: 8px;
+        color: white;
+    }
 
-	/* Scrolling list styling */
-	.announcement-content {
-		height: 190px;
-		overflow: hidden;
-		position: relative;
-	}
+    /* Scrolling list styling */
+    .announcement-content {
+        height: 190px;
+        overflow: hidden;
+        position: relative;
+    }
 
-	.announcement-list {
-		padding: 0;
-		margin: 0;
-		list-style-type: none;
-	}
+    /* Announcement List */
+    .announcement-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
 
-		.announcement-list li {
-			padding: 10px 0;
-			border-bottom: 1px solid #ddd;
-			background: #ffffff;
-		}
+        .announcement-list li {
+            white-space: normal; /* Allow text wrapping */
+            text-align: left;
+            padding: 10px 20px;
+            margin-bottom: 1rem;
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+            border-bottom: 1px solid #ddd;
+        }
 
-	/* User Info Section */
-	.user-info {
-		width: 300px;
-		background-color: #f0f0f0;
-		padding: 15px;
-		border-radius: 10px;
-	}
+            /* Hover effect for announcement items */
+            .announcement-list li:hover {
+                background-color: #e9ecef;
+            }
 
-
+    /* User Info Section */
+    .user-info {
+        width: 300px;
+        background-color: #f0f0f0;
+        padding: 15px;
+        border-radius: 10px;
+    }
 </style>
+
 <div class="container" >
     @* Light blue background for the entire container *@
     <!-- Masthead-->
