@@ -251,7 +251,7 @@
 <body id="page-top">
 	<!-- Navigation-->
 	@Html.Partial("_Navbar")
-
+	@Html.Partial("_Sidebar")
 	<div class="container">
 		<main role="main" class="pb-3">
 			@RenderBody()
@@ -417,6 +417,7 @@
 		// Initialize the first image
 		changeBackground();
 	</script>
+
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
 			const announcementList = document.querySelector(".announcement-list");
@@ -497,3 +498,5 @@
 </body>
 
 </html>
+
+

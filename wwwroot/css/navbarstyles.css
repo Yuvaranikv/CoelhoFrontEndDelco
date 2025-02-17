@@ -68,11 +68,12 @@
     background-color: #e3f2fd; /* Light blue background */
     padding: 10px;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
     /* Form Labels */
     .form-container label {
-        font-size: 1rem;
+        font-size: 15px;
         font-weight: 500; /* Balanced font weight */
         padding-left: 20px;
     }
@@ -88,7 +89,8 @@
     .form-container .dropdown-toggle {
         height: 40px; /* Uniform height */
         width: 60% !important; /* Full width inside column */
-        padding-left: 10px; /* Consistent padding */
+        padding-left: 10px;
+        font-size: 15px; /* Consistent padding */
     }
 
     /* Ensure dropdown button matches textboxes */
@@ -115,7 +117,8 @@
     /* Ensure "Other" input box aligns with dropdown */
     .form-container .form-control.mt-2 {
         width: 40%;
-        height: 40px; /* Match input fields */
+        height: 40px;
+        font-size: 15px; /* Match input fields */
     }
 
     /* Align OK button width with dropdown */
@@ -158,3 +161,39 @@ h2.highlight-header {
 .container.mt-8 {
     margin-bottom: 30px;
 }
+
+/* Ellipsis Icon Button */
+.ellipsis-icon-btn {
+    position: absolute;
+    right: 200px; /* Move the button closer to the right edge of the input */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    /* Icon Styling */
+    .ellipsis-icon-btn i {
+        font-size: 1.2rem;
+        color: #000; /* Adjust icon color */
+    }
+
+    /* Placeholder Text for Icon */
+    .ellipsis-icon-btn .placeholder-text {
+        display: none; /* Hide by default */
+        position: absolute;
+        font-size: 12px;
+        color: black;
+        left: 50%;
+    }
+
+    /* Show Placeholder Text on Hover */
+    .ellipsis-icon-btn:hover .placeholder-text {
+        display: block;
+    }

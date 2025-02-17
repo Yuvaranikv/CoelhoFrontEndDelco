@@ -10,8 +10,6 @@
 
 
 
-@Html.Partial("_Navbar")
-
 <style>
 
 
@@ -36,41 +34,7 @@
 	width: auto;
 }
 
-	/* Ellipsis Icon Button */
-	.ellipsis-icon-btn {
-		position: absolute;
-		right: 200px; /* Move the button closer to the right edge of the input */
-		top: 50%;
-		transform: translateY(-50%);
-		width: 35px;
-		height: 35px;
-		border: 1px solid #ccc;
-		border-radius: 50%;
-		background-color: transparent;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-		/* Icon Styling */
-		.ellipsis-icon-btn i {
-			font-size: 1.2rem;
-			color: #000; /* Adjust icon color */
-		}
-
-		/* Placeholder Text for Icon */
-		.ellipsis-icon-btn .placeholder-text {
-			display: none; /* Hide by default */
-			position: absolute;
-			font-size: 12px;
-			color: black;
-			left: 50%;
-		}
-
-		/* Show Placeholder Text on Hover */
-		.ellipsis-icon-btn:hover .placeholder-text {
-			display: block;
-		}
+	
 
 	.form-container .form-control {
 		padding-right: 50px; /* Enough space for the icon */
