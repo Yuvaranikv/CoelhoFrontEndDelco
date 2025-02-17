@@ -139,20 +139,54 @@
 					</div>
 					
 					<!-- SSN Data Quality -->
-				<div class="mb-3 row align-items-center">
-					<label for="SSN" class="col-sm-4 col-form-label required">SSN Data Quality</label>
-					<div class="col-sm-6 d-flex align-items-center position-relative">
-						<input type="text" name="SSN" class="form-control" id="SSN" placeholder="___-__-____">
-					</div>
-					<button class="ellipsis-icon-btn" type="button" id="optionsDropdown" data-bs-toggle="dropdown">
-						<i class="fas fa-ellipsis-h"></i>
-					</button>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#SSNModal">Help</a></li>
-						<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#pdfModal">Download PDF</a></li>
-					</ul>
-				</div>
+					<div class="mb-3 row align-items-center">
+						<label for="SSNData" class="col-sm-4 col-form-label required">SSN Data Quality</label>
+						<div class="col-sm-6">
+							<div class="dropdown w-100">
+								<button class="btn btn-white w-100 dropdown-toggle" type="button" id="SSNDataQualityDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+									Select SSN Data Quality
+								</button>
 
+								<ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+									<li>
+										<label class="form-check-label d-block">
+											<input type="checkbox" class="form-check-input"> Full SSN reported
+										</label>
+									</li>
+									<li>
+										<label class="form-check-label d-block">
+											<input type="checkbox" class="form-check-input"> Approximate or partial SSN reported
+										</label>
+									</li>
+									<li>
+										<label class="form-check-label d-block">
+											<input type="checkbox" class="form-check-input"> Don't know
+										</label>
+									</li>
+									<li>
+										<label class="form-check-label d-block">
+											<input type="checkbox" class="form-check-input"> Client prefers not to answer
+										</label>
+									</li>
+									<li>
+										<label class="form-check-label d-block">
+											<input type="checkbox" class="form-check-input"> Data not collected
+										</label>
+									</li>
+									<li>
+										<label class="form-check-label d-block">
+											<input type="checkbox" class="form-check-input"> If Other, (please explain)
+										</label>
+										<input type="text" class="form-control mt-2">
+									</li>
+
+									<li>
+										<button class="btn btn-primary mt-2 w-100" id="OKButtonSSNDataQuality">OK</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
 
 
 					<!-- First Name -->
