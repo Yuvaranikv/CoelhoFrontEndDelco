@@ -4,45 +4,7 @@
 @{
 }
 
-<style>
-    /* General adjustments for neatness and responsive form */
-    .form-control {
-        max-width: 300px; /* Reduce width for neat appearance */
-        margin-left: auto;
-        margin-right: auto;
-        display: block; /* Center the inputs */
-        padding: 0.8rem 1rem;
-    }
 
-    .mb-3 {
-        margin-bottom: 1.25rem; /* Slightly increased margin between form fields */
-    }
-
-    /* Adjust label alignment */
-    .col-form-label {
-        text-align: left;
-    }
-
-    /* Adjust the width of the family size input */
-    #FamilySize {
-        width: 100%; /* Ensure the input takes full width */
-    }
-
-    /* Adjust spacing between form controls */
-    .form-check-inline {
-        margin-right: 20px; /* Provide spacing between radio buttons */
-    }
-
-        /* Adjust input widths in the Family Type section */
-        .form-check-inline input {
-            margin-right: 8px; /* Space between radio buttons and labels */
-        }
-
-    /* Visibility control for family size section */
-    #familySizeRow {
-        visibility: hidden; /* Hidden by default, will be toggled based on radio button */
-    }
-</style>
 
 <div class="container mt-8 form-container">
     <h2 class="highlight-header mt-4">Intake Form</h2>
@@ -85,7 +47,7 @@
             <input type="number" name="FamilySize" class="form-control" id="FamilySize" value="0" required>
         </div>
     </div>
-
+    
 </div>
 
 <script>
