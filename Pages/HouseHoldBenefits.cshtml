@@ -3,7 +3,6 @@
 @{
     Layout = "_LayoutLatest";
 }
-@Html.Partial("_Navbar")
 
 <div style="margin-bottom: 120px;"></div>
 @await Html.PartialAsync("Shared/_IntakeGeneralDetails")
@@ -42,68 +41,166 @@
             </tbody>
         </table>
 
-        <div id="formSection" class="mt-4 p-4 border" style="display: none;">
-            <h3>Add New Household Benefit</h3>
+        <div id="formSection"  style="display: none;">
+            
 
-            <!-- Family Member Input -->
-            <div class="mb-3 row">
-                <label for="familyMember" class="col-sm-4 col-form-label">Family Member</label>
-                <div class="col-sm-8">
-                    <select id="familyMember" class="form-select">
-                        <option value="">Select Member</option>
-                        <option value="John">John Doe</option>
-                        <option value="Jane">Jane Smith</option>
-                    </select>
-                </div>
-            </div>
+            <form action="/api/IntakeHouseHoldBenefits/SubmitForm" method="post">
+                <h4 class="mb-4 mt-5">Add New Household Benefit</h4>
 
-            <!-- Noncash Benefits Input -->
-            <div class="mb-3 row">
-                <label for="nonCashBenefits" class="col-sm-4 col-form-label">Noncash Benefits<span class="text-danger">*</span></label>
-                <div class="col-sm-8">
-                    <select id="nonCashBenefits" class="form-select">
-                        <option value="">Select Benefit</option>
-                        <option value="Supplemental Nutrition Assistance Program (SNAP)">Supplemental Nutrition Assistance Program (SNAP)</option>
-                        <option value="Special Supplemental Nutrition Program (WIC)">Special Supplemental Nutrition Program (WIC)</option>
-                        <option value="TANF Child Care services">TANF Child Care services</option>
-                        <option value="TANF Transportation services">TANF Transportation services</option>
-                        <option value="Other TANF - funded services">Other TANF - funded services</option>
-                        <option value="Section 8, public housing , or other ongoing rental assistance">
-                            Section 8, public housing, or other ongoing rental assistance
-                        </option>
-                        <option value="Temporary Rental Assistance">Temporary Rental Assistance</option>
-                        <option value="Other Source">Other Source</option>
-                    </select>
-                </div>
-            </div>
+				<div class="container">
+
+                    <!-- Family Member Input -->
+                    <div class="mb-3 row align-items-center">
+                        <label for="familyMember" class="col-sm-4 col-form-label required">Family Member</label>
+                        <div class="col-sm-6">
+                            <div class="dropdown w-100">
+                                <button class="btn btn-white w-100 dropdown-toggle" type="button" id="FamilyMemberDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                    Select Family Member
+                                </button>
+
+                                <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> John Doe
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
 
-            <!-- Status Input -->
-            <div class="mb-3 row">
-                <label for="status" class="col-sm-4 col-form-label">Status</label>
-                <div class="col-sm-8">
-                    <select id="status" class="form-select">
-                        <option value="">Select Status</option>
-                        <option value="Currently Receiving">Currently Receiving</option>
-                        <option value="Applied and decision pending">Applied and decision pending</option>
-                        <option value="Applied and client not eligible">Applied and client not eligible</option>
-                        <option value="Client did not apply">Client did not apply</option>
-                        <option value="N/A for this client">N/A for this client</option>
-                        <option value="No">No</option>
-                        <option value="Don't Know">Don't Know</option>
-                        <option value="Client prefers not to answer">Client prefers not to answer</option>
-                        <option value="Data not collected">Data not collected</option>
-                    </select>
-                </div>
-            </div>
+                    <!-- Noncash Benefits Input -->
+                    <div class="mb-3 row align-items-center">
+                        <label for="nonCashBenefits" class="col-sm-4 col-form-label required">Noncash Benefits<span class="text-danger">*</span></label>
+                        <div class="col-sm-6 d-flex align-items-center position-relative gap-2">
+                            <div class="w-100">
+                                <button class="btn btn-white w-100 dropdown-toggle" type="button" id="NonCashBenefitsDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                    Select Noncash Benefit
+                                </button>
 
-            <!-- Food Stamp Amount Input -->
-            <div class="mb-3 row">
-                <label for="foodStampAmount" class="col-sm-4 col-form-label">Food Stamp Amount</label>
-                <div class="col-sm-8">
-                    <input type="number" id="foodStampAmount" class="form-control" placeholder="Enter Amount">
-                </div>
-            </div>
+                                <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> Supplemental Nutrition Assistance Program (SNAP)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> Special Supplemental Nutrition Program (WIC)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> TANF Child Care services
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> TANF Transportation services
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> Other TANF - funded services
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> Section 8, public housing, or other ongoing rental assistance
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> Temporary Rental Assistance
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> Other Source
+                                        </label>
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+                            <button class="ellipsis-icon-btn" type="button" data-bs-toggle="modal" data-bs-target="#NonCashBenefitsModal">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Status Input -->
+                    <div class="mb-3 row align-items-center">
+                        <label for="status" class="col-sm-4 col-form-label required">Status</label>
+                        <div class="col-sm-6">
+                            <div class="dropdown w-100">
+                                <button class="btn btn-white w-100 dropdown-toggle" type="button" id="StatusDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                    Select Status
+                                </button>
+
+                                <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> Currently Receiving
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> Applied and decision pending
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> Applied and client not eligible
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> Client did not apply
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> N/A for this client
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> No
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> Don't Know
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> Client prefers not to answer
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> Data not collected
+                                        </label>
+                                    </li>
+                                  
+                                </ul>
+                            </div>
+                           
+                        </div>
+                    </div>
+
+
+                    <!-- Food Stamp Amount Input -->
+                    <div class="mb-3 row align-items-center">
+                        <label for="foodStampAmount" class="col-sm-4 col-form-label required">Food Stamp Amount</label>
+                        <div class="col-sm-6 d-flex align-items-center position-relative gap-2">
+                            <input type="number" id="foodStampAmount" class="form-control" placeholder="Enter Amount">
+                           
+                        </div>
+                    </div>
+
 
             <!-- Action Buttons -->
             <div class="button-container">
@@ -115,9 +212,10 @@
                 </button>
             </div>
         </div>
+        </form>
     </div>
 </div>
-
+</div>
 <script>
     // Show form when + button is clicked
     document.getElementById('addMemberBtn').addEventListener('click', function () {

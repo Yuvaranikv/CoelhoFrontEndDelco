@@ -1,0 +1,150 @@
+﻿@page
+@model TURN.Pages.IntakeInsuranceModel
+@{
+	Layout = "_LayoutLatest";
+}
+
+<div style="margin-bottom: 120px;"></div>
+@await Html.PartialAsync("Shared/_IntakeGeneralDetails")
+<div id="IntakeInsuranceSection">
+    <div class="container mt-8 form-container">
+        <h2 class="highlight-header mt-4">Insurance Benefits</h2>
+
+        <h2>Insurance Benefits Information  <button class="btn btn-primary float-end" id="addInsuranceBtn">+</button></h2>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Family Member</th>
+                    <th>Health Insurance</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>Covered</td>
+                    <td>Active</td>
+                    <td>
+                        <button class="btn btn-sm btn-warning">
+                            Edit
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-danger">
+                            Delete
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                <!-- Add more rows dynamically as needed -->
+            </tbody>
+        </table>
+
+        <div id="formInsuranceSection" style="display: none;">
+            <form action="/api/IntakeInsurance/SubmitForm" method="post">
+                <h4 class="mb-4 mt-5">Add New Insurance Benefit</h4>
+
+                <div class="container">
+                    <!-- Family Member Input -->
+                    <div class="mb-3 row align-items-center">
+                        <label for="familyMember" class="col-sm-4 col-form-label required">Family Member</label>
+                        <div class="col-sm-6">
+                            <div class="dropdown w-100">
+                                <button class="btn btn-white w-100 dropdown-toggle" type="button" id="FamilyMemberInsuranceDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                    Select Family Member
+                                </button>
+
+                                <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                                    <li>
+                                        <label class="form-check-label d-block">
+                                            <input type="checkbox" class="form-check-input"> John Doe
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Health Insurance Input -->
+                    <div class="mb-3 row align-items-center">
+                        <label for="healthInsurance" class="col-sm-4 col-form-label required">Health Insurance <span class="text-danger">*</span></label>
+                        <div class="col-sm-6 d-flex align-items-center position-relative gap-2">
+                            <div class="w-100">
+                                <button class="btn btn-white w-100 dropdown-toggle" type="button" id="HealthInsuranceDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                    Select Health Insurance
+                                </button>
+
+                                <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                                    <li><a class="dropdown-item" href="#">MEDICAID</a></li>
+                                    <li><a class="dropdown-item" href="#">MEDICARE</a></li>
+                                    <li><a class="dropdown-item" href="#">SCHIP-State Children's Health Insurance Program</a></li>
+                                    <li><a class="dropdown-item" href="#">Veteran's Health Administration (VHA)</a></li>
+                                    <li><a class="dropdown-item" href="#">Employer - Provided Health Insurance</a></li>
+                                    <li><a class="dropdown-item" href="#">Health insurance obtained through COBRA</a></li>
+                                    <li><a class="dropdown-item" href="#">Private Pay Health Insurance</a></li>
+                                    <li><a class="dropdown-item" href="#">State Health Insurance for Adults</a></li>
+                                    <li><a class="dropdown-item" href="#">Indian Health Services Program</a></li>
+                                    <li><a class="dropdown-item" href="#">Other</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Status Input -->
+                    <div class="mb-3 row align-items-center">
+                        <label for="status" class="col-sm-4 col-form-label required">Status</label>
+                        <div class="col-sm-6">
+                            <div class="dropdown w-100">
+                                <button class="btn btn-white w-100 dropdown-toggle" type="button" id="StatusInsuranceDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                    Select Status
+                                </button>
+
+                                <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                                    <li><a class="dropdown-item" href="#">Currently Receiving</a></li>
+                                    <li><a class="dropdown-item" href="#">Applied and decision pending</a></li>
+                                    <li><a class="dropdown-item" href="#">Applied and client not eligible</a></li>
+                                    <li><a class="dropdown-item" href="#">Client did not apply</a></li>
+                                    <li><a class="dropdown-item" href="#">N/A for this client</a></li>
+                                    <li><a class="dropdown-item" href="#">No</a></li>
+                                    <li><a class="dropdown-item" href="#">Don't Know</a></li>
+                                    <li><a class="dropdown-item" href="#">Client prefers not to answer</a></li>
+                                    <li><a class="dropdown-item" href="#">Data not collected</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Action Buttons -->
+                    <div class="button-container">
+                        <button class="btn btn-secondary" type="button" onclick="window.history.back();">
+                            <i class="fa-solid fa-arrow-left"></i> Go Back
+                        </button>
+                        <button type="submit" class="btn btn-primary" onclick="handleSaveInsurance(); return false;">
+                            <i class="fa-solid fa-save"></i> Save
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Show form when + button is clicked
+    document.getElementById('addInsuranceBtn').addEventListener('click', function () {
+        document.getElementById('formInsuranceSection').style.display = 'block';
+    });
+
+    // Handle form submission on Save button click
+    function handleSaveInsurance() {
+        alert('Insurance Benefit Added!');
+        document.getElementById('formInsuranceSection').style.display = 'none';
+    }
+</script>
+
