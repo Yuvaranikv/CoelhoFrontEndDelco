@@ -203,14 +203,14 @@
 
 
             <!-- Action Buttons -->
-            <div class="button-container">
-                <button class="btn btn-secondary" type="button" onclick="window.history.back();">
-                    <i class="fa-solid fa-arrow-left"></i> Go Back
-                </button>
-                <button type="submit" class="btn btn-primary" onclick="handleSave(); return false;">
-                    <i class="fa-solid fa-save"></i> Save
-                </button>
-            </div>
+                    <div class="d-flex justify-content-between mt-3">
+                        <button class="btn btn-secondary" type="button">
+                            <i class="fa-solid fa-arrow-left"></i> Go Back
+                        </button>
+                        <button type="button" class="btn btn-primary" id="nextButton" data-bs-toggle="modal" data-bs-target="#summaryModal">
+                            <i class="fa-solid fa-arrow-right"></i> Save
+                        </button>
+                    </div>
         </div>
         </form>
     </div>

@@ -197,3 +197,7 @@ h2.highlight-header {
     .ellipsis-icon-btn:hover .placeholder-text {
         display: block;
     }
+
+.dropdown-text {
+    color: #6c757d; /* Gray color */
+}
