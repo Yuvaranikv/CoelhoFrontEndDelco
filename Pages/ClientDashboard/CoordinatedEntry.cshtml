@@ -1,0 +1,20 @@
+﻿@page
+@model TURN.Pages.ClientDashboard.CoordinatedEntryModel
+@{
+    Layout = "_LayoutLatest";
+}
+
+<style>
+    /* .container.mt-4 {
+    margin:2px;
+    } */
+</style>
+
+  
+
+    @await Html.PartialAsync("_ClientDashboardMenu")  <!-- Include Partial View -->
+
+    <div class="content mt-4">
+        <p>Welcome to the Coordinated Entry page. Here, you can manage client intake and referrals.</p>
+        <!-- Add more content or forms as needed -->
+    </div>

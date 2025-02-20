@@ -1,0 +1,119 @@
+﻿@page
+@model TURN.Pages.CurrentLegalIssuesModel
+@{
+    Layout = "_LayoutLatest";
+}
+
+<div style="margin-bottom: 120px;"></div>
+@await Html.PartialAsync("Shared/_IntakeGeneralDetails")
+
+<div id="CurrentLegalIssueSection">
+    <div class="container mt-8 form-container">
+        <h2 class="highlight-header mt-4">Current Legal Issues</h2>
+
+        <h2>
+            Legal Issues Information
+            <button class="btn btn-primary float-end" id="addLegalIssueBtn">+</button>
+        </h2>
+
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Family Member</th>
+                    <th>Legal Issue Type</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>Legal Issue Type</td>
+                    <td>
+                        <button class="btn btn-sm btn-warning">
+                            Edit <i class="fas fa-edit"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-danger">
+                            Delete <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Add Legal Issue Form -->
+        <div id="formLegalIssueSection" style="display: none;">
+            <form action="/api/CurrentLegal/SubmitForm" method="post">
+                <h4 class="mb-4 mt-5">Add Legal Issue</h4>
+
+                <div class="container">
+                    <!-- Family Member Dropdown -->
+                    <div class="mb-3 row d-flex align-items-center p-0 m-0">
+                        <label for="familyMember" class="col-sm-4 col-form-label required p-0 m-0 text-start">Family Member</label>
+                        <div class="col-sm-6 p-0">
+                            <div class="dropdown w-100">
+                                <button class="btn btn-white w-100 dropdown-toggle text-start" type="button" id="FamilyMemberLegalDropdown"
+                                        data-bs-toggle="dropdown" aria-expanded="false"
+                                        style="background-color: white; border: 1px solid #ced4da; padding-left: 4px;">
+                                    John Doe
+                                </button>
+                                <ul class="dropdown-menu w-100 dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#">John Doe</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Legal Issues Dropdown -->
+                    <div class="mb-3 row d-flex align-items-center p-0 m-0">
+                        <label for="legalIssues" class="col-sm-4 col-form-label required p-0 m-0 text-start">Legal Issue Type</label>
+                        <div class="col-sm-6 p-0">
+                            <div class="dropdown w-100">
+                                <button class="btn btn-white w-100 dropdown-toggle text-start" type="button" id="LegalIssuesDropdown"
+                                        data-bs-toggle="dropdown" aria-expanded="false"
+                                        style="background-color: white; border: 1px solid #ced4da; padding-left: 4px;">
+                                    Select Legal Issue Type
+                                </button>
+                                <ul class="dropdown-menu w-100 dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#">Bankruptcy</a></li>
+                                    <li><a class="dropdown-item" href="#">Court Order</a></li>
+                                    <li><a class="dropdown-item" href="#">Criminal</a></li>
+                                    <li><a class="dropdown-item" href="#">Custody</a></li>
+                                    <li><a class="dropdown-item" href="#">Divorce</a></li>
+                                    <li><a class="dropdown-item" href="#">Domestic Violence</a></li>
+                                    <li><a class="dropdown-item" href="#">Ex-Offender</a></li>
+                                    <li><a class="dropdown-item" href="#">Lawsuit</a></li>
+                                    <li><a class="dropdown-item" href="#">Other</a></li>
+                                    <li><a class="dropdown-item" href="#">Outstanding Warrant</a></li>
+                                    <li><a class="dropdown-item" href="#">Parole</a></li>
+                                    <li><a class="dropdown-item" href="#">Probation</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="d-flex justify-content-between mt-3">
+                        <button class="btn btn-secondary" type="button">Go Back</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Show form when + button is clicked
+    document.getElementById('addLegalIssueBtn').addEventListener('click', function () {
+        document.getElementById('formLegalIssueSection').style.display = 'block';
+    });
+
+    // Handle form submission on Save button click
+    function handleSaveLegalIssue() {
+        alert('Current Legal Issue Added!');
+        document.getElementById('formLegalIssueSection').style.display = 'none';
+    }
+</script>

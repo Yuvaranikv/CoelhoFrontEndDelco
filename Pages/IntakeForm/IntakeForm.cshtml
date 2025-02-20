@@ -5,62 +5,7 @@
 }
 
 <style>
-	/* Styling for the background and content */
-	.form-container {
-		background-color: #e3f2fd; /* Light blue background */
-				border-radius: 10px;
-			}
-
-		.form-container label {
-			font-size: 1.2rem;
-			font-weight: normal; /* Ensure label is not bold */
-			padding-left: 0.5rem;
-			margin-left: 15px; /* Adds space before labels */
-		}
-
-			/* Adding red color to mandatory fields */
-			.form-container label.required::after {
-				content: " *";
-				color: red;
-			}
-
-		.form-container .form-control {
-			font-size: 1rem;
-		}
-
-	h2.highlight-header {
-		background-color: royalblue;
-		color: white;
-		padding: 5px;
-		border-radius: 8px;
-		text-align: center;
-		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-		margin-bottom: 40px;
-	}
-
-	/* Add space above form fields */
-	.form-container .row {
-		display: flex;
-		align-items: center;
-		margin-top: 15px; /* Space above each form field */
-	}
-
-	/* Add margin below the form */
-	.container.mt-8 {
-		margin-bottom: 30px;
-	}
-
-	/* Ensure the label and input stay on the same line */
-	.form-container .col-sm-6.d-flex.align-items-center {
-		display: flex;
-		align-items: center;
-	}
-
-	/* Reduce the input width */
-	.form-container input[type="number"] {
-		width: auto;
-	}
-
+	
 	/* Styling the headings */
 	.heading-section {
 		display: flex;
@@ -304,9 +249,9 @@
 				<h6>Current Legal Issues</h6>
 			</div>
 			<div class="status-section">
-				<button type="button" class="btn btn-custom btn-block">
+				<a href="/CurrentLegalIssues" class="btn btn-custom btn-block">
 					Fill the Details <i class="fa-solid fa-caret-right ms-5 fa-2x"></i>
-				</button>
+				</a>
 			</div>
 		</div>
 		<hr />
