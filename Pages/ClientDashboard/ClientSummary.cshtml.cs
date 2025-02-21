@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace TURN.Pages.ClientDashboard
 {
-    public class ClientDashboardModel : PageModel
+    public class ClientSummaryModel : PageModel
     {
         public void OnGet()
         {

@@ -1,0 +1,138 @@
+﻿@page
+@model TURN.Pages.ClientDashboard.ClientSummaryModel
+@{
+    Layout = "_LayoutLatest";
+}
+
+<style>
+    .custom-bg-light-blue {
+        background-color: #e3f2fd !important;
+    }
+
+   
+
+    .bg-custom-gray {
+        background-color: #e8e8e8 !important;
+        color: black;
+    }
+
+    .label-width {
+        min-width: 140px; /* Adjust this width as needed */
+        display: inline-block;
+    }
+   
+</style>
+
+
+
+@await Html.PartialAsync("_ClientDashboardMenu")  <!-- Include Partial View -->
+
+
+<div class="card shadow-sm p-3">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Prior HMIS Episodes for Head of Household
+        <input type="checkbox" id="hmisCheckbox" class="form-check-input ms-2">
+    </h6>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+            <thead class="thead-dark">
+                <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                    <th>Project Name</th>
+                    <th>Type of Project</th>
+                    <th>Status</th>
+                    <th>Start Date</th>
+                    <th>Move-in Date</th>
+                    <th>End Date</th>
+                    <th>Length of Time</th>
+                    <th>Remarks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" id="projectName" class="form-control border-0 text-dark px-2" placeholder="MHP Street Outreach" /></td>
+                    <td><input type="text" id="projectType" class="form-control border-0  text-dark px-2" placeholder="Street Outreach" /></td>
+                    <td><input type="text" id="projectStatus" class="form-control border-0 text-dark px-2" placeholder="Enrolled" /></td>
+                    <td><input type="text" id="startDate" class="form-control border-0  text-dark px-2 datepicker" placeholder="10/04/2024" /></td>
+                    <td><input type="text" id="moveInDate" class="form-control border-0  text-dark px-2 datepicker" placeholder="-" /></td>
+                    <td><input type="text" id="endDate" class="form-control border-0 text-dark px-2 datepicker" placeholder="-" /></td>
+                    <td><input type="text" id="lengthOfTime" class="form-control border-0 text-dark px-2" placeholder="139 days" /></td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-outline-secondary btn-sm px-3">Load</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="card shadow-sm p-3">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Chronic Homeless Verification History
+    </h6>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+            <thead class="thead-dark">
+                <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                    <th>Verified By</th>
+                    <th>Verification Date</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <td><input type="text" class="form-control border-0  text-dark px-2" placeholder="Verified By" /></td>
+                    <td><input type="text" class="form-control border-0  text-dark px-2 datepicker" placeholder="DD/MM/YYYY" /></td>
+                    <td><input type="text" class="form-control border-0  text-dark px-2 datepicker" placeholder="DD/MM/YYYY" /></td>
+                    <td><input type="text" class="form-control border-0  text-dark px-2 datepicker" placeholder="DD/MM/YYYY" /></td>
+                    <td><input type="text" class="form-control border-0  text-dark px-2" placeholder="Comments" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card shadow-sm p-3">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Client Demographics
+        <span class="d-flex align-items-center">
+            <input type="checkbox" class="form-check-input me-2">
+            <i class="fas fa-edit text-primary" role="button"></i>
+        </span>
+    </h6>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4"><strong>Client Name:</strong> Adams, Aaron</div>
+            <div class="col-md-4"><strong>Personal Id:</strong> 285</div>
+            <div class="col-md-4"><strong>Social Security Number:</strong> XXX-XX-8148</div>
+            <div class="col-md-4"><strong>Gender:</strong> Man (Boy if child)</div>
+            <div class="col-md-4"><strong>Race and Ethnicity:</strong> White</div>
+            <div class="col-md-4"><strong>Veteran Status:</strong> N/A</div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-4 d-flex align-items-center">
+                <strong class="me-2">Date of Birth:</strong>
+                <span>03/16/1955</span>
+               @*  <button class="ellipsis-icon-btn ms-2" type="button" data-bs-toggle="modal" data-bs-target="#FirstNameModal">
+                    <i class="fas fa-ellipsis-h"></i>
+                </button>
+            *@ </div>
+            <div class="col-md-4"><strong>Age:</strong> 69 Year(s) 11 Month(s)</div>
+             </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
