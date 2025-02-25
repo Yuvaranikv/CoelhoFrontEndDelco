@@ -1,0 +1,74 @@
+﻿@page
+@model TURN.Pages.IntakeOutcomeModel
+@{
+	Layout = "_LayoutLatest";
+}
+<div style="margin-bottom: 120px;"></div>
+@await Html.PartialAsync("Shared/_IntakeGeneralDetails")
+
+<div id="IntakeOutcomeSection">
+    <div class="container mt-8 form-container" style="margin-top:0px;">
+        <h2 class="highlight-header mt-4">Intake Outcome</h2>
+        <table class="table table-bordered mt-3">
+            <tbody>
+                <tr>
+                    <td style="width: 150px; font-weight: bold; vertical-align: middle;">Intake Outcome</td>
+                    <td>
+                        <div class="dropdown w-100">
+                            <button class="btn btn-light w-100 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Select Intake Outcome
+                            </button>
+                            <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px;">
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Create case (Admit into program)
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Outcome pending
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Denied service
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Services refused
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Services no longer needed
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Auto close out by computer
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> Other
+                                    </label>
+                                
+                                </li>
+                                <li>
+                                    <label class="form-check-label d-block">
+                                        <input type="checkbox" class="form-check-input"> If Other, (please explain)
+                                    </label>
+                                    <input type="text" class="form-control mt-2">
+                                </li>
+                                <li>
+                                    <button class="btn btn-primary mt-2 w-100" id="OKButtonIntakeOutcome">OK</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
