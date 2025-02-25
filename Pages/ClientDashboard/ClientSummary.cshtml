@@ -20,7 +20,48 @@
         min-width: 140px; /* Adjust this width as needed */
         display: inline-block;
     }
-   
+
+    /* Common styling for icons and checkbox */
+    .uniform-size {
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+    }
+
+    /* Checkbox */
+    .custom-checkbox {
+        width: 1.7rem; /* Match icon width */
+        height: 1.7rem; /* Match icon height */
+        border: 2px solid #0d6efd; /* Same as icons */
+        appearance: none; /* Remove default styling */
+        border-radius: 4px; /* Keep consistency */
+        display: flex;
+        justify-content: center;
+        vertical-align: middle;
+        margin-top: -2px; /* Adjust this value for alignment */
+    }
+
+        .custom-checkbox:checked {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+    /* Menu & Plus Icon */
+    .custom-icon {
+        border: 2px solid #0d6efd;
+        font-size: 1rem;
+        color: white !important;
+        cursor: pointer;
+        background-color: #0d6efd;
+    }
+
+        .custom-icon.fa-plus {
+            color: white !important;
+            background-color: #0d6efd; /* Force white color */
+        }
 </style>
 
 
@@ -31,7 +72,8 @@
 <div class="card shadow-sm p-3">
     <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
         Prior HMIS Episodes for Head of Household
-        <input type="checkbox" id="hmisCheckbox" class="form-check-input ms-2">
+      
+        <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size"> <!-- Checkbox -->
     </h6>
     <div class="table-responsive">
         <table class="table table-bordered table-hover shadow-sm rounded border border-light">
@@ -94,36 +136,324 @@
     </div>
 </div>
 
-<div class="card shadow-sm p-3">
+<div class="card shadow-sm p-3 mt-4">
     <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
-        Client Demographics
+        Intake
         <span class="d-flex align-items-center">
-            <input type="checkbox" class="form-check-input me-2">
-            <i class="fas fa-edit text-primary" role="button"></i>
+                       <i class="fas fa-edit text-primary me-2 custom-icon uniform-size" role="button"></i><!-- Plus Button -->
+            <input type="checkbox" class="form-check-input ms-2 custom-checkbox">
+            
         </span>
+
     </h6>
 
     <div class="card-body">
-        <div class="row">
-            <div class="col-md-4"><strong>Client Name:</strong> Adams, Aaron</div>
-            <div class="col-md-4"><strong>Personal Id:</strong> 285</div>
-            <div class="col-md-4"><strong>Social Security Number:</strong> XXX-XX-8148</div>
-            <div class="col-md-4"><strong>Gender:</strong> Man (Boy if child)</div>
-            <div class="col-md-4"><strong>Race and Ethnicity:</strong> White</div>
-            <div class="col-md-4"><strong>Veteran Status:</strong> N/A</div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-md-4 d-flex align-items-center">
-                <strong class="me-2">Date of Birth:</strong>
-                <span>03/16/1955</span>
-               @*  <button class="ellipsis-icon-btn ms-2" type="button" data-bs-toggle="modal" data-bs-target="#FirstNameModal">
-                    <i class="fas fa-ellipsis-h"></i>
-                </button>
-            *@ </div>
-            <div class="col-md-4"><strong>Age:</strong> 69 Year(s) 11 Month(s)</div>
-             </div>
+        <form>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="fw-bold">Created On:</label>
+                    <input type="date" class="form-control" value="2014-10-08">
+                </div>
+                <div class="col-md-4">
+                    <label class="fw-bold">Created By:</label>
+                    <input type="text" class="form-control" value="Washington, Desdemona">
+                </div>
+                <div class="col-md-4">
+                    <label class="fw-bold">Household Size:</label>
+                    <input type="number" class="form-control" value="4">
+                </div>
+            </div>
+
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4"><strong>Housing Status:</strong></td>
+                        <td class="col-md-8">
+                            <select class="form-select">
+                                <option selected disabled>Select Housing Status</option>
+                                <option>Homeless</option>
+                                <option>Imminent Risk of losing housing</option>
+                                <option>Homeless only under other federal statutes</option>
+                                <option>Fleeing Domestic Violence</option>
+                                <option>At-risk of homelessness</option>
+                                <option>Stably housed</option>
+                                <option>Don't know</option>
+                                <option>Client prefers not to answer</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Last Night Stay:</strong></td>
+                        <td>
+                            <select class="form-select">
+                                <option selected disabled>Select Last Night Stay</option>
+                                <option>Place not meant for habitation</option>
+                                <option>Emergency shelter, including hotel or motel paid for with ES voucher</option>
+                                <option>Safe Haven</option>
+                                <option>Foster care home or foster care group home</option>
+                                <option>Hospital or other residential non-psychiatric medical facility</option>
+                                <option>Jail, prison or juvenile detention facility</option>
+                                <option>Long-Term care facility or nursing home</option>
+                                <option>Host Home (non-crisis)</option>
+                                <option>Psychiatric hospital or other psychiatric facility</option>
+                                <option>Substance abuse treatment facility or detox center</option>
+                                <option>Hotel or motel paid for without emergency shelter voucher</option>
+                                <option>Owned by client, no ongoing housing subsidy</option>
+                                <option>Owned by client, with ongoing housing subsidy</option>
+                                <option>Permanent housing (other than RRH) for formerly homeless persons</option>
+                                <option>Rental by client, no ongoing housing subsidy</option>
+                                <option>Rental by client, with VASH housing subsidy</option>
+                                <option>Rental by client, with GPD TIP housing subsidy</option>
+                                <option>Rental by client, with other ongoing housing subsidy</option>
+                                <option>Residential Project or halfway house with no homeless criteria</option>
+                                <option>Staying or living in a family member's room, apartment, or house</option>
+                                <option>Staying or living in a friend's room, apartment, or house</option>
+                                <option>Rental by client, with RRH or equivalent subsidy</option>
+                                <option>Transitional housing for homeless persons (including homeless youth)</option>
+                                <option>Client does not know</option>
+                                <option>Client prefers not to answer</option>
+                                <option>Rental by client, with HCV voucher (tenant or project-based)</option>
+                                <option>Rental by client in a public housing unit</option>
+                                <option>Data not collected</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="fw-bold">Monthly Family Income:</label>
+                                    <input type="text" class="form-control" value="$1,916.55">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="fw-bold">Fed Poverty Level:</label>
+                                    <input type="text" class="form-control" value="76.66%">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="fw-bold">Annual Median Income:</label>
+                                    <input type="text" class="form-control" value="20.61">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="fw-bold">Non-Cash Benefits:</label>
+                                    <select class="form-select">
+                                        <option selected disabled>Select Non-Cash Benefits</option>
+                                        <option>No</option>
+                                        <option>Yes</option>
+                                        <option>Client doesn't know</option>
+                                        <option>Client prefers not to answer</option>
+                                        <option>Data not collected</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="fw-bold">Health Insurance:</label>
+                                    <select class="form-select">
+                                        <option selected disabled>Select Health Insurance</option>
+                                        <option>No</option>
+                                        <option>Yes</option>
+                                        <option>Client doesn't know</option>
+                                        <option>Client prefers not to answer</option>
+                                        <option>Data not collected</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="fw-bold">Disabling Condition:</label>
+                                    <select class="form-select">
+                                        <option selected disabled>Select Disabling Condition</option>
+                                        <option>No</option>
+                                        <option>Yes</option>
+                                        <option>Client doesn't know</option>
+                                        <option>Client prefers not to answer</option>
+                                        <option>Data not collected</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="fw-bold">Domestic Violence:</label>
+                                    <select class="form-select">
+                                        <option selected>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
     </div>
 </div>
+
+<!-- New Episode Section -->
+<div class="card shadow-sm p-3 mt-4">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Episode
+        <span class="d-flex align-items-center">
+            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i><!-- Plus Button -->
+            <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size"> <!-- Checkbox -->
+          
+        </span>
+
+    </h6>
+
+    <div class="card-body">
+        <form>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="fw-bold">Case Number:</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label class="fw-bold">Case Type:</label>
+                    <select class="form-select">
+                        <option selected></option>
+                        <option>Household without children</option>
+                        <option>Household with at least one adult and one child</option>
+                        <option>Household with only children</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="fw-bold">Start Date:</label>
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="fw-bold">End Date:</label>
+                    <input type="date" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label class="fw-bold">Length of Stay:</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label class="fw-bold">Chronically Homeless:</label>
+                    <select class="form-select">
+                        <option selected>Verified Status</option>
+                        <option>No</option>
+                        <option>Yes</option>
+                        <option>Client doesn't know</option>
+                        <option>Client prefers not to answer</option>
+                        <option>Data not collected</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="fw-bold">Current Case Manager:</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label class="fw-bold">Current Unit:</label>
+                    <input type="text" class="form-control" placeholder="Current Unit">
+                </div>
+               
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Discharge section -->
+<div class="card shadow-sm p-3 mt-4">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Discharge and Follow-up
+        <span class="d-flex align-items-center">
+            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i><!-- Plus Button -->
+            <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size"> <!-- Checkbox -->
+          
+        </span>
+    </h6>
+</div>
+
+<div class="card shadow-sm p-3">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Contact Information
+        <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size"> <!-- Checkbox -->
+    </h6>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+            <thead class="thead-dark">
+                <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                    <th>Contact Name</th>
+                    <th>Type of Contact</th>
+                    <th>Relationship</th>
+                    <th>Organization Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" id="contactName" class="form-control border-0 text-dark px-2" placeholder="John Doe" /></td>
+                    <td><input type="text" id="contactType" class="form-control border-0 text-dark px-2" placeholder="Primary Contact" /></td>
+                    <td><input type="text" id="relationship" class="form-control border-0 text-dark px-2" placeholder="Family Member" /></td>
+                    <td><input type="text" id="organizationName" class="form-control border-0 text-dark px-2" placeholder="ABC Organization" /></td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-outline-secondary btn-sm px-3">Load</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card shadow-sm p-3">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Education
+        <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i><!-- Plus Button -->
+        <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size"> <!-- Checkbox -->
+    </h6>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+
+            <tbody>
+                <tr>
+                    <td class="d-flex align-items-center">
+                        <label for="educationLevel" class="me-2" style="width: 200px;">Level of Education:</label>
+                        <select id="educationLevel" class="form-select border-0 text-dark px-2" style="flex: 1; min-width: 250px;">
+                            <option value="" selected disabled>Select Level of Education</option>
+                            <option value="Not Applicable">Not Applicable</option>
+                            <option value="Not enrolled in school">Not enrolled in school</option>
+                            <option value="Less than Grade 5">Less than Grade 5</option>
+                            <option value="Grades 5-6">Grades 5-6</option>
+                            <option value="Grades 7-8">Grades 7-8</option>
+                            <option value="Grades 9-11">Grades 9-11</option>
+                            <option value="Grade 12 / High school diploma">Grade 12 / High school diploma</option>
+                            <option value="School program does not have grade levels">School program does not have grade levels</option>
+                            <option value="GED">GED</option>
+                            <option value="Some college">Some college</option>
+                            <option value="Associates degree">Associates degree</option>
+                            <option value="Bachelor's degree">Bachelor's degree</option>
+                            <option value="Graduate degree">Graduate degree</option>
+                            <option value="Under Graduate">Under Graduate</option>
+                            <option value="Post Graduate">Post Graduate</option>
+                            <option value="Vocational certification">Vocational certification</option>
+                            <option value="Client doesnt know">Client doesn't know</option>
+                            <option value="Client prefers not to answer">Client prefers not to answer</option>
+                            <option value="Data not collected">Data not collected</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
 
 
 
