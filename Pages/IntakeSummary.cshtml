@@ -1,0 +1,67 @@
+﻿@page
+@model TURN.Pages.IntakeSummaryModel
+@{
+	Layout = "_LayoutLatest";
+}
+<div style="margin-bottom: 120px;"></div>
+@await Html.PartialAsync("Shared/_IntakeGeneralDetails")
+
+<div id="IntakeSummarySection">
+
+    <div class="container mt-8 form-container" style="margin-top:0px;">
+        <h2 class="highlight-header mt-4">Intake Summary </h2>
+        <table class="table table-bordered mt-3">
+            <tbody>
+                <tr>
+                    <td>
+                        <textarea class="form-control" rows="2" placeholder=""></textarea>
+                    </td>
+                    <td style="width: 50px; text-align: center;">
+                        <button class="btn btn-sm btn-warning edit-btn">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal Popup -->
+<div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title highlight-header" id="commentModalLabel">Comment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <textarea class="form-control" id="commentText" rows="5" placeholder=""></textarea>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="clearBtn">Clear</button>
+                <button type="button" class="btn btn-primary">OK</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script to Handle Modal Open and Clear Button -->
+<script>
+    document.querySelectorAll('.edit-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            var commentModal = new bootstrap.Modal(document.getElementById('commentModal'));
+            commentModal.show();
+        });
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', function() {
+        document.getElementById('commentText').value = "";
+    });
+</script>
