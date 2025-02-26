@@ -1,0 +1,396 @@
+﻿@page
+@model TURN.Pages.EducationModel
+@{
+	// Layout = "_LayoutLatest";
+}
+
+<div class="container mt-8 form-container">
+    <div class="card shadow-sm p-4 mb-3">
+        <h2 class="highlight-header mt-4">Education</h2>
+        <form method="post">
+            <!-- Highest Level of Education -->
+          
+            <div class="mb-3 row align-items-center">
+                <label for="Highest Level of Education" class="col-sm-4 col-form-label required">Highest Level of Education</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100" >
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="educationDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            Select Highest Level of Education
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Not Applicable
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Not enrolled in school
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Less than Grade 5
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Grades 5-6
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Grades 7-8
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Grades 9-11
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Grade 12 / High school diploma
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> School program does not have grade levels
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> GED
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Some college
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Associate's degree
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Bachelor's degree
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Graduate degree
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Undergraduate
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Postgraduate
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Vocational certification
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Client doesn't know
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Client prefers not to answer
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Data not collected
+                                </label>
+                            </li>
+
+                            <li>
+                                <button class="btn btn-primary mt-2 w-100" id="OKButtonEducation">OK</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enrolled in Training Program -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Are you presently enrolled in any educational or training program?</label>
+                <div class="col-sm-6">
+                    <input type="radio" name="enrolled" value="No"> No
+                    <input type="radio" name="enrolled" value="Yes"> Yes
+                </div>
+            </div>
+
+            <!-- Explain the program -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Explain the program</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="Enter details">
+                </div>
+            </div>
+
+            <!-- Current Grade -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Current Grade</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="educationDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            Select Current Grade
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Not Applicable
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Not enrolled in school
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Less than Grade 5
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Grades 5-6
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Grades 7-8
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Grades 9-11
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Grade 12 / High school diploma
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> School program does not have grade levels
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> GED
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Some college
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Associate's degree
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Bachelor's degree
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Graduate degree
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Undergraduate
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Postgraduate
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Vocational certification
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Client doesn't know
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Client prefers not to answer
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Data not collected
+                                </label>
+                            </li>
+
+                            <li>
+                                <button class="btn btn-primary mt-2 w-100" id="OKButtonEducation">OK</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- School District -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">School District</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="schoolDistrictDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            Select School District
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Chester Upland</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Chichester</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Garnet Valley</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Haverford Township</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Interboro</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Marple Newtown</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Penn-Delco</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Radnor Township</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Ridley</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Rose Tree Media</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Southeast Delco</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Springfield</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Upper Darby</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Wallingford Swarthmore</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> William Penn</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Bucks County</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Chester County</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Montgomery County</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Philadelphia County</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Other PA County</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Delaware County Intermediate</label></li>
+                            <li>
+                                <button class="btn btn-primary mt-2 w-100" id="OKButtonSchoolDistrict">OK</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- School Year Start and End Date -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">School Year Start Date</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">School Year End Date</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+
+            <!-- Current School -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Current School</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="currentSchoolDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                          
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Not currently enrolled in any school or educational course</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Currently enrolled but NOT attending regularly (when school or the course is in session)</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Currently enrolled and attending regularly (when school or the course is in session)</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Client doesn't know</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Client prefers not to answer</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Data not collected</label></li>
+                            <li>
+                                <button class="btn btn-primary mt-2 w-100" id="OKButtonCurrentSchool">OK</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Most Recent Educational Status -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Most Recent Educational Status</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="educationStatusDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                           
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> K12 - Graduated from high school</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> K12 - Obtained GED</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> K12 - Dropped out</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> K12 - Suspended</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> K12 - Expelled</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Higher education - Pursuing a credential but not currently attending</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Higher education - Dropped out</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Higher education - Obtained a credential/degree</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Client doesn't know</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Client prefers not to answer</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Data not collected</label></li>
+                            <li>
+                                <button class="btn btn-primary mt-2 w-100" id="OKButtonEducationStatus">OK</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Current Educational Status -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Current Educational Status</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="currenteducationStatusDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                          
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Pursuing a high school diploma or GED</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Pursuing Associate's Degree</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Pursuing Bachelor's Degree</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Pursuing Graduate Degree</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Pursuing other post-secondary credential</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Client doesn't know</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Client prefers not to answer</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Data not collected</label></li>
+                            <li>
+                                <button class="btn btn-primary mt-2 w-100" id="OKButtonEducationStatus">OK</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end gap-3">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-secondary">Print</button>
+                <button type="button" class="btn btn-dark">Exit</button>
+            </div>
+        </form>
+    </div>
+</div>
+

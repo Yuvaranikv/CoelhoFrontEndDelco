@@ -415,11 +415,12 @@
     </div>
 </div>
 
+<!-- Education section -->
 <div class="card shadow-sm p-2">
     <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
         Education
         <span class="d-flex align-items-center">
-            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i><!-- Plus Button -->
+            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button" onclick="redirectToEducation()"></i><!-- Plus Button -->
             <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size"> <!-- Checkbox -->
 
         </span>
@@ -606,7 +607,7 @@
     <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
         Housing Application
         <span class="d-flex align-items-center">
-            <i class="fas fa-bars me-2 custom-icon uniform-size" role="button"></i>
+         
             <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i>
             <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size">
         </span>
@@ -627,6 +628,234 @@
         </table>
     </div>
 </div>
+
+<div class="card shadow-sm p-2 mt-3">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Housing History
+        <span class="d-flex align-items-center">
+            <i class="fas fa-bars me-2 custom-icon uniform-size" role="button"></i>
+            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i>
+            <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size">
+        </span>
+    </h6>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+            <thead class="thead-dark">
+                <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                    <th>Move-in Date</th>
+                    <th>Move-out Date</th>
+                    <th>Length of Time</th>
+                    <th>Type of Residence</th>
+                    <th>Address</th>
+                    <th>Months</th>
+                    <th>Episode</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="7" class="text-center">No information recorded in this section</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card shadow-sm p-2 mt-3">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Disability
+        <span class="d-flex align-items-center">
+        
+            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i>
+            <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size">
+        </span>
+    </h6>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+            <thead class="thead-dark">
+                <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                    <th>Family Member</th>
+                    <th>Disability</th>
+                    <th>Long Term</th>
+                    <th>Receiving Treatment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4" class="text-center">No information recorded in this section</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card shadow-sm p-2 mt-3">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Medical
+        <span class="d-flex align-items-center">
+          
+            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i>
+            <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size">
+        </span>
+    </h6>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+            <thead class="thead-dark">
+                <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                    <th>Problem</th>
+                    <th>Treatment Status</th>
+                    <th>Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="3" class="text-center">No information recorded in this section</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card shadow-sm p-2 mt-3">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Substance Abuse
+        <span class="d-flex align-items-center">
+          
+            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i>
+            <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size">
+        </span>
+    </h6>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+            <thead class="thead-dark">
+                <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                    <th>Type of Drug</th>
+                    <th>Last Use</th>
+                    <th>Treatment Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="3" class="text-center">No information recorded in this section</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="card shadow-sm p-2 mt-3">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Mental Health
+        <span class="d-flex align-items-center">
+          
+            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i>
+            <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size">
+        </span>
+    </h6>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+            <thead class="thead-dark">
+                <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                    <th>Type of Problem</th>
+                    <th>Type of Intensity</th>
+                    <th>Receiving Treatment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="3" class="text-center">No information recorded in this section</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card shadow-sm p-2 mt-3">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Mental Health Diagnosis
+        <span class="d-flex align-items-center">
+         
+            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i>
+            <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size">
+        </span>
+    </h6>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+            <thead class="thead-dark">
+                <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                    <th>Date of Diagnosis</th>
+                    <th>Axis 1</th>
+                    <th>Axis 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="3" class="text-center">No information recorded in this section</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card shadow-sm p-2 mt-3">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Medication
+        <span class="d-flex align-items-center">
+          
+            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i>
+            <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size">
+        </span>
+    </h6>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+            <thead class="thead-dark">
+                <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                    <th>Name</th>
+                    <th>Type of Medication</th>
+                    <th>Dosage / Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="3" class="text-center">No information recorded in this section</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card shadow-sm p-2 mt-3">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Hospitalization
+        <span class="d-flex align-items-center">
+          
+            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i>
+            <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size">
+        </span>
+    </h6>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+            <thead class="thead-dark">
+                <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                    <th>Area of Treatment</th>
+                    <th>Type of Treatment</th>
+                    <th>Hospital Name</th>
+                    <th>Start Date</th>
+                    <th>LOS (Days)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="5" class="text-center">No information recorded in this section</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function redirectToEducation() {
+        window.location.href = "/Education"; // Change this to the correct URL
+    }
+</script>
 
 
 
