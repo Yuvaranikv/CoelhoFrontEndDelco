@@ -1,0 +1,145 @@
+﻿@page
+@model TURN.Pages.MilitaryServiceModel
+@{
+}
+
+<div class="container mt-8 form-container">
+    <div class="card shadow-sm p-4 mb-3">
+        <h2 class="highlight-header mt-4">Military Service</h2>
+        <form method="post">
+            <!-- Year Entered -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Year Entered</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" placeholder="YYYY">
+                </div>
+            </div>
+
+            <!-- Year Separated -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Year Separated</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" placeholder="YYYY">
+                </div>
+            </div>
+
+            <!-- Branch of Military -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Branch of Military</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="branchDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            Select Branch of Military
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Army</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Air Force</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Space Force</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Navy</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Marines</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Coast Guard</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Other</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Don't Know</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Client prefers not to answer</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Data not collected</label></li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> If Other, (please explain)
+                                </label>
+                                <input type="text" class="form-control mt-2">
+                            </li>
+                            <li><button class="btn btn-primary mt-2 w-100" id="OKButtonBranch">OK</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Discharge Status -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Discharge Status</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="dischargeDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            Select Discharge Status
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Honorable</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> General under honorable conditions</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Bad Conduct</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Medical</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Dishonorable</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Under other than honorable conditions(OTH)</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Uncharacterized</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Other</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Don't Know</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Client prefers not to answer</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Data not collected</label></li>
+                            <li><button class="btn btn-primary mt-2 w-100" id="OKButtonDischarge">OK</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Military ID -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Do you have a Military ID?</label>
+                <div class="col-sm-6">
+                    <input type="radio" name="militaryID" value="No"> No
+                    <input type="radio" name="militaryID" value="Yes"> Yes
+                </div>
+            </div>
+
+            <!-- VA Healthcare -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Have you ever received healthcare from a VA Medical Center?</label>
+                <div class="col-sm-6">
+                    <input type="radio" name="vaHealthcare" value="No"> No
+                    <input type="radio" name="vaHealthcare" value="Yes"> Yes
+                </div>
+            </div>
+
+            <!-- VA Benefits -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Have you applied or have a pending application for VA benefits or compensation?</label>
+                <div class="col-sm-6">
+                    <input type="radio" name="vaBenefits" value="No"> No
+                    <input type="radio" name="vaBenefits" value="Yes"> Yes
+                </div>
+            </div>
+
+            <!-- Military Operations -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Military Operations</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="operationsDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            Select Military Operations
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> World War II</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Korean War</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Vietnam War</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Persian Gulf War (Operation Desert Storm)</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Afghanistan (Operation Enduring Freedom)</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Iraq (Operation Iraqi Freedom)</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Iraq (Operation New Dawn)</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Other Peace-Keeping Operations or Military Interventions</label></li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> If Other, (please explain)
+                                </label>
+                                <input type="text" class="form-control mt-2">
+                            </li>
+                            <li><button class="btn btn-primary mt-2 w-100" id="OKButtonOperations">OK</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mb-3 text-end">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
