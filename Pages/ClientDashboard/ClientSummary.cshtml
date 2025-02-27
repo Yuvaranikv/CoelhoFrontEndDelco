@@ -495,7 +495,7 @@
         Legal Information
         <span class="d-flex align-items-center">
             <i class="fas fa-bars me-2 custom-icon uniform-size" role="button"></i> <!-- Menu Icon -->
-            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i><!-- Plus Button -->
+            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button" onclick="redirectToLegalInformation()"></i><!-- Plus Button -->
             <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size"> <!-- Checkbox -->
         </span>
     </h6>
@@ -860,6 +860,12 @@
 <script>
     function redirectToMilitary(){
         window.location.href="/MilitaryService";
+    }
+</script>
+
+<script>
+    function redirectToLegalInformation(){
+        window.location.href="/LegalInformation";
     }
 </script>
 

@@ -1,0 +1,226 @@
+﻿@page
+@model TURN.Pages.LegalInformationModel
+@{
+}
+<style>
+    .custom-bg-light-blue {
+        background-color: #e3f2fd !important;
+    }
+</style>
+<div class="container mt-8 form-container">
+    <div class="card shadow-sm p-4 mb-3">
+        <h2 class="highlight-header mt-4" style="margin-bottom:0px;">Legal Information</h2>
+        <form method="post">
+            <!-- Criminal Episode -->
+            <div class="mb-3 row align-items-center">
+                <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+                    Criminal Episode
+                    </h6>
+                <label class="col-sm-4 col-form-label required">Type of Offense</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="operationsDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            Select Type of Offense
+                        </button>
+                    <ul class="dropdown-menu dropdown-checkbox" aria-labelledby="dropdownMenuButton">
+                        <li><input type="checkbox" class="form-check-input" value="Aggravated assault"> Aggravated assault</li>
+                        <li><input type="checkbox" class="form-check-input" value="Arson"> Arson</li>
+                        <li><input type="checkbox" class="form-check-input" value="Burglary"> Burglary</li>
+                        <li><input type="checkbox" class="form-check-input" value="Child abuse"> Child abuse</li>
+                        <li><input type="checkbox" class="form-check-input" value="Disorderly Conduct"> Disorderly Conduct</li>
+                        <li><input type="checkbox" class="form-check-input" value="Drug sales"> Drug sales</li>
+                        <li><input type="checkbox" class="form-check-input" value="Drug possession"> Drug possession</li>
+                        <li><input type="checkbox" class="form-check-input" value="DUI"> DUI</li>
+                        <li><input type="checkbox" class="form-check-input" value="Forgery"> Forgery</li>
+                        <li><input type="checkbox" class="form-check-input" value="Loitering"> Loitering</li>
+                        <li><input type="checkbox" class="form-check-input" value="Murder"> Murder</li>
+                        <li><input type="checkbox" class="form-check-input" value="Prostitution"> Prostitution</li>
+                        <li><input type="checkbox" class="form-check-input" value="Rape"> Rape</li>
+                        <li><input type="checkbox" class="form-check-input" value="Robbery"> Robbery</li>
+                        <li><input type="checkbox" class="form-check-input" value="Scofflaw"> Scofflaw</li>
+                        <li><input type="checkbox" class="form-check-input" value="Terroristic threats"> Terroristic threats</li>
+                        <li><input type="checkbox" class="form-check-input" value="Sexual offense"> Sexual offense</li>
+                        <li><input type="checkbox" class="form-check-input" value="Simple assault"> Simple assault</li>
+                        <li><input type="checkbox" class="form-check-input" value="Theft"> Theft</li>
+                        <li><input type="checkbox" class="form-check-input" value="Trespassing"> Trespassing</li>
+                        <li><input type="checkbox" class="form-check-input" value="Unknown"> Unknown</li>
+                        <li><input type="checkbox" class="form-check-input" value="Firearms"> Firearms</li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Date of Offense</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Description</label>
+                <div class="col-sm-6 position-relative">
+                    <textarea class="form-control" placeholder="Description"></textarea>
+                    <span class="position-absolute top-50 translate-middle-y" style="right: 220px;">
+                        <i class="fas fa-edit"></i>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Outcome Information -->
+            <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+                Outcome Information
+            </h6>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Outcome</label>
+             <div class="col-sm-6">
+                <div class="dropdown w-100">
+                    <button class="btn btn-white w-100 dropdown-toggle" type="button" id="outcomeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Select Outcome
+                    </button>
+                    <ul class="dropdown-menu dropdown-checkbox" aria-labelledby="outcomeDropdown">
+                        <li><input type="checkbox" class="form-check-input" value="Community Service"> Community Service</li>
+                        <li><input type="checkbox" class="form-check-input" value="Fine"> Fine</li>
+                        <li><input type="checkbox" class="form-check-input" value="Parole"> Parole</li>
+                        <li><input type="checkbox" class="form-check-input" value="Prison sentence"> Prison sentence</li>
+                        <li><input type="checkbox" class="form-check-input" value="Probation"> Probation</li>
+                        <li><input type="checkbox" class="form-check-input" value="Other"> Other</li>
+                        <li><input type="checkbox" class="form-check-input" value="Warrant"> Warrant</li>
+                        <li><input type="checkbox" class="form-check-input" value="Resolved"> Resolved</li>
+                        <li>
+                            <label class="form-check-label d-block">
+                                <input type="checkbox" class="form-check-input"> If Other, (please explain)
+                            </label>
+                            <input type="text" class="form-control mt-2">
+                        </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Start Date</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">End Date</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">As Of Date</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Present Status</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="outcomeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Select Outcome
+                        </button>
+                        <ul class="dropdown-menu dropdown-checkbox" aria-labelledby="outcomeDropdown">
+                            <li><input type="checkbox" class="form-check-input" value="Community Service"> Community Service</li>
+                            <li><input type="checkbox" class="form-check-input" value="Fine"> Fine</li>
+                            <li><input type="checkbox" class="form-check-input" value="Parole"> Parole</li>
+                            <li><input type="checkbox" class="form-check-input" value="Prison sentence"> Prison sentence</li>
+                            <li><input type="checkbox" class="form-check-input" value="Probation"> Probation</li>
+                            <li><input type="checkbox" class="form-check-input" value="Other"> Other</li>
+                            <li><input type="checkbox" class="form-check-input" value="Warrant"> Warrant</li>
+                            <li><input type="checkbox" class="form-check-input" value="Resolved"> Resolved</li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> If Other, (please explain)
+                                </label>
+                                <input type="text" class="form-control mt-2">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Person Information -->
+            <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+                Contact Person Information
+            </h6>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">First Name</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Initial</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Last Name</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Type of contact</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="contactDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Select Type of Contact
+                        </button>
+                        <ul class="dropdown-menu dropdown-checkbox" aria-labelledby="contactDropdown">
+                            <li><input type="checkbox" class="form-check-input" value="Parole Officer"> Parole Officer</li>
+                            <li><input type="checkbox" class="form-check-input" value="Police Officer"> Police Officer</li>
+                            <li><input type="checkbox" class="form-check-input" value="Probation Officer"> Probation Officer</li>
+                            <li><input type="checkbox" class="form-check-input" value="Attorney"> Attorney</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Address1</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Address2</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">City</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">State</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Zip</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Phone</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="(___)-___-____">
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-3">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-secondary">Print</button>
+                <button type="button" class="btn btn-dark">Exit</button>
+            </div>
+        </form>
+    </div>
+</div>
