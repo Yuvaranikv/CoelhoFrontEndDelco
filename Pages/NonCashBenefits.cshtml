@@ -1,0 +1,113 @@
+﻿@page
+@model TURN.Pages.NonCashBenefitsModel
+@{
+    ViewData["Title"] = "Non Cash Benefits";
+}
+<div class="container mt-8 form-container">
+    <div class="card shadow-sm p-4 mb-3">
+        <h2 class="highlight-header mt-4">Non Cash Benefits</h2>
+        <form method="post">
+            <!-- Family Member -->
+            <div class="mb-3 row align-items-center">
+                <label for="familyMember" class="col-sm-4 col-form-label required">Family Member</label>
+                <div class="col-sm-6">
+                    <select id="nonCashBenefits" >
+                        <option selected>Adams,Tykira</option>
+                        <option value="1">Adams,Tykira</option>
+                       
+                    </select>
+                </div>
+            </div>
+
+            <!-- Non Cash Benefits -->
+            <div class="mb-3 row align-items-center">
+                <label for="nonCashBenefits" class="col-sm-4 col-form-label required">Non Cash Benefits</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="nonCashDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            Select Non Cash Benefits
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Food Assistance
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Housing Assistance
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Healthcare Support
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Transportation Aid
+                                </label>
+                            </li>
+                            <li>
+                                <button class="btn btn-primary mt-2 w-100" id="OKButtonNonCash">OK</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status -->
+            <div class="mb-3 row align-items-center">
+                <label for="status" class="col-sm-4 col-form-label required">Status</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <input type="text" id="status" class="form-control dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" placeholder="Select Status" readonly>
+                        <ul class="dropdown-menu w-100">
+                            <li><a class="dropdown-item" href="#">Currently Receiving</a></li>
+                            <li><a class="dropdown-item" href="#">Applied and decision pending</a></li>
+                            <li><a class="dropdown-item" href="#">Applied and client not eligible</a></li>
+                            <li><a class="dropdown-item" href="#">Client did not apply</a></li>
+                            <li><a class="dropdown-item" href="#">N/A for this client</a></li>
+                            <li><a class="dropdown-item" href="#">No</a></li>
+                            <li><a class="dropdown-item" href="#">Don't Know</a></li>
+                            <li><a class="dropdown-item" href="#">Refused</a></li>
+                            <li><a class="dropdown-item" href="#">Data not collected</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start Date -->
+            <div class="mb-3 row align-items-center">
+                <label for="startDate" class="col-sm-4 col-form-label">Start Date</label>
+                <div class="col-sm-6">
+                    <input type="date" id="startDate" class="form-control" value="2025-02-27" />
+                </div>
+            </div>
+
+            <!-- End Date -->
+            <div class="mb-3 row align-items-center">
+                <label for="endDate" class="col-sm-4 col-form-label">End Date</label>
+                <div class="col-sm-6">
+                    <input type="date" id="endDate" class="form-control" />
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary me-2">Save</button>
+                <button type="button" class="btn btn-danger me-2">Delete</button>
+                <button type="button" class="btn btn-secondary me-2">Print</button>
+                <button type="button" class="btn btn-dark">Exit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll(".dropdown-menu .dropdown-item").forEach(item => {
+        item.addEventListener("click", function() {
+            document.getElementById("status").value = this.textContent;
+        });
+    });
+</script>
