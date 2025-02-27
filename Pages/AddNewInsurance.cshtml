@@ -1,0 +1,132 @@
+﻿@page
+@model TURN.Pages.AddNewInsuranceModel
+@{
+}
+<div class="container mt-5 form-container">
+    <div class="card shadow-sm p-4">
+        <h2 class="highlight-header">Add New Insurance</h2>
+        <form method="post">
+
+            <!-- Family Member -->
+            <div class="mb-3 row">
+                <label class="col-sm-4 col-form-label required">Family Member</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="FamilyMemberInsuranceDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            John Doe
+                        </button>
+
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> John Doe
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start Date -->
+            <div class="mb-3 row">
+                <label class="col-sm-4 col-form-label required">Start Date *</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+
+            <!-- End Date -->
+            <div class="mb-3 row">
+                <label class="col-sm-4 col-form-label">End Date</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+
+            <!-- Type of Insurance -->
+            <div class="mb-3 row">
+                <label class="col-sm-4 col-form-label required">Type of Insurance *</label>
+                <div class="col-sm-6 d-flex align-items-center position-relative gap-2">
+                    <div class="w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="HealthInsuranceDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            @*  Select Health Insurance *@
+                        </button>
+
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                            <li><a class="dropdown-item" href="#">MEDICAID</a></li>
+                            <li><a class="dropdown-item" href="#">MEDICARE</a></li>
+                            <li><a class="dropdown-item" href="#">SCHIP-State Children's Health Insurance Program</a></li>
+                            <li><a class="dropdown-item" href="#">Veteran's Health Administration (VHA)</a></li>
+                            <li><a class="dropdown-item" href="#">Employer - Provided Health Insurance</a></li>
+                            <li><a class="dropdown-item" href="#">Health insurance obtained through COBRA</a></li>
+                            <li><a class="dropdown-item" href="#">Private Pay Health Insurance</a></li>
+                            <li><a class="dropdown-item" href="#">State Health Insurance for Adults</a></li>
+                            <li><a class="dropdown-item" href="#">Indian Health Services Program</a></li>
+                            <li><a class="dropdown-item" href="#">Other</a></li>
+                        </ul>
+                    </div>
+                    <button class="ellipsis-icon-btn" type="button" data-bs-toggle="modal" data-bs-target="#HOHRelationshipModal">
+                        <i class="fas fa-ellipsis-h"></i>
+
+                    </button>
+                </div>
+            </div>
+
+            <!-- Status -->
+            <div class="mb-3 row">
+                <label class="col-sm-4 col-form-label">Status</label>
+                <div class="col-sm-6 d-flex align-items-center position-relative gap-2">
+                    <div class="w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="StatusDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            Select Status
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                            <li><a class="dropdown-item" href="#">Currently Receiving</a></li>
+                            <li><a class="dropdown-item" href="#">Applied and decision pending</a></li>
+                            <li><a class="dropdown-item" href="#">Applied and client not eligible</a></li>
+                            <li><a class="dropdown-item" href="#">Client did not apply</a></li>
+                            <li><a class="dropdown-item" href="#">N/A for this client</a></li>
+                            <li><a class="dropdown-item" href="#">No</a></li>
+                            <li><a class="dropdown-item" href="#">Don't Know</a></li>
+                            <li><a class="dropdown-item" href="#">Client prefers not to answer</a></li>
+                            <li><a class="dropdown-item" href="#">Data not collected</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Covered by Insurance -->
+            <div class="mb-3 row">
+                <label class="col-sm-4 col-form-label">Covered by Insurance *</label>
+                <div class="col-sm-6">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="coveredInsurance" value="No">
+                        <label class="form-check-label">No</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="coveredInsurance" value="Yes">
+                        <label class="form-check-label">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="coveredInsurance" value="Don't know">
+                        <label class="form-check-label">Don't Know</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="coveredInsurance" value="Client prefers not to answer">
+                        <label class="form-check-label">Client Prefers Not to Answer</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-secondary">Print</button>
+                <button type="button" class="btn btn-dark">Exit</button>
+            </div>
+
+        </form>
+    </div>
+</div>

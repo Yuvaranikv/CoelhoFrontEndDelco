@@ -578,12 +578,13 @@
     </div>
 </div>
 
+<!--Insurance-->
 <div class="card shadow-sm p-2 mt-3">
     <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
         Insurance
         <span class="d-flex align-items-center">
             <i class="fas fa-bars me-2 custom-icon uniform-size" role="button"></i>
-            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i>
+            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button" onclick="RedirectToAddNewInsurance()"></i>
             <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size">
         </span>
     </h6>
@@ -884,6 +885,11 @@
 </script>
 
 
+<script>
+    function RedirectToAddNewInsurance(){
+        window.location.href="/AddNewInsurance";
+    }
+</script>
 
 
 
