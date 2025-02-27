@@ -526,7 +526,7 @@
         <span class="d-flex align-items-center">
             <i class="fas fa-bars me-2 custom-icon uniform-size" role="button"></i> <!-- Menu Icon -->
             <img src="~/Images/incomelogicon.png" alt="Menu Icon" class="me-2 custom-icon uniform-size" style="width: 24px; height: 24px; cursor: pointer;">
-            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i><!-- Plus Button -->
+            <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button" onclick="RedirectToIncome()"></i><!-- Plus Button -->
             <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size"> <!-- Checkbox -->
         </span>
     </h6>
@@ -868,6 +868,13 @@
         window.location.href="/LegalInformation";
     }
 </script>
+
+<script>
+    function RedirectToIncome(){
+        window.location.href="/IncomeForm";
+    }
+</script>
+
 
 
 
