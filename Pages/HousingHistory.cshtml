@@ -1,0 +1,217 @@
+﻿@page
+@model TURN.Pages.HousingHistoryModel
+@{
+}
+
+<style>
+    .custom-bg-light-blue {
+        background-color: #e3f2fd !important;
+    }
+
+
+
+    .bg-custom-gray {
+        background-color: #e8e8e8 !important;
+        color: black;
+    }
+
+    .label-width {
+        min-width: 140px; /* Adjust this width as needed */
+        display: inline-block;
+    }
+
+    /* Common styling for icons and checkbox */
+    .uniform-size {
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+    }
+
+    /* Checkbox */
+    .custom-checkbox {
+        width: 1.7rem; /* Match icon width */
+        height: 1.7rem; /* Match icon height */
+        border: 2px solid #0d6efd; /* Same as icons */
+        appearance: none; /* Remove default styling */
+        border-radius: 4px; /* Keep consistency */
+        display: flex;
+        justify-content: center;
+        vertical-align: middle;
+        margin-top: -2px; /* Adjust this value for alignment */
+    }
+
+        .custom-checkbox:checked {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+    /* Menu & Plus Icon */
+    .custom-icon {
+        border: 2px solid #0d6efd;
+        font-size: 1rem;
+        color: white !important;
+        cursor: pointer;
+        background-color: #0d6efd;
+    }
+
+        .custom-icon.fa-plus {
+            color: white !important;
+            background-color: #0d6efd; /* Force white color */
+        }
+</style>
+<div class="container mt-8 form-container">
+    <div class="card shadow-sm p-4 mb-3">
+        <h2 class="highlight-header mt-4">   Housing History</h2>
+        <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+            Housing History
+            <span class="d-flex align-items-center">
+                <i class="fas fa-bars me-2 custom-icon uniform-size" role="button"></i>
+                <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button" onclick="RedirectToHousingHistory()"></i>
+                <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size">
+            </span>
+        </h6>
+  
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+            <thead class="thead-dark">
+                <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                    <th>Type of Residence</th>
+                    <th>Address 1</th>
+                    <th>Address 2</th>
+                    <th>Move-in Date</th>
+                    <th>Move-out Date</th>
+                   <th></th>
+                   <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td>   <i class="fas fa-edit text-primary me-3" style="cursor: pointer;"></i> </td>
+                    <td>  <i class="fas fa-trash-alt text-danger" style="cursor: pointer;"></i> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="housingHistoryModal" tabindex="-1" aria-labelledby="housingHistoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="housingHistoryModalLabel">Add Housing History</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                    <div class="row mb-2">
+                        <div class="col-md-12 d-flex align-items-center">
+                            <label class="form-label me-2" style="min-width: 120px;">Created By</label>
+                            <input type="text" class="form-control" id="createdBy" readonly>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-12 d-flex align-items-center">
+                            <label class="form-label me-2" style="min-width: 120px;">Type of Residence *</label>
+                            <select class="form-select" id="typeOfResidence" required>
+                                <option value="" disabled selected>Select Type</option>
+                                <option value="apartment">Apartment</option>
+                                <option value="house">House</option>
+                                <option value="shared">Shared Housing</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-12 d-flex align-items-center">
+                            <label class="form-label me-2" style="min-width: 120px;">Address 1 *</label>
+                            <input type="text" class="form-control" id="address1" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-12 d-flex align-items-center">
+                            <label class="form-label me-2" style="min-width: 120px;">Address 2</label>
+                            <input type="text" class="form-control" id="address2">
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-12 d-flex align-items-center">
+                            <label class="form-label me-2" style="min-width: 120px;">City</label>
+                            <input type="text" class="form-control" id="city">
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-12 d-flex align-items-center">
+                            <label class="form-label me-2" style="min-width: 120px;">State</label>
+                            <input type="text" class="form-control" id="state">
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-12 d-flex align-items-center">
+                            <label class="form-label me-2" style="min-width: 120px;">Zip</label>
+                            <input type="text" class="form-control" id="zip">
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-12 d-flex align-items-center">
+                            <label class="form-label me-2" style="min-width: 120px;">Move-in Date *</label>
+                            <input type="date" class="form-control" id="moveInDate" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-12 d-flex align-items-center">
+                            <label class="form-label me-2" style="min-width: 120px;">Move-out Date</label>
+                            <input type="date" class="form-control" id="moveOutDate">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-12 d-flex align-items-center">
+                            <label class="form-label me-2" style="min-width: 120px;">Verified</label>
+                            <input type="text" class="form-control" id="Verified">
+                        </div>
+                    </div>
+                    <div class="row mb-2 d-flex align-items-center">
+                        <div class="col-md-12 d-flex align-items-center">
+                          
+                            <label class="form-label me-2" style="min-width: 120px;">Verification Date</label>
+                            <input type="date" class="form-control" id="verificationDate">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-sm">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (sessionStorage.getItem("openModal") === "true") {
+            var myModal = new bootstrap.Modal(document.getElementById('housingHistoryModal'));
+            myModal.show();
+            sessionStorage.removeItem("openModal"); // Clear flag to prevent repeated openings
+        }
+    });
+</script>

@@ -1,0 +1,143 @@
+﻿@page
+@model TURN.Pages.HousingApplicationModel
+@{
+}
+<div class="container mt-8 form-container">
+    <div class="card shadow-sm p-4 mb-3">
+        <h2 class="highlight-header mt-4">Housing Application</h2>
+        <form method="post">
+            <!-- Type of Application -->
+            <div class="mb-3 row align-items-center">
+                <label for="applicationType" class="col-sm-4 col-form-label required">Type of Application</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="applicationTypeDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            Select Type of Application
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> CHA (Chester Housing Authority)
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> DCHA (Delaware County Housing Authority)
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> EHV (DCHA)
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Mainstream (DCHA)
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> HCV
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Senior Living
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input" id="otherOption"> Other
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> If Other, (please explain)
+                                </label>
+                                <input type="text" class="form-control mt-2">
+                            </li>
+                            <li>
+                                <button class="btn btn-primary mt-2 w-100" id="OKButtonApplicationType">OK</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application Date -->
+            <div class="mb-3 row align-items-center">
+                <label for="applicationDate" class="col-sm-4 col-form-label required">Application Date</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control" id="applicationDate" value="2025-02-28" required>
+                </div>
+            </div>
+
+            <!-- Status of Application -->
+            <div class="mb-3 row align-items-center">
+                <label for="applicationStatus" class="col-sm-4 col-form-label">Status of Application</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="applicationStatusDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            Select Status of Application
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Completed Successfully
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> In Progress
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Denied
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> On Waiting List
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Pending
+                                </label>
+                            </li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Withdrew
+                                </label>
+                            </li>
+                            <li>
+                                <button class="btn btn-primary mt-2 w-100" id="OKButtonApplicationStatus">OK</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comments -->
+            <div class="mb-3 row align-items-center">
+                <label for="comments" class="col-sm-4 col-form-label">Comments</label>
+                <div class="col-sm-6 position-relative">
+                    <textarea class="form-control pe-5" id="comments" rows="3" placeholder="Enter Comments"></textarea>
+                    <span class="position-absolute top-50 translate-middle-y" style="right: 180px; cursor: pointer;">
+                        <i class="fas fa-edit"></i>
+                    </span>
+                </div>
+            </div>
+
+
+            <!-- Action Buttons -->
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-success">Save</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-primary">Print</button>
+                <button type="button" class="btn btn-secondary">Exit</button>
+            </div>
+        </form>
+    </div>
+</div>
