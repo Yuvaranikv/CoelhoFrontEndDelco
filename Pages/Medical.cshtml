@@ -1,0 +1,81 @@
+﻿@page
+@model TURN.Pages.MedicalModel
+@{
+
+}
+<div class="container mt-8 form-container">
+    <div class="card shadow-sm p-4 mb-3">
+        <h2 class="highlight-header mt-4">Medical Information</h2>
+        <form method="post">
+            <!-- Problem Dropdown -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Problem</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="problemDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            Select Problem
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px;">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Asthma</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Bronchitis</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Cancer</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> High Cholesterol</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> High Blood Pressure</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> HIV / AIDS</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Heart Diseases</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Hepatitis C</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Diabetes</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> PTSD</label></li>
+                            <li>
+                                <label class="form-check-label d-block">
+                                    <input type="checkbox" class="form-check-input"> Other (please specify)
+                                </label>
+                                <input type="text" class="form-control mt-2">
+                            </li>
+                            <li><button class="btn btn-primary mt-2 w-100">OK</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Treatment Status Dropdown -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Treatment Status</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="treatmentDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            Select Treatment Status
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px;">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Received treatment in the past</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Presently receiving</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Not receiving treatment</label></li>
+                            <li><button class="btn btn-primary mt-2 w-100">OK</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comments with Edit Icon -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Comments</label>
+                <div class="col-sm-6 d-flex">
+                    <textarea class="form-control" placeholder="Enter comments" rows="3"></textarea>
+                    <button class="btn btn-outline-secondary ms-2" style="border-color: grey ;">
+                        <i class="fas fa-edit text-primary"></i> <!-- FontAwesome Edit Icon -->
+                    </button>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-secondary">Print</button>
+                <button type="button" class="btn btn-dark">Exit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
