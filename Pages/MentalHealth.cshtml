@@ -1,0 +1,111 @@
+﻿@page
+@model TURN.Pages.MentalHealthModel
+@{
+}
+
+<div class="container mt-8 form-container">
+    <div class="card shadow-sm p-4 mb-3">
+        <h2 class="highlight-header mt-4">Mental Health Info</h2>
+   
+        <form method="post">
+            <!-- Type of Problem -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Type of Problem</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="typeOfProblemDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; text-align: left;">
+                            Select Type of Problem
+                        </button>
+                        <ul class="dropdown-menu w-100 p-2" id="problemOptions">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input problem-option" value="Anxiety"> Anxiety</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input problem-option" value="Depression"> Depression</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input problem-option" value="Suicidal Tendencies"> Suicidal Tendencies</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input problem-option" value="Suspiciousness"> Suspiciousness</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input problem-option" value="Hallucination"> Hallucination</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input problem-option" value="Disorientation"> Disorientation</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input problem-option" value="Grandiosity"> Grandiosity</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input problem-option" value="Danger behavior"> Danger behavior</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input problem-option" value="Compulsive behavior"> Compulsive behavior</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input problem-option" value="Eating disorder"> Eating disorder</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input problem-option" value="Sleeping disturbance"> Sleeping disturbance</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input problem-option" value="Mood swings"> Mood swings</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input problem-option" value="Trauma"> Trauma</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input problem-option" value="Self Mutilation"> Self Mutilation</label></li>
+                            <li><button class="btn btn-primary mt-2 w-100" onclick="updateSelectedProblems()">OK</button></li>
+                        </ul>
+                    </div>
+                    <input type="text" id="selectedProblems" class="form-control mt-2" placeholder="Selected Problems" readonly>
+                </div>
+            </div>
+
+            <!-- Level of Intensity (Radio Buttons) -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Level of Intensity</label>
+                <div class="col-sm-6 d-flex gap-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="intensity" id="severe" value="Severe">
+                        <label class="form-check-label" for="severe">Severe</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="intensity" id="moderate" value="Moderate">
+                        <label class="form-check-label" for="moderate">Moderate</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="intensity" id="mild" value="Mild">
+                        <label class="form-check-label" for="mild">Mild</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="intensity" id="periodic" value="Periodic">
+                        <label class="form-check-label" for="periodic">Periodic</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Receiving Treatment (Radio Buttons) -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Receiving Treatment</label>
+                <div class="col-sm-6 d-flex gap-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="treatment" id="yes" value="Yes">
+                        <label class="form-check-label" for="yes">Yes</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="treatment" id="no" value="No">
+                        <label class="form-check-label" for="no">No</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="treatment" id="dontKnow" value="Do not know">
+                        <label class="form-check-label" for="dontKnow">Do not know</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="treatment" id="notApplicable" value="Not Applicable">
+                        <label class="form-check-label" for="notApplicable">Not Applicable</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="treatment" id="refused" value="Refused">
+                        <label class="form-check-label" for="refused">Refused</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comments -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Comments</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" rows="3" placeholder="Enter comments"></textarea>
+                    
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-end mb-3">
+                <button class="btn btn-primary me-2">New</button>
+                <button class="btn btn-success me-2">Save</button>
+                <button class="btn btn-danger me-2">Delete</button>
+                <button class="btn btn-secondary me-2">Print</button>
+                <button class="btn btn-outline-dark">Exit</button>
+            </div>
+        </form>
+    </div>
+</div>
+

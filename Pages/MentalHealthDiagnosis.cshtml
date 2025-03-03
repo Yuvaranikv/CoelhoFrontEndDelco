@@ -1,0 +1,115 @@
+﻿@page
+@model TURN.Pages.MentalHealthDiagnosisModel
+@{
+}
+
+<div class="container mt-8 form-container">
+    <div class="card shadow-sm p-4 mb-3">
+        <h2 class="highlight-header mt-4">Mental Health Diagnosis</h2>
+        <form method="post">
+           
+
+            <!-- Date of Diagnosis -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Date of Diagnosis</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control" value="2025-03-03">
+                </div>
+            </div>
+
+            <!-- Axis 1 -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Axis 1</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="Enter Axis 1">
+                </div>
+            </div>
+
+            <!-- Axis 2 -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Axis 2</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="Enter Axis 2">
+                </div>
+            </div>
+
+            <!-- Axis 3 -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Axis 3</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="Enter Axis 3">
+                </div>
+            </div>
+
+            <!-- Axis 4 (Dropdown with Checkboxes) -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Axis 4</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="axis4Dropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; text-align: left;">
+                            Select Axis 4 Issues
+                        </button>
+                        <ul class="dropdown-menu w-100 p-2" id="axis4Options">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="Economic problems"> Economic problems</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="Educational problems"> Educational problems</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="Housing problems"> Housing problems</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="None"> None</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="Occupational problems"> Occupational problems</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="Other psychosocial and environmental problems"> Other psychosocial and environmental problems</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="Problems related to interaction with the legal system/crime"> Problems related to interaction with the legal system/crime</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="Problems related to the social environment"> Problems related to the social environment</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="Problems with access to health care services"> Problems with access to health care services</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="Problems with primary support group"> Problems with primary support group</label></li>
+                            <li><button class="btn btn-primary mt-2 w-100" onclick="updateSelectedAxis4()">OK</button></li>
+                        </ul>
+                    </div>
+                  
+                </div>
+            </div>
+
+            <!-- Axis 4 Comments -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Axis 4 Comments</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" rows="3" placeholder="Enter comments"></textarea>
+                </div>
+            </div>
+
+            <!-- Axis 5 (GAF Score) -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Axis 5 (GAF Score)</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle form-control" type="button" id="gafDropdownButton" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; text-align: left;">
+                            Select GAF Score
+                        </button>
+                        <ul class="dropdown-menu w-100 p-2" id="gafDropdown">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="1 - 10 Persistent danger of severely hurting self or others"> 1 - 10 Persistent danger of severely hurting self or others</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="11 - 20 Some danger of hurting self or others"> 11 - 20 Some danger of hurting self or others</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="21 - 30 Behavior is highly influenced by delusions or hallucinations"> 21 - 30 Behavior is highly influenced by delusions or hallucinations</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="31 - 40 Some impairment in reality testing or communication"> 31 - 40 Some impairment in reality testing or communication</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="41 - 50 Serious symptoms or any serious impairment in functioning"> 41 - 50 Serious symptoms or any serious impairment in functioning</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="51 - 60 Moderate symptoms or moderate difficulty in functioning"> 51 - 60 Moderate symptoms or moderate difficulty in functioning</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="61 - 70 Some mild symptoms or some difficulty in functioning"> 61 - 70 Some mild symptoms or some difficulty in functioning</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="71 - 80 If symptoms are present, they are transient and expectable"> 71 - 80 If symptoms are present, they are transient and expectable</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="81 - 90 Absent or minimal symptoms, good functioning in all areas"> 81 - 90 Absent or minimal symptoms, good functioning in all areas</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="91 - 100 Superior functioning in a wide range of activities. No symptoms"> 91 - 100 Superior functioning in a wide range of activities. No symptoms</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input" value="Not Specified"> Not Specified</label></li>
+                            <li><button class="btn btn-primary mt-2 w-100" onclick="updateSelectedGAF()">OK</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-end mb-3">
+                <button class="btn btn-primary me-2">New</button>
+                <button class="btn btn-success me-2">Save</button>
+                <button class="btn btn-danger me-2">Delete</button>
+                <button class="btn btn-secondary me-2">Print</button>
+                <button class="btn btn-outline-dark">Exit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
