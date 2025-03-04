@@ -1,0 +1,77 @@
+﻿@page
+@model TURN.Pages.MedicationModel
+@{
+
+}
+
+<div class="container mt-8 form-container">
+    <div class="card shadow-sm p-4 mb-3">
+        <h2 class="highlight-header mt-4">Medication Information</h2>
+        <form method="post">
+            <!-- Name -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Name</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="Enter Name" required>
+                </div>
+            </div>
+
+            <!-- Type of Medication -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Type of Medication</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; text-align: left;">
+                            Select Type of Medication
+                        </button>
+                        <ul class="dropdown-menu w-100 p-2" id="medicationOptions">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input medication-option" value="Medical"> Medical</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input medication-option" value="Behavioral Healthcare"> Behavioral Healthcare</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input medication-option" value="None"> None</label></li>
+                            <li><button class="btn btn-primary mt-2 w-100" onclick="updateSelectedMedication()">OK</button></li>
+                        </ul>
+                    </div>
+               
+                </div>
+            </div>
+
+            <!-- Dosage -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Dosage</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="Enter Dosage" required>
+                </div>
+            </div>
+
+            <!-- Frequency Dropdown -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Frequency</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; text-align: left;">
+                            Select Frequency
+                        </button>
+                        <ul class="dropdown-menu w-100 p-2" id="frequencyOptions">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input frequency-option" value="Once Daily"> Once Daily</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input frequency-option" value="Twice Daily"> Twice Daily</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input frequency-option" value="Thrice Daily"> Thrice Daily</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input frequency-option" value="Four Times Daily"> Four Times Daily</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input frequency-option" value="Nightly"> Nightly</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input frequency-option" value="PRN"> PRN</label></li>
+                            <li><button class="btn btn-primary mt-2 w-100" onclick="updateSelectedFrequency()">OK</button></li>
+                        </ul>
+                    </div>
+                  
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end gap-3">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-secondary">Print</button>
+                <button type="button" class="btn btn-dark">Exit</button>
+            </div>
+        </form>
+    </div>
+</div>

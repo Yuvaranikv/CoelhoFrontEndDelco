@@ -15,6 +15,108 @@
 
                 <div class="container">
 
+                    <!-- Family Member Input -->
+                    <div class="mb-3 row align-items-center">
+                        <label for="familyMember" class="col-sm-4 col-form-label required">Family Member</label>
+                        <div class="col-sm-6">
+                            <div class="dropdown w-100">
+                                <button class="btn btn-white w-100 dropdown-toggle" type="button" id="FamilyMemberDisabilityDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                                    @*   Select Family Member *@
+                                    John Doe
+                                </button>
+
+                                <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                                    <li><a class="dropdown-item" href="#">John Doe</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Disability Type Input -->
+                    <div class="mb-3 row align-items-center">
+                        <label for="disability" class="col-sm-4 col-form-label required">Disability</label>
+                        <div class="col-sm-6">
+                            <div class="dropdown w-100">
+                                <button class="btn btn-white w-100 dropdown-toggle dropdown-toggle-split" type="button" id="DisabilityDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: right;">
+                                    @* Select Disability Type *@
+                                </button>
+
+                                <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                                    <li><a class="dropdown-item" href="#">Physical Disability</a></li>
+                                    <li><a class="dropdown-item" href="#">Developmental Disability</a></li>
+                                    <li><a class="dropdown-item" href="#">Chronic Health Condition</a></li>
+                                    <li><a class="dropdown-item" href="#">HIV/AIDS</a></li>
+                                    <li><a class="dropdown-item" href="#">Mental Health Disorder</a></li>
+                                    <li><a class="dropdown-item" href="#">Substance Use Disorder</a></li>
+                                    <li><a class="dropdown-item" href="#">Other</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Status Input -->
+                    <div class="mb-3 row align-items-center">
+                        <label for="status" class="col-sm-4 col-form-label required">Status</label>
+                        <div class="col-sm-6">
+                            <div class="dropdown w-100">
+                                <button class="btn btn-white w-100 dropdown-toggle dropdown-toggle-split" type="button" id="StatusDisabilityDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: right;">
+                                    @* Select Status *@
+                                </button>
+
+                                <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+                                    <li><a class="dropdown-item" href="#">Yes</a></li>
+                                    <li><a class="dropdown-item" href="#">No</a></li>
+                                    <li><a class="dropdown-item" href="#">Don't know</a></li>
+                                    <li><a class="dropdown-item" href="#">Client prefers not to answer</a></li>
+                                    <li><a class="dropdown-item" href="#">Alcohol Abuse</a></li>
+                                    <li><a class="dropdown-item" href="#">Drug Abuse</a></li>
+                                    <li><a class="dropdown-item" href="#">Both</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expected Duration Input -->
+                    <div class="mb-3 row align-items-center">
+                        <label class="col-sm-4 col-form-label required">Expected to be of long-continued and indefinite duration and substantially impairs ability to live independently</label>
+                        <div class="col-sm-6">
+                            <div>
+                                <input type="radio" name="duration" value="Yes"> Yes
+                                <input type="radio" name="duration" value="No"> No
+                                <input type="radio" name="duration" value="Don't know"> Don't know
+                                <input type="radio" name="duration" value="Refused"> Refused
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Receiving Services/Treatment Input -->
+                    <div class="mb-3 row align-items-center">
+                        <label class="col-sm-4 col-form-label required">Currently receiving services/treatment for this condition</label>
+                        <div class="col-sm-6">
+                            <div>
+                                <input type="radio" name="receivingServices" value="Yes"> Yes
+                                <input type="radio" name="receivingServices" value="No"> No
+                                <input type="radio" name="receivingServices" value="Don't know"> Don't know
+                                <input type="radio" name="receivingServices" value="Refused"> Refused
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Documentation on file Input -->
+                    <div class="mb-3 row align-items-center">
+                        <label class="col-sm-4 col-form-label required">Documentation on file</label>
+                        <div class="col-sm-6">
+                            <div>
+                                <input type="radio" name="documentationOnFile" value="Yes"> Yes
+                                <input type="radio" name="documentationOnFile" value="No"> No
+                                <input type="radio" name="documentationOnFile" value="Don't know"> Don't know
+                                <input type="radio" name="documentationOnFile" value="Refused"> Refused
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
              </form>
         </div>
