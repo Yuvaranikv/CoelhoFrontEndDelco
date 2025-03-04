@@ -1,0 +1,112 @@
+﻿@page
+@model TURN.Pages.HospitalizationModel
+@{
+}
+
+<div class="container mt-8 form-container">
+    <div class="card shadow-sm p-4 mb-3">
+        <h2 class="highlight-header mt-4">Hospitalization</h2>
+
+        <form method="post">
+            <!-- Area of Treatment -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Area of Treatment</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; text-align: left;">
+                            Select Area of Treatment
+                        </button>
+                        <ul class="dropdown-menu w-100 p-2" id="treatmentOptions">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input treatment-option" value="Mental Health and Forensic"> Mental Health and Forensic</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input treatment-option" value="D & A"> D & A</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input treatment-option" value="Medical"> Medical</label></li>
+                            <li><button class="btn btn-primary mt-2 w-100" onclick="updateSelectedTreatment()">OK</button></li>
+                        </ul>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <!-- Type of Treatment -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Type of Treatment</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; text-align: left;">
+                            Select Type of Treatment
+                        </button>
+                        <ul class="dropdown-menu w-100 p-2" id="typeOfTreatmentOptions">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input type-of-treatment-option" value="Crisis"> Crisis</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input type-of-treatment-option" value="D&A Inpatient"> D&A Inpatient</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input type-of-treatment-option" value="D&A Rehabilitation"> D&A Rehabilitation</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input type-of-treatment-option" value="Forensic (incarceration)"> Forensic (incarceration)</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input type-of-treatment-option" value="Medical Hospital"> Medical Hospital</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input type-of-treatment-option" value="MH Inpatient"> MH Inpatient</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input type-of-treatment-option" value="Partial Hospital"> Partial Hospital</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input type-of-treatment-option" value="Physical Rehab. Center"> Physical Rehab. Center</label></li>
+                            <li><button class="btn btn-primary mt-2 w-100" onclick="updateSelectedTypeOfTreatment()">OK</button></li>
+                        </ul>
+                    </div>
+                 
+                </div>
+            </div>
+
+            <!-- Admit Type -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Admit Type</label>
+                <div class="col-sm-6 d-flex gap-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="admitType" id="voluntary" value="Voluntary">
+                        <label class="form-check-label" for="voluntary">Voluntary</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="admitType" id="involuntary" value="Involuntary">
+                        <label class="form-check-label" for="involuntary">Involuntary</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hospital Name -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Hospital Name</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="Enter Hospital Name">
+                </div>
+            </div>
+
+            <!-- Start Date -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Start Date</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control" value="2025-03-04">
+                </div>
+            </div>
+
+            <!-- End Date -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">End Date</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+
+            <!-- Comments -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Comments</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" rows="3" placeholder="Enter comments"></textarea>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-end mb-3">
+                <button class="btn btn-primary me-2">New</button>
+                <button class="btn btn-success me-2">Save</button>
+                <button class="btn btn-danger me-2">Delete</button>
+                <button class="btn btn-secondary me-2">Print</button>
+                <button class="btn btn-outline-dark">Exit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
