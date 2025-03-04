@@ -4,13 +4,245 @@
     Layout = "_LayoutLatest";
 }
 
+<style>
+    .custom-bg-light-blue {
+        background-color: #e3f2fd !important;
+    }
 
+
+
+    .bg-custom-gray {
+        background-color: #e8e8e8 !important;
+        color: black;
+    }
+
+    .label-width {
+        min-width: 140px; /* Adjust this width as needed */
+        display: inline-block;
+    }
+
+    /* Common styling for icons and checkbox */
+    .uniform-size {
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+    }
+
+    /* Checkbox */
+    .custom-checkbox {
+        width: 1.7rem; /* Match icon width */
+        height: 1.7rem; /* Match icon height */
+        border: 2px solid #0d6efd; /* Same as icons */
+        appearance: none; /* Remove default styling */
+        border-radius: 4px; /* Keep consistency */
+        display: flex;
+        justify-content: center;
+        vertical-align: middle;
+        margin-top: -2px; /* Adjust this value for alignment */
+    }
+
+        .custom-checkbox:checked {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+    /* Menu & Plus Icon */
+    .custom-icon {
+        border: 2px solid #0d6efd;
+        font-size: 1rem;
+        color: white !important;
+        cursor: pointer;
+        background-color: #0d6efd;
+    }
+
+        .custom-icon.fa-plus {
+            color: white !important;
+            background-color: #0d6efd; /* Force white color */
+        }
+
+    .uniform-width {
+        width: 100%; /* Ensures all elements take the same width */
+        max-width: 250px; /* Adjust this value as needed for a consistent look */
+    }
+</style>
 
   
 
     @await Html.PartialAsync("_ClientDashboardMenu")  <!-- Include Partial View -->
 
-    <div class="content mt-4">
-        <p>Welcome to the Coordinated Entry page. Here, you can manage client intake and referrals.</p>
-        <!-- Add more content or forms as needed -->
+<div class="container mt-8 form-container" style="margin-top:0px;">
+    <form>
+    <div class="card shadow-sm p-4 mb-3">
+        <h2 class="highlight-header mt-4">Coordinated Entry Assessment</h2>
+        <div>
+            <h6 class="custom-bg-light-blue  p-1 rounded shadow-sm d-flex justify-content-between align-items-center text-danger">
+                This is a NON CE SITE. You cannot Create or Edit Coordinated Assessment.
+            </h6>
+        </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover  rounded border ">
+
+                    <tbody>
+                        <tr>
+                            <td><h6 class="mb-3">What services are you in need of today?</h6></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h6 class="custom-bg-light-blue  p-1 rounded shadow-sm d-flex justify-content-between align-items-center text-danger">
+                    Household Member
+                </h6>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover  rounded border ">
+                    <thead class="thead-dark">
+                        <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                            <th>Client Name</th>
+                            <th>Relationship to HOH</th>
+                            <th>SSN</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5" class="text-center align-middle">No data to Display</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover rounded border">
+                    <tbody>
+                        <tr>
+                            <td><label class="form-label">No of Adults</label></td>
+                            <td><input type="number" class="form-control uniform-input" value="0"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">No of Children</label></td>
+                            <td><input type="number" class="form-control uniform-input" value="0"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Household Size</label></td>
+                            <td><input type="number" class="form-control uniform-input" value="0"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Household Type</label></td>
+                            <td>
+                                <select class="form-select uniform-input">
+                                    <option selected>Select Household Type</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Family">Family</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+           
+                
+             <div>
+                <h6 class="custom-bg-light-blue  p-1 rounded shadow-sm d-flex justify-content-between align-items-center text-danger">
+                  Address at the time of CE
+                </h6>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover rounded border">
+                    <tbody>
+                        <tr>
+                            <td><label class="form-label">Address 1</label></td>
+                            <td><input type="text" class="form-control" placeholder="Enter Address"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Address 2</label></td>
+                            <td><input type="text" class="form-control" placeholder="Enter Address"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">State</label></td>
+                            <td><input type="text" class="form-control" placeholder="Enter State"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">City</label></td>
+                            <td><input type="text" class="form-control" placeholder="Enter City"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Zip Code</label></td>
+                            <td><input type="text" class="form-control" placeholder="Enter Zip Code"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h6 class="custom-bg-light-blue  p-1 rounded shadow-sm d-flex justify-content-between align-items-center text-danger">
+                   Translation Assistance Needed
+                </h6>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover rounded border">
+                    <tbody>
+                        <tr>
+                            <td>Translation Assistance Needed</td>
+                            <td></td>
+                        </tr>
+                      
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <h6 class="custom-bg-light-blue  p-1 rounded shadow-sm d-flex justify-content-between align-items-center text-danger">
+                   Household Income
+                </h6>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover rounded border">
+                    <tbody>
+                        <tr>
+                            <td>Family Member</td>
+                            <td>Income Source</td>
+                            <td>Monthly Income</td>
+                            <td>Comments</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-center align-middle">No data to Display</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover rounded border">
+                    <tbody>
+                        <tr>
+                            <td><label class="form-label">Income Status</label></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Total Annual Gross Income from All Sources</label></td>
+                            <td><input type="text" class="form-control" value="$0.00"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Area Median Income for Household</label></td>
+                            <td><input type="text" class="form-control" placeholder="Enter AMI"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Federal Poverty Level</label></td>
+                            <td><input type="text" class="form-control" placeholder="Enter FPL"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
     </div>
+    
+         
+            
+              
+     
+    </form>
+</div>
