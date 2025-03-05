@@ -1,0 +1,109 @@
+﻿@page
+@model TURN.Pages.ClientDashboard.FinancialAssistanceModel
+@{
+
+
+	Layout = "_LayoutLatest";
+}
+
+<style>
+
+
+    .custom-bg-light-blue {
+        background-color: #e3f2fd !important;
+    }
+
+
+
+    .bg-custom-gray {
+        background-color: #e8e8e8 !important;
+        color: black;
+    }
+
+    .label-width {
+        min-width: 140px; /* Adjust this width as needed */
+        display: inline-block;
+    }
+
+    /* Common styling for icons and checkbox */
+    .uniform-size {
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+    }
+
+    /* Checkbox */
+    .custom-checkbox {
+        width: 1.7rem; /* Match icon width */
+        height: 1.7rem; /* Match icon height */
+        border: 2px solid #0d6efd; /* Same as icons */
+        appearance: none; /* Remove default styling */
+        border-radius: 4px; /* Keep consistency */
+        display: flex;
+        justify-content: center;
+        vertical-align: middle;
+        margin-top: -2px; /* Adjust this value for alignment */
+    }
+
+        .custom-checkbox:checked {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+    /* Menu & Plus Icon */
+    .custom-icon {
+        border: 2px solid #0d6efd;
+        font-size: 1rem;
+        color: white !important;
+        cursor: pointer;
+        background-color: #0d6efd;
+    }
+
+        .custom-icon.fa-plus {
+            color: white !important;
+            background-color: #0d6efd; /* Force white color */
+        }
+
+    .uniform-width {
+        width: 100%; /* Ensures all elements take the same width */
+        max-width: 250px; /* Adjust this value as needed for a consistent look */
+    }
+</style>
+
+
+@await Html.PartialAsync("_ClientDashboardMenu")  <!-- Include Partial View -->
+
+<div class="card shadow-sm p-2">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Financial Assistance
+
+        <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size"> <!-- Checkbox -->
+    </h6>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+            <thead class="thead-dark">
+                <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                    <th>User</th>
+                    <th>Project</th>
+                    <th>Status</th>
+                    <th>Assistance Type</th>
+                    <th>Request Date</th>
+                    <th>Request Amount</th>
+                    <th>Amount Paid</th>
+                    <th>Date Paid</th>
+                    <th>Grant Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="8" class="text-center align-middle">No information provided in this section</td>
+                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
