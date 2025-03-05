@@ -5,6 +5,8 @@
 }
 
 <style>
+
+
     .custom-bg-light-blue {
         background-color: #e3f2fd !important;
     }
@@ -233,6 +235,238 @@
                         <tr>
                             <td><label class="form-label">Federal Poverty Level</label></td>
                             <td><input type="text" class="form-control" placeholder="Enter FPL"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h6 class="custom-bg-light-blue  p-1 rounded shadow-sm d-flex justify-content-between align-items-center text-danger">
+                    The following questions will help us identify appropriate referrals for your situation
+                </h6>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover rounded border">
+                    <tbody>
+                        <tr>
+                            <td><label class="form-label">Housing Status *</label></td>
+                            <td><input type="text" class="form-control" placeholder="Enter Housing Status"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">County of Residence</label></td>
+                            <td>
+                                <select class="form-control">
+                                    <option selected>Delaware</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Have you been in foster care after the age of 16?</label></td>
+                            <td>
+                                <input type="radio" name="fosterCare" value="No"> No
+                                <input type="radio" name="fosterCare" value="Yes"> Yes
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Are you involved with Children and Youth Services (CYS)?</label></td>
+                            <td>
+                                <input type="radio" name="cys" value="No"> No
+                                <input type="radio" name="cys" value="Yes"> Yes
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Were you recently released from a correctional facility?</label></td>
+                            <td>
+                                <input type="radio" name="correctionalFacility" value="No"> No
+                                <input type="radio" name="correctionalFacility" value="Yes"> Yes
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Has any adult member of your household served in the military?(includes Army, Navy, Air Force, Coast Guard, National Guard, Marine and Space Force)?</label></td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Enter Military Service Details">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Does any member of your household have a service animal, emotional support animal, or pet that would need to be considered in your shelter or housing placement?</label></td>
+                            <td>
+                                <input type="radio" name="serviceAnimal" value="No"> No
+                                <input type="radio" name="serviceAnimal" value="Yes"> Yes
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Have you been in shelter or staying unsheltered at any time in the past 3 years?</label></td>
+                            <td>
+                                <input type="radio" name="shelterHistory" value="No"> No
+                                <input type="radio" name="shelterHistory" value="Yes"> Yes
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h6 class="custom-bg-light-blue  p-1 rounded shadow-sm d-flex justify-content-between align-items-center text-danger">
+                    Household Disability
+                </h6>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover rounded border">
+                    <thead>
+                        <tr>
+                            <th>Family Member</th>
+                            <th>Disabilities</th>
+                            <th>Status</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4" class="text-center">No data to display</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover rounded border">
+                    <tbody>
+                        <tr>
+                            <td><label class="form-label">Does any member of your household have any mobility support needs?</label></td>
+                            <td>
+                                <div class="radio-group">
+                                    <input type="radio" name="mobilitySupport" value="No"> No
+                                    <input type="radio" name="mobilitySupport" value="Yes"> Yes
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h6 class="custom-bg-light-blue p-1 rounded shadow-sm text-danger">
+                Coordinated Entry Summary
+            </h6>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover rounded border">
+                    <tbody>
+                        <tr>
+                            <td><label class="form-label">Date of Assessment *</label></td>
+                            <td><input type="text" class="form-control" value="03/05/2025" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Assessment Location</label></td>
+                            <td><input type="text" class="form-control" value="CAA Housing Assistance" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Staff Member doing the Assessment</label></td>
+                            <td><input type="text" class="form-control" value="Administrator System" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Assessment Type</label></td>
+                            <td><input type="text" class="form-control" value="In Person" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Assessment Level</label></td>
+                            <td><input type="text" class="form-control" value="Crisis Needs Assessment" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Referral Source</label></td>
+                            <td><input type="text" class="form-control" placeholder="Enter Referral Source"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Prioritization Status</label></td>
+                            <td><input type="text" class="form-control" placeholder="Enter Prioritization Status"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h6 class="custom-bg-light-blue p-1 rounded shadow-sm text-danger">
+                Coordinated Entry Referral Event
+            </h6>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover rounded border">
+                    <thead>
+                        <tr>
+                            <th>Date of Event</th>
+                            <th>Coordinated Entry Event Type</th>
+                            <th>Coordinated Entry Event</th>
+                            <th>Location of Referral</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4" class="text-center">No data to display</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover rounded border">
+                    <tbody>
+                        <tr>
+                            <td><label class="form-label">Do you want to refer this client to waiting list? *</label></td>
+                            <td>
+                                <div class="radio-group">
+                                    <input type="radio" name="waitingList" value="No"> No
+                                    <input type="radio" name="waitingList" value="Yes"> Yes
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Date of Shelter Request *</label></td>
+                            <td><input type="text" class="form-control" value="03/05/2025" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Where are you currently staying</label></td>
+                            <td><input type="text" class="form-control" placeholder="Enter current location"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Immediate Needs Assessment</label></td>
+                            <td><input type="text" class="form-control" placeholder="Enter immediate needs"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h6 class="custom-bg-light-blue p-1 rounded shadow-sm text-danger">
+                CE Closure
+            </h6>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover rounded border">
+                    <tbody>
+                        <tr>
+                            <td><label class="form-label">Reason for Leaving *</label></td>
+                            <td><input type="text" class="form-control" placeholder="Enter reason for leaving"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">End Date *</label></td>
+                            <td><input type="date" class="form-control"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h6 class="custom-bg-light-blue p-1 rounded shadow-sm text-danger">
+                Comments
+            </h6>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover rounded border">
+                    <tbody>
+                        <tr>
+                            <td><label class="form-label">Comments</label></td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <textarea class="form-control" id="comments" placeholder="Enter comments" rows="3"></textarea>
+                                    <button class="btn btn-light ms-2" onclick="enableEdit()" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
