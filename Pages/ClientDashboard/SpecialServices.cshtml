@@ -1,0 +1,137 @@
+﻿@page
+@model TURN.Pages.ClientDashboard.SpecialServicesModel
+@{
+
+    Layout = "_LayoutLatest";
+}
+
+<style>
+
+
+    .custom-bg-light-blue {
+        background-color: #e3f2fd !important;
+    }
+
+
+
+    .bg-custom-gray {
+        background-color: #e8e8e8 !important;
+        color: black;
+    }
+
+    .label-width {
+        min-width: 140px; /* Adjust this width as needed */
+        display: inline-block;
+    }
+
+    /* Common styling for icons and checkbox */
+    .uniform-size {
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+    }
+
+    /* Checkbox */
+    .custom-checkbox {
+        width: 1.7rem; /* Match icon width */
+        height: 1.7rem; /* Match icon height */
+        border: 2px solid #0d6efd; /* Same as icons */
+        appearance: none; /* Remove default styling */
+        border-radius: 4px; /* Keep consistency */
+        display: flex;
+        justify-content: center;
+        vertical-align: middle;
+        margin-top: -2px; /* Adjust this value for alignment */
+    }
+
+        .custom-checkbox:checked {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+    /* Menu & Plus Icon */
+    .custom-icon {
+        border: 2px solid #0d6efd;
+        font-size: 1rem;
+        color: white !important;
+        cursor: pointer;
+        background-color: #0d6efd;
+    }
+
+        .custom-icon.fa-plus {
+            color: white !important;
+            background-color: #0d6efd; /* Force white color */
+        }
+
+    .uniform-width {
+        width: 100%; /* Ensures all elements take the same width */
+        max-width: 250px; /* Adjust this value as needed for a consistent look */
+    }
+</style>
+
+
+@await Html.PartialAsync("_ClientDashboardMenu")  <!-- Include Partial View -->
+
+<div class="card shadow-sm p-2">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+      Recreation
+    </h6>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+            <tbody>
+                <tr>
+                    <td><label class="form-label">Child Nick Name</label></td>
+                    <td><input type="text" class="form-control" placeholder="Enter Child Nick Name"></td>
+                </tr>
+                <tr>
+                    <td><label class="form-label">Entry Date</label></td>
+                    <td><input type="date" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><label class="form-label">Referral Last Name</label></td>
+                    <td><input type="text" class="form-control" placeholder="Enter Referral Last Name"></td>
+                </tr>
+                <tr>
+                    <td><label class="form-label">Therapist Last Name</label></td>
+                    <td><input type="text" class="form-control" placeholder="Enter Therapist Last Name"></td>
+                </tr>
+                <tr>
+                    <td><label class="form-label">Referral Extn</label></td>
+                    <td><input type="text" class="form-control" placeholder="Enter Referral Extn"></td>
+                </tr>
+                <tr>
+                    <td><label class="form-label">Referral Phone</label></td>
+                    <td>
+                        <input type="text" class="form-control" placeholder="(___) ___- ____">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card shadow-sm p-2 mt-3">
+    <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+        Donations Warehouse
+    </h6>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+            <thead class="thead-dark">
+                <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                    <th>Referral Name</th>
+                    <th>Billing Organisation Name</th>
+                    <th>Delivery Address 1</th>
+                    <th>Scheduled Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4" class="text-center align-middle">No information recorded in this section</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
