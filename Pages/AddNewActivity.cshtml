@@ -1,0 +1,357 @@
+﻿@page
+@model TURN.Pages.AddNewActivityModel
+@{
+}
+
+<style>
+
+
+    .custom-bg-light-blue {
+        background-color: #e3f2fd !important;
+    }
+
+
+
+    .bg-custom-gray {
+        background-color: #e8e8e8 !important;
+        color: black;
+    }
+
+    .label-width {
+        min-width: 140px; /* Adjust this width as needed */
+        display: inline-block;
+    }
+
+    /* Common styling for icons and checkbox */
+    .uniform-size {
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+    }
+
+    /* Checkbox */
+    .custom-checkbox {
+        width: 1.7rem; /* Match icon width */
+        height: 1.7rem; /* Match icon height */
+        border: 2px solid #0d6efd; /* Same as icons */
+        appearance: none; /* Remove default styling */
+        border-radius: 4px; /* Keep consistency */
+        display: flex;
+        justify-content: center;
+        vertical-align: middle;
+        margin-top: -2px; /* Adjust this value for alignment */
+    }
+
+        .custom-checkbox:checked {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+    /* Menu & Plus Icon */
+    .custom-icon {
+        border: 2px solid #0d6efd;
+        font-size: 1rem;
+        color: white !important;
+        cursor: pointer;
+        background-color: #0d6efd;
+    }
+
+        .custom-icon.fa-plus {
+            color: white !important;
+            background-color: #0d6efd; /* Force white color */
+        }
+
+    .uniform-width {
+        width: 100%; /* Ensures all elements take the same width */
+        max-width: 250px; /* Adjust this value as needed for a consistent look */
+    }
+</style>
+
+<div class="container mt-8 form-container">
+    <div class="card shadow-sm p-4 mb-3">
+        <h2 class="highlight-header mt-4">Activities</h2>
+        <form method="post">
+           
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Family Member</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="problemDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            Adams,Tykira
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; max-height: 200px; overflow-y: auto;">
+                            <li><a class="dropdown-item" href="#">John Doe</a></li>
+                            <li><a class="dropdown-item" href="#">Jane Smith</a></li>
+                            <li><a class="dropdown-item" href="#">Michael Johnson</a></li>
+                            <li><a class="dropdown-item" href="#">Emily Davis</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!--Type of Activity -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label required">Type of Activity</label>
+                <div class="col-sm-6">
+                    <div class="dropdown w-100">
+                        <button class="btn btn-white w-100 dropdown-toggle" type="button" id="treatmentDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 1px solid #ced4da; padding-left: 4px; text-align: left;">
+                            Select Type of Activity
+                        </button>
+                        <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; max-height: 300px; overflow-y: auto;">
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Advocacy</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Agency Transportation</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Follow-up Visit</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Coordinated Entry</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Home Visit</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> House Meeting</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> HQS Inspection</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Internal Team Meeting</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Place of Employment</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Intake Visit</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> MH or SA Treatment Visit</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Multi-team Meeting</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Office Visit</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Other (specify in notes)</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Outreach Encounter</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Outreach Contact</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Phone Call</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Email Contact</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Site Visit</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Rec Therapy</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Shelter Site Visit</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Special Event</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Case Conference</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Treatment Visit</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Permanent Housing</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Case Note Entry Only</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Other</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Housing Education Program - HEP</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Housing Case Management - HCM</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Housing Resource List - HRL</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Post Close-out Follow-up</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Coordinated Assessment Summary</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Child Care</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Child Assessment</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Tutoring</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Play Therapy</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Budget Counselling</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Case Management Meeting</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Project Share ADL</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Previous Stability Plan</label></li>
+                            <li><label class="form-check-label d-block"><input type="checkbox" class="form-check-input"> Stability Plan Update</label></li>
+                            <li><button class="btn btn-primary mt-2 w-100">OK</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date of Activity -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Date of Activity</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control" value="2025-03-06">
+                </div>
+            </div>
+
+            <!-- Start Time -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Start Time</label>
+                <div class="col-sm-6">
+                    <input type="time" class="form-control">
+                </div>
+            </div>
+
+            <!-- End Time -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">End Time</label>
+                <div class="col-sm-6">
+                    <input type="time" class="form-control">
+                </div>
+            </div>
+
+            <!-- Created User -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Created User</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" value="System, Administrator" readonly>
+                </div>
+            </div>
+
+            <!-- Access Level -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label">Access Level</label>
+                <div class="col-sm-6 d-flex gap-3">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="accessLevel" id="hmis" value="HMIS" checked>
+                        <label class="form-check-label" for="hmis">HMIS</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="accessLevel" id="agency" value="Agency">
+                        <label class="form-check-label" for="agency">Agency</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="accessLevel" id="project" value="Project">
+                        <label class="form-check-label" for="project">Project</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="accessLevel" id="user" value="User">
+                        <label class="form-check-label" for="user">User</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm p-2">
+                <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+                    Activity Notes
+                    <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size"> <!-- Checkbox -->
+                </h6>
+                <table class="table rounded w-100">
+                    <tbody>
+                        <tr>
+                            <td style="width: 90%; border: none;">
+                                <textarea class="form-control w-100" rows="2" style="min-width: 100%;"></textarea>
+                            </td>
+                            <td class="text-center" style="width: 10%; border: none;">
+                                <button class="btn">
+                                    <i class="fas fa-edit text-primary"></i> <!-- FontAwesome Edit Icon -->
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none;">Client has been targeted for</td>
+                            <td style="border: none;">
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Select Options
+                                    </button>
+                                    <ul class="dropdown-menu w-100 dropdown-menu-end" style="list-style: none; padding: 10px; max-height: 300px; overflow-y: auto;">
+                                        <li>
+                                            <label class="form-check-label d-block">
+                                                <input type="checkbox" class="form-check-input"> Mainstream
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="form-check-label d-block">
+                                                <input type="checkbox" class="form-check-input"> EHV
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="form-check-label d-block">
+                                                <input type="checkbox" class="form-check-input"> CRR - MH
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="form-check-label d-block">
+                                                <input type="checkbox" class="form-check-input"> Senior Living
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="form-check-label d-block">
+                                                <input type="checkbox" class="form-check-input"> Other
+                                            </label>
+                                        </li>
+                                        <li><button class="btn btn-primary mt-2 w-100">OK</button></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card shadow-sm p-2">
+                <h6 class="custom-bg-light-blue text-dark p-1 rounded shadow-sm d-flex justify-content-between align-items-center">
+                    Immediate Needs Assessment
+                    <input type="checkbox" class="form-check-input me-2 custom-checkbox uniform-size"> <!-- Checkbox -->
+                </h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover shadow-sm rounded border border-light">
+                        <thead class="thead-dark">
+                            <tr class="bg-custom-gray text-dark text-nowrap text-center border border-light">
+                                <th>Created On</th>
+                                <th>Created By</th>
+                                <th>Immediate Needs Assessment</th>
+                                <th>Target Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="7" class="text-center align-middle">No data to display</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="card shadow-sm p-3">
+                <!-- Heading -->
+                <h6 class="text-dark p-2 rounded shadow-sm d-flex justify-content-between align-items-center" style="background-color: cadetblue;">
+                    Stability Plan
+                    <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i> <!-- Plus Button -->
+                </h6>
+
+                <!-- Table Header -->
+                <h6 class="d-flex justify-content-between fw-semibold mt-2">
+                    <span>Long-term needs/goals</span>
+                    <span>Short-term goals</span>
+                    <span>Actions</span>
+                </h6>
+
+                <!-- Table Body -->
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                Achieve Stable Housing 
+                            </td>
+                            <td>  <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i></td>
+                            <td> </td>
+                            <td></td>
+                            <td>  <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Achieve Economic Stability 
+                            </td>
+                            <td>  <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i></td>
+                            <td></td>
+                            <td></td>
+                            <td>  <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="card shadow-sm p-3">
+                <h6 class="custom-bg-light-blue text-dark p-2 rounded shadow-sm d-flex justify-content-between align-items-center">
+                    Supportive Services
+                    <i class="fas fa-plus text-primary me-2 custom-icon uniform-size" role="button"></i> <!-- Plus Button -->
+                </h6>
+
+                <div class="d-flex align-items-center gap-2 mt-2">
+                    <label class="form-label fw-semibold mb-0">Services Provided</label>
+                    <input type="text" class="form-control w-50" placeholder="Enter service details">
+                </div>
+
+            </div>
+
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end gap-3">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-secondary">Print</button>
+                <button type="button" class="btn btn-dark">Exit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
